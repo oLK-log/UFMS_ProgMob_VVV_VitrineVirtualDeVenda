@@ -24,7 +24,7 @@
             android:src="@android:drawable/ic_menu_camera"
         />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -43,6 +43,7 @@
                 android:id="@+id/txtItemDescricao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/txtItemNome"
                 android:text="Descrição do produto"
                 android:textColor="#757575"
                 android:textSize="14sp"
@@ -54,14 +55,24 @@
                 android:id="@+id/txtItemPreco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/txtItemDescricao"
                 android:text="R$ 0,00"
                 android:textColor="#388E3C"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginTop="8dp"
                 />
+            <ImageView
+                android:id="@+id/estrelaDestaque"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@android:drawable/btn_star_big_off"
+                />
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 

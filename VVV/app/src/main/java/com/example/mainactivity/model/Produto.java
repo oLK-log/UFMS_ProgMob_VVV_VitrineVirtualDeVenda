@@ -13,4 +13,5 @@ public class Produto {
     public double preco;
     public String imagemUri;
     public int usuarioId;
+    public boolean isDestaque;
 }

@@ -59,6 +59,29 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoV
                 v.getContext().startActivity(intent);
             }
         });
+        //logica para estrela de Destaque
+            //surgimento
+        if(produtoAtual.isDestaque){
+            holder.estrelaDestaque.setImageResource(android.R.drawable.btn_star_big_on);
+        }else {
+            holder.estrelaDestaque.setImageResource(android.R.drawable.btn_star_big_off);
+        }
+            //clique
+        holder.estrelaDestaque.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                boolean novoStatus = !produtoAtual.isDestaque;
+                produtoAtual.isDestaque = novoStatus;
+
+                if(novoStatus){
+                    holder.estrelaDestaque.setImageResource(android.R.drawable.btn_star_big_on);
+                }else{
+                    holder.estrelaDestaque.setImageResource(android.R.drawable.btn_star_big_off);
+                }
+
+                com.example.mainactivity.database.AppDatabase.getInstance(v.getContext()).produtoDao().atualizarDestaque(produtoAtual.id, novoStatus);
+            }
+        });
     }
 
     //definir tamanho da rolagem - comunicacao com lista
@@ -69,7 +92,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoV
 
     //guardar referencias
     static class ProdutoViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgItemProduto;
+        ImageView imgItemProduto, estrelaDestaque;
         TextView txtItemNome, txtItemDescricao, txtItemPreco;
 
         public ProdutoViewHolder(@NonNull View itemView){
@@ -78,6 +101,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoV
             txtItemNome = itemView.findViewById(R.id.txtItemNome);
             txtItemDescricao = itemView.findViewById(R.id.txtItemDescricao);
             txtItemPreco = itemView.findViewById(R.id.txtItemPreco);
+            estrelaDestaque = itemView.findViewById(R.id.estrelaDestaque);
         }
     }
 

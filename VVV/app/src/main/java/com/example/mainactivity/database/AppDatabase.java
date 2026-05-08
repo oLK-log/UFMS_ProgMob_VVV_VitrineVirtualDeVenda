@@ -11,7 +11,7 @@ import com.example.mainactivity.dao.UsuarioDao;
 import com.example.mainactivity.model.Produto;
 import com.example.mainactivity.model.Usuario;
 
-@Database(entities = {Usuario.class, Produto.class}, version = 1)
+@Database(entities = {Usuario.class, Produto.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
 
     //aqui eh conectado os DAOs
@@ -25,6 +25,7 @@ public abstract class AppDatabase extends RoomDatabase {
         if (INSTANCE == null){
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(),AppDatabase.class, "banco_vvv")
                     .allowMainThreadQueries()//permite rodar o banco na mesma interface grafica
+                    .fallbackToDestructiveMigration()//para problema de fechar sozinho
                     .build();
         }
         return INSTANCE;

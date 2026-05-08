@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,8 @@ public class CadastroProdutoActivity extends AppCompatActivity {
     //abrir galeria local
     private ActivityResultLauncher<String> abrirGaleria;
     private int idProdutoEdicao = -1;//-1 significa que é produto novo
+    private boolean statusDestaqueAtual = false;
+
 
     @Override
    protected void onCreate(Bundle savedInstanceState){
@@ -104,6 +107,10 @@ public class CadastroProdutoActivity extends AppCompatActivity {
                     imgFotoProduto.setImageResource(android.R.drawable.ic_menu_camera);
                 }
             }
+            //guardar estado de Destaque do produto
+            statusDestaqueAtual = produtoAntigo.isDestaque;
+
+
             //muda o texto do btn Salvar para Atualizar
             btnSalvarProduto.setText("Atualizar");
             //Faz o botao excluir ficar visivel
@@ -145,6 +152,7 @@ public class CadastroProdutoActivity extends AppCompatActivity {
         novoProduto.usuarioId = idLojista;
         //salvar caminho
         novoProduto.imagemUri = caminhoDefinitivoDaFoto;
+        novoProduto.isDestaque=statusDestaqueAtual;
 
         //logica de decisao-inserir ou atualizar
         if(idProdutoEdicao!= -1){ //edicao

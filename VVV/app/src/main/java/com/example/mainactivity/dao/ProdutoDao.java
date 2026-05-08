@@ -32,4 +32,7 @@ public interface ProdutoDao {
     //Query para buscar produto pelo ID
     @Query("SELECT * FROM produtos WHERE id = :idProduto")
     Produto buscarProdutoPorId(int idProduto);
+    //atualiza o status de destaque de um produto específico
+    @Query("UPDATE produtos SET isDestaque = :status WHERE id = :idProduto")
+    void atualizarDestaque(int idProduto, boolean status);
 }

@@ -1,4 +1,4 @@
-package com.example.mainactivity.fragment;
+package com.example.mainactivity.lojista;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,9 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mainactivity.CadastroProdutoActivity;
 import com.example.mainactivity.R;
-import com.example.mainactivity.adapter.ProdutoAdapter;
+import com.example.mainactivity.lojista.adapter.ProdutoAdapter;
 import com.example.mainactivity.database.AppDatabase;
 import com.example.mainactivity.model.Produto;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

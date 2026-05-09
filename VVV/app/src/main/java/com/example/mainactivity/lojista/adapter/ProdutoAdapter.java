@@ -1,4 +1,4 @@
-package com.example.mainactivity.adapter;
+package com.example.mainactivity.lojista.adapter;
 
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mainactivity.R;
+import com.example.mainactivity.lojista.CadastroProdutoActivity;
 import com.example.mainactivity.model.Produto;
 
 import java.util.List;
@@ -54,7 +55,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.ProdutoV
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                android.content.Intent intent = new android.content.Intent(v.getContext(), com.example.mainactivity.CadastroProdutoActivity.class);//chama tela de cadastro
+                android.content.Intent intent = new android.content.Intent(v.getContext(), CadastroProdutoActivity.class);//chama tela de cadastro
                 intent.putExtra("idProdutoEditado", produtoAtual.id);//usa id do produto
                 v.getContext().startActivity(intent);
             }

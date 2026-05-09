@@ -1,6 +1,7 @@
-package com.example.mainactivity;
+package com.example.mainactivity.core;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,13 +11,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mainactivity.MainActivity;
+import com.example.mainactivity.R;
+import com.example.mainactivity.cliente.PainelClienteActivity;
 import com.example.mainactivity.database.AppDatabase;
+import com.example.mainactivity.lojista.LojistaMainActivity;
 import com.example.mainactivity.model.Usuario;
+import com.example.mainactivity.MainActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText editLoginEmail, editLoginSenha;
     private Button btnEntrar;
-    private TextView txtIrParaCadastro;
+    private TextView txtIrParaCadastro, txtEntrarConvidado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -28,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         editLoginSenha = findViewById(R.id.editLoginSenha);
         btnEntrar = findViewById(R.id.btnEntrar);
         txtIrParaCadastro = findViewById(R.id.txtIrParaCadastro);
+        txtEntrarConvidado = findViewById(R.id.txtEntrarConvidado);
 
         //acoes
         btnEntrar.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +49,20 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        //Entrar como convidade
+        txtEntrarConvidado.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                SharedPreferences preferenciais = getSharedPreferences("sessao_vvv", MODE_PRIVATE);
+                preferenciais.edit().putInt("idUsuario", -1).apply();//-1 indica que não está logado/eh convidade
+                Toast.makeText(LoginActivity.this, "Navegando como visitante", Toast.LENGTH_SHORT).show();
+                //acessa vitrine Cliente como convidade
+                Intent intent = new Intent(LoginActivity.this, PainelClienteActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -62,11 +83,19 @@ public class LoginActivity extends AppCompatActivity {
             preferenciais.edit().putInt("idUsuario", usuarioLogado.id).apply();
             //informar que usuario está logado
             Toast.makeText(this,"Usuário "+ usuarioLogado.nome + "logado", Toast.LENGTH_LONG).show();
+
             //ponto de acesso para a tela principal
-            //intent do Login para Vitrine
-            Intent intent = new Intent(LoginActivity.this, VitrineActivity.class);
-            startActivity(intent);
-            finish();
+            if(usuarioLogado.tipoPerfil != null && usuarioLogado.tipoPerfil.equals("LOJISTA")) {
+                //intent do Login para Vitrine quando lojista
+                Intent intent = new Intent(LoginActivity.this, LojistaMainActivity.class);
+                startActivity(intent);
+            } else {
+                //intent para Login como cliente/convidad
+                Intent intent = new Intent(LoginActivity.this, PainelClienteActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
         } else {
             Toast.makeText(this, "O E-mail ou senha está incorreto! Verifique e tente novamente.", Toast.LENGTH_LONG).show();
         }

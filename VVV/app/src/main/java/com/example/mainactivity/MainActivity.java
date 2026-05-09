@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity{
     private Button btnTirarFoto, btnCadastrar;
     //variavel para guardar foto antes de salvar
     private Bitmap fotoCapturada = null;
+    private RadioGroup rgTipoUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity{
         editSenha = findViewById(R.id.editSenha);
         btnTirarFoto = findViewById(R.id.btnTirarFoto);
         btnCadastrar = findViewById(R.id.btnCadastrar);
+        rgTipoUsuario = findViewById(R.id.rgTipoUsuario);
 
         //configurar acao da camera
         btnTirarFoto.setOnClickListener(new View.OnClickListener(){
@@ -79,13 +82,21 @@ public class MainActivity extends AppCompatActivity{
 
         String caminhoFoto = (fotoCapturada != null) ? "foto_capturada_com_sucesso" : "";
 
+        //tipo de perfil
+        String tipoSelecionado = "CLIENTE";
+        int idRadioSelecionado = rgTipoUsuario.getCheckedRadioButtonId();
+        if(idRadioSelecionado == R.id.rbLojista){
+            tipoSelecionado = "LOJISTA";
+        }
+
         //molde usuario
         Usuario novoUsuario = new Usuario();
         novoUsuario.nome = nome;
         novoUsuario.email = email;
         novoUsuario.senha = senha;
         novoUsuario.fotoPath = caminhoFoto;
-        novoUsuario.tipoPerfil = "Lojista";//lembrar de fazer logica para Cliente e Lojista***
+        novoUsuario.tipoPerfil=tipoSelecionado;
+
         //salva o molde
         AppDatabase.getInstance(this).usuarioDao().cadastrar(novoUsuario);
 

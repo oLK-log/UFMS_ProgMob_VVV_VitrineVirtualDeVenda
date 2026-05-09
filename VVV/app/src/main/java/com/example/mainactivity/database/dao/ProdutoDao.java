@@ -1,4 +1,4 @@
-package com.example.mainactivity.dao;
+package com.example.mainactivity.database.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -35,4 +35,7 @@ public interface ProdutoDao {
     //atualiza o status de destaque de um produto específico
     @Query("UPDATE produtos SET isDestaque = :status WHERE id = :idProduto")
     void atualizarDestaque(int idProduto, boolean status);
+    //Query para buscar os produtos em destaque/com estrela
+    @Query("SELECT * FROM produtos WHERE isDestaque = 1")
+    List<Produto> buscarProdutosEmDestaque();
 }

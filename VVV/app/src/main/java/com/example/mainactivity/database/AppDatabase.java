@@ -6,8 +6,8 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.mainactivity.dao.ProdutoDao;
-import com.example.mainactivity.dao.UsuarioDao;
+import com.example.mainactivity.database.dao.ProdutoDao;
+import com.example.mainactivity.database.dao.UsuarioDao;
 import com.example.mainactivity.model.Produto;
 import com.example.mainactivity.model.Usuario;
 

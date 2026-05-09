@@ -1,4 +1,4 @@
-package com.example.mainactivity.dao;
+package com.example.mainactivity.database.dao;
 
 
 import androidx.room.Dao;

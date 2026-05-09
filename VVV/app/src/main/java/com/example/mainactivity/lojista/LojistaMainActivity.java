@@ -1,4 +1,4 @@
-package com.example.mainactivity;
+package com.example.mainactivity.lojista;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -7,13 +7,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.mainactivity.fragment.GerenciarFragment;
-import com.example.mainactivity.fragment.InicioFragment;
-import com.example.mainactivity.fragment.PerfilFragment;
+import com.example.mainactivity.R;
+import com.example.mainactivity.core.fragment.InicioFragment;
+import com.example.mainactivity.core.fragment.PerfilFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class VitrineActivity extends AppCompatActivity {
+public class LojistaMainActivity extends AppCompatActivity {
 
     private BottomNavigationView barraNavegacao;
 

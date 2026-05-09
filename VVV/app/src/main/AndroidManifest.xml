@@ -12,16 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MainActivity">
         <activity
-            android:name=".CadastroProdutoActivity"
+            android:name=".lojista.CadastroProdutoActivity"
             android:exported="false" />
         <activity
-            android:name=".VitrineActivity"
+            android:name=".lojista.LojistaMainActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".core.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +29,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".cliente.PainelClienteActivity"
+            android:exported="false"/>
+        <activity android:name=".lojista.LojistaMainActivity"
+            android:exported="false"/>
+
     </application>
 
 </manifest>

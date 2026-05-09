@@ -15,6 +15,8 @@ import com.example.mainactivity.R;
 import com.example.mainactivity.model.Produto;
 
 import java.util.List;
+import android.content.Intent;
+import com.example.mainactivity.cliente.DetalhesProdutoActivity;
 
 public class VitrineAdapter extends RecyclerView.Adapter<VitrineAdapter.VitrineViewHolder> {
     private List<Produto> listaProdutos;
@@ -47,7 +49,11 @@ public class VitrineAdapter extends RecyclerView.Adapter<VitrineAdapter.VitrineV
         //Implementar clique no futurp levando para tela de Detalhes do Produto
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){}
+            public void onClick(View v){
+                Intent intent = new Intent(v.getContext(), DetalhesProdutoActivity.class);
+                intent.putExtra("idProdutoDetalhe", produtoAtual.id);//id p/ prox tela utilizar
+                v.getContext().startActivity(intent);
+            }
         });
     }
 

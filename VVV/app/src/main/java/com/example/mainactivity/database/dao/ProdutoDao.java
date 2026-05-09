@@ -38,4 +38,5 @@ public interface ProdutoDao {
     //Query para buscar os produtos em destaque/com estrela
     @Query("SELECT * FROM produtos WHERE isDestaque = 1")
     List<Produto> buscarProdutosEmDestaque();
+    
 }

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); //conexao xom xlm
+        setContentView(R.layout.activity_cadastro_usuario); //conexao xom xlm
         //fazer a conexao java e xml
         imgFotoPerfil = findViewById(R.id.imgFotoPerfil);
         editNome = findViewById(R.id.editNome);

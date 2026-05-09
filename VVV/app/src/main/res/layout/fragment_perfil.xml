@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="#FAFAFA">
+    android:background="#FAFAFA"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,4 +13,12 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="#212121"/>
+    <Button
+        android:id="@+id/btnSairSessao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sair da Conta"
+        android:layout_margin="32dp"
+        android:backgroundTint="#D32F2F"
+        android:textColor="#FFFFFF"/>
 </LinearLayout>

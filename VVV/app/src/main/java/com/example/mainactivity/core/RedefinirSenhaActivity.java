@@ -39,9 +39,9 @@ public class RedefinirSenhaActivity extends AppCompatActivity {
 
     //altera a senha no banco de dados por meio de uma validacao do nome completo
     private void redefinirSenhaNoBanco(){
-        String nomeRedefinir = editNomeRedefinir.getText().toString();
-        String email = editEmailRedefinir.getText().toString();
-        String novaSenha = editSenhaRedefinir.getText().toString();
+        String nomeRedefinir = editNomeRedefinir.getText().toString().trim();
+        String email = editEmailRedefinir.getText().toString().trim();
+        String novaSenha = editSenhaRedefinir.getText().toString().trim();
 
         if(nomeRedefinir.isEmpty() || email.isEmpty() || novaSenha.isEmpty()){
             Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();

@@ -11,4 +11,5 @@
     <string name="btn_finalizar">Finalizar Pedido</string>
 
     <string name="hint_buscar">Buscar produto...</string>
+    <string name="btn_redefinirSenha">Redefinir Senha</string>
 </resources>

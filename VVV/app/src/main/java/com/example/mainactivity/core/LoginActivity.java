@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.mainactivity.CadastroUsuarioActivity;
 import com.example.mainactivity.R;
 import com.example.mainactivity.cliente.PainelClienteActivity;
 import com.example.mainactivity.database.AppDatabase;
@@ -21,7 +20,7 @@ import com.example.mainactivity.model.Usuario;
 public class LoginActivity extends AppCompatActivity {
     private EditText editLoginEmail, editLoginSenha;
     private Button btnEntrar;
-    private TextView txtIrParaCadastro, txtEntrarConvidado;
+    private TextView txtIrParaCadastro, txtEntrarConvidado, txtRedefinirSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -34,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         btnEntrar = findViewById(R.id.btnEntrar);
         txtIrParaCadastro = findViewById(R.id.txtIrParaCadastro);
         txtEntrarConvidado = findViewById(R.id.txtEntrarConvidado);
+        txtRedefinirSenha = findViewById(R.id.txtRedefinirSenha);
 
         //acoes
         btnEntrar.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
                 tentarLogin();
             }
         });
-
+        //cadastrar
         txtIrParaCadastro.setOnClickListener(new View.OnClickListener() { //captura a intencao de mudar de tela
             @Override
             public void onClick(View v) {
@@ -62,6 +62,16 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, PainelClienteActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        //Redefinir Senha
+        txtRedefinirSenha.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(LoginActivity.this, RedefinirSenhaActivity.class);
+                startActivity(intent);
+
             }
         });
     }

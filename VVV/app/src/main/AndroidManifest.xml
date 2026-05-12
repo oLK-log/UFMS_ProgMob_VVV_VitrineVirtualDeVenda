@@ -18,7 +18,7 @@
             android:name=".lojista.LojistaMainActivity"
             android:exported="false" />
         <activity
-            android:name=".CadastroUsuarioActivity"
+            android:name=".core.CadastroUsuarioActivity"
             android:exported="false" />
         <activity
             android:name=".core.LoginActivity"
@@ -35,6 +35,9 @@
             android:exported="false"/>
         <activity android:name=".cliente.DetalhesProdutoActivity"
             android:exported="false"/>
+        <activity
+            android:name=".core.RedefinirSenhaActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

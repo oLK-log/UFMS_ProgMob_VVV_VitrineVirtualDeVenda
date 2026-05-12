@@ -19,4 +19,10 @@ public interface UsuarioDao {
     //query para buscar usuario com determinado id
     @Query("SELECT * FROM usuarios WHERE idUsuario = :idUsuario LIMIT 1")
     Usuario buscarUsuarioPorId(int idUsuario);
+    //query para buscar usuario que tiver determinado Login e nome
+    @Query("SELECT * FROM usuarios WHERE email = :email AND nome = :nome LIMIT 1")
+    Usuario buscaRedefinirSenha(String email, String nome);
+    //Query para atualizar dados de um usuario
+    @androidx.room.Update
+    void atualizarUsuario(Usuario usuario);
 }

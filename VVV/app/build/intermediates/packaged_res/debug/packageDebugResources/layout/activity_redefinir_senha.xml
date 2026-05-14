@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#FAFAFA">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_redefinirSenha"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        android:textColor="#212121"
+        android:gravity="center"
+        android:layout_marginBottom="24dp"
+        />
+    <EditText
+        android:id="@+id/editNomeRedefinir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome Completo"
+        android:inputType="textPersonName"
+        android:layout_marginBottom="12dp"
+        android:textColor="#212121"
+        />
+    <EditText
+        android:id="@+id/editEmailRedefinir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="12dp"
+        android:textColor="#212121"
+        />
+    <EditText
+        android:id="@+id/editSenhaRedefinir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nova Senha"
+        android:inputType="textPassword"
+        android:layout_marginBottom="24dp"
+        android:textColor="#212121"
+        />
+
+    <Button
+        android:id="@+id/btnRedefinir"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/btn_redefinirSenha"
+        android:layout_marginTop="50dp"
+        android:textSize="16sp"
+        />
+
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_home_cliente"
+        android:icon="@android:drawable/ic_menu_gallery"
+        android:title="Vitrine" />
+    <item
+        android:id="@+id/menu_pedido_cliente"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="Pedido"/>
+    <item
+        android:id="@+id/menu_perfil_cliente"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="Perfil" />
+</menu>

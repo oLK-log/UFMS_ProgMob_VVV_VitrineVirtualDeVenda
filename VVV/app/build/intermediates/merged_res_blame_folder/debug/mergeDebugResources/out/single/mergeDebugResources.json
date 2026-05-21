@@ -60,10 +60,6 @@
         "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-41:\\menu\\menu_vitrine.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-39:/layout_item_produto_destaque.xml.flat",
-        "source": "com.example.mainactivity.app-main-41:/layout/item_produto_destaque.xml"
-    },
-    {
         "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-39:\\layout_fragment_pedido.xml.flat",
         "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-41:\\layout\\fragment_pedido.xml"
     },
@@ -138,6 +134,10 @@
     {
         "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-39:\\layout_fragment_gerenciar.xml.flat",
         "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-41:\\layout\\fragment_gerenciar.xml"
+    },
+    {
+        "merged": "com.example.mainactivity.app-debug-39:/layout_fragment_home.xml.flat",
+        "source": "com.example.mainactivity.app-main-41:/layout/fragment_home.xml"
     },
     {
         "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-39:\\mipmap-anydpi-v26_ic_launcher.xml.flat",

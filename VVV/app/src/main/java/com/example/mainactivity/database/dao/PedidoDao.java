@@ -7,6 +7,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.mainactivity.model.ItemPedido;
+import com.example.mainactivity.model.ItemPedidoDetalhado;
 
 import java.util.List;
 
@@ -31,5 +32,12 @@ public interface PedidoDao {
     //Esvazia o carrinho
     @Query("DELETE FROM item_pedido WHERE usuarioId = :idUsuario")
     void limparPedido(int idUsuario);
+    //retorna os itens do pedido com os itens do produto
+    // Retorna os itens do pedido já com os dados do produto perfeitamente mesclados
+    @Query("SELECT ip.id AS idItemPedido, ip.produtoId, ip.quantidade, p.nome AS nomeProduto, p.preco AS precoProduto, p.imagemUri " +
+            "FROM item_pedido ip " +
+            "INNER JOIN produtos p ON ip.produtoId = p.id " +
+            "WHERE ip.usuarioId = :idUsuario")
+    List<ItemPedidoDetalhado> buscarPedidoDetalhado(int idUsuario);
 
 }

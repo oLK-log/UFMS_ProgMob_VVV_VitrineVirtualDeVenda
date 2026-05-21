@@ -11,6 +11,7 @@ import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.mainactivity.model.ItemPedido;
+import com.example.mainactivity.model.ItemPedidoDetalhado;
 import java.lang.Class;
 import java.lang.Override;
 import java.lang.String;
@@ -200,6 +201,48 @@ public final class PedidoDao_Impl implements PedidoDao {
         _result.quantidade = _cursor.getInt(_cursorIndexOfQuantidade);
       } else {
         _result = null;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public List<ItemPedidoDetalhado> buscarPedidoDetalhado(final int idUsuario) {
+    final String _sql = "SELECT ip.id AS idItemPedido, ip.produtoId, ip.quantidade, p.nome AS nomeProduto, p.preco AS precoProduto, p.imagemUri FROM item_pedido ip INNER JOIN produtos p ON ip.produtoId = p.id WHERE ip.usuarioId = ?";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, idUsuario);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfIdItemPedido = 0;
+      final int _cursorIndexOfProdutoId = 1;
+      final int _cursorIndexOfQuantidade = 2;
+      final int _cursorIndexOfNomeProduto = 3;
+      final int _cursorIndexOfPrecoProduto = 4;
+      final int _cursorIndexOfImagemUri = 5;
+      final List<ItemPedidoDetalhado> _result = new ArrayList<ItemPedidoDetalhado>(_cursor.getCount());
+      while (_cursor.moveToNext()) {
+        final ItemPedidoDetalhado _item;
+        _item = new ItemPedidoDetalhado();
+        _item.idItemPedido = _cursor.getInt(_cursorIndexOfIdItemPedido);
+        _item.produtoId = _cursor.getInt(_cursorIndexOfProdutoId);
+        _item.quantidade = _cursor.getInt(_cursorIndexOfQuantidade);
+        if (_cursor.isNull(_cursorIndexOfNomeProduto)) {
+          _item.nomeProduto = null;
+        } else {
+          _item.nomeProduto = _cursor.getString(_cursorIndexOfNomeProduto);
+        }
+        _item.precoProduto = _cursor.getDouble(_cursorIndexOfPrecoProduto);
+        if (_cursor.isNull(_cursorIndexOfImagemUri)) {
+          _item.imagemUri = null;
+        } else {
+          _item.imagemUri = _cursor.getString(_cursorIndexOfImagemUri);
+        }
+        _result.add(_item);
       }
       return _result;
     } finally {

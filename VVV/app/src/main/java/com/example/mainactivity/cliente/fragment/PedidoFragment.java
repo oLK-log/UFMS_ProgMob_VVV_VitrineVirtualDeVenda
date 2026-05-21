@@ -23,6 +23,7 @@ import com.example.mainactivity.cliente.adapter.PedidoAdapter;
 import com.example.mainactivity.database.AppDatabase;
 import com.example.mainactivity.database.dao.PedidoDao;
 import com.example.mainactivity.model.ItemPedido;
+import com.example.mainactivity.model.ItemPedidoDetalhado;
 import com.example.mainactivity.model.Produto;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class PedidoFragment extends Fragment{
     private LinearLayout layoutRodapePedido;
     private Button btnFinalizarPedido;
     private PedidoAdapter adapter;
-    private List<ItemPedido> listaItens;
+    private List<ItemPedidoDetalhado> listaItens;
 
 
     @Nullable
@@ -67,7 +68,7 @@ public class PedidoFragment extends Fragment{
         int idusuario = preferenciais.getInt("idUsuario", -1);//visitante eh -1
 
         PedidoDao pedidoDao = AppDatabase.getInstance(getContext()).pedidoDao();
-        listaItens=pedidoDao.buscarPedidoDoUsuario(idusuario);
+        listaItens=pedidoDao.buscarPedidoDetalhado(idusuario);
 
         if(listaItens.isEmpty()){
             rvItensPedido.setVisibility(View.GONE);
@@ -87,9 +88,13 @@ public class PedidoFragment extends Fragment{
     }
 
     //met para remover item da lista de pedido
-    private void removerItem(ItemPedido item){
+    private void removerItem(ItemPedidoDetalhado item){
         PedidoDao pedidoDao = AppDatabase.getInstance(getContext()).pedidoDao();
-        pedidoDao.removerItem(item);
+
+        ItemPedido itemEntity = new ItemPedido();
+        itemEntity.id = item.idItemPedido;
+
+        pedidoDao.removerItem(itemEntity);
         Toast.makeText(getContext(), "Item removido!", Toast.LENGTH_SHORT).show();
         carregarPedido();
     }
@@ -99,11 +104,8 @@ public class PedidoFragment extends Fragment{
         double total = 0.0;
         AppDatabase db = AppDatabase.getInstance(getContext());
 
-        for(ItemPedido item : listaItens){
-            Produto p = db.produtoDao().buscarProdutoPorId(item.produtoId);
-            if(p!=null){
-                total += p.preco * item.quantidade;
-            }
+        for (ItemPedidoDetalhado item : listaItens){
+            total += item.precoProduto * item.quantidade;
         }
         txtValorTotalPedido.setText(String.format("R$ %.2f", total));
     }

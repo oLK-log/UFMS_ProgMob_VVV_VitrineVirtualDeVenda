@@ -65,6 +65,7 @@ id txtItemDescricao
 id txtItemNome
 id txtItemPreco
 id txtItemQtdPreco
+id txtMetricaProdutos
 id txtNomeAbaPerfil
 id txtPedidoVazio
 id txtRedefinirSenha

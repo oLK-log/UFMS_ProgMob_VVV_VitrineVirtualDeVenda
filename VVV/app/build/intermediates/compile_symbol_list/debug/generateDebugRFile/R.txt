@@ -64,6 +64,7 @@ int id txtItemDescricao 0x0
 int id txtItemNome 0x0
 int id txtItemPreco 0x0
 int id txtItemQtdPreco 0x0
+int id txtMetricaProdutos 0x0
 int id txtNomeAbaPerfil 0x0
 int id txtPedidoVazio 0x0
 int id txtRedefinirSenha 0x0

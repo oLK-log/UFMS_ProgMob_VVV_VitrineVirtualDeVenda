@@ -4211,6 +4211,7 @@ int id txtItemDescricao 0x7f08021b
 int id txtItemNome 0x7f08021c
 int id txtItemPreco 0x7f08021d
 int id txtItemQtdPreco 0x7f080242
+int id txtMetricaProdutos 0x7f080253
 int id txtNomeAbaPerfil 0x7f080248
 int id txtPedidoVazio 0x7f080243
 int id txtRedefinirSenha 0x7f080252

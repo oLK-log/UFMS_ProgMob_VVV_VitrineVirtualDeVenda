@@ -1,9 +1,11 @@
 package com.example.mainactivity.cliente.fragment;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,19 +51,53 @@ public class PedidoFragment extends Fragment{
 
         rvItensPedido.setLayoutManager(new LinearLayoutManager(getContext()));//configura a lista p ser verrtical
         carregarPedido();
-        //Solicitar dados se n tiver logado
+        //Clicando no botao finalizar
         btnFinalizarPedido.setOnClickListener(v->{
-            //Tocando efeito sonoro
-            MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.som_magic);
-            if(mediaPlayer != null){
-                mediaPlayer.start();
-                mediaPlayer.setOnCompletionListener(MediaPlayer::release);
+            SharedPreferences preferenciais = getContext().getSharedPreferences("sessao_vvv", Context.MODE_PRIVATE);
+            int idUsuarioAtual = preferenciais.getInt("idUsuario", -1);
+            //logica para caso o usuario nao esteja logado
+            if(idUsuarioAtual == -1){
+                mostrarDialogoVisitante();
+            }else{
+                finalizarPedido(idUsuarioAtual, "Cliente Registrado");
             }
-            Toast.makeText(getContext(), "Pedido Enviado", Toast.LENGTH_SHORT).show();
         });
         return view;
     }
+    //Met para exibir caixa de preenchimento de dados add para não logados
+    private void mostrarDialogoVisitante(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Finalizar Pedido");
+        builder.setMessage("Informe seus dados para Finalizar o Pedido");
 
+        LinearLayout layout = new LinearLayout(getContext());
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.setPadding(50, 40, 50,10);
+
+        final android.widget.EditText editNome = new android.widget.EditText(getContext());
+        editNome.setHint("Nome Completo");
+        layout.addView(editNome);
+
+        final android.widget.EditText editEmail = new android.widget.EditText(getContext());
+        editEmail.setHint("E-mail");
+        editEmail.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        layout.addView(editEmail);
+
+        builder.setView(layout);
+        //btn pra finalizar pedido
+        builder.setPositiveButton("Finalizar Pedido", ((dialog, which) -> {
+            String nome = editNome.getText().toString().trim();
+            String email = editEmail.getText().toString().trim();
+
+            if(nome.isEmpty() || email.isEmpty()){
+                Toast.makeText(getContext(), "Preencha todos os campos para finalizar!", Toast.LENGTH_SHORT).show();
+            }else{
+                finalizarPedido(-1, nome);
+            }
+        }));
+        builder.setNegativeButton("Cancelar", ((dialog, which) -> dialog.dismiss()));
+        builder.create().show();
+    }
     //met q carrega o pedido ao pegar o usuario, trazer a lista de itens
     private void carregarPedido(){
         SharedPreferences preferenciais = getContext().getSharedPreferences("sessao_vvv", Context.MODE_PRIVATE);
@@ -108,6 +144,25 @@ public class PedidoFragment extends Fragment{
             total += item.precoProduto * item.quantidade;
         }
         txtValorTotalPedido.setText(String.format("R$ %.2f", total));
+    }
+
+    //metodo para finalizar pedido
+    private void finalizarPedido(int idUsuario, String nomeCliente){
+        //Tocando efeito sonoro
+        MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.som_magic);
+        if(mediaPlayer != null){
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(MediaPlayer::release);
+        }
+        Toast.makeText(getContext(), "Pedido realizado com Sucesso", Toast.LENGTH_SHORT).show();
+
+        //implementar copiar da listagem pedido
+
+        //limpar carrinho
+        PedidoDao pedidoDao = AppDatabase.getInstance(getContext()).pedidoDao();
+        pedidoDao.limparCarrinho(idUsuario);
+        //recarregar tela
+        carregarPedido();
     }
 
 }

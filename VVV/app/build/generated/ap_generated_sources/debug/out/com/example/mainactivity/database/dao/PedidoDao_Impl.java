@@ -148,6 +148,25 @@ public final class PedidoDao_Impl implements PedidoDao {
   }
 
   @Override
+  public void limparCarrinho(final int idUsuario) {
+    __db.assertNotSuspendingTransaction();
+    final SupportSQLiteStatement _stmt = __preparedStmtOfLimparPedido.acquire();
+    int _argIndex = 1;
+    _stmt.bindLong(_argIndex, idUsuario);
+    try {
+      __db.beginTransaction();
+      try {
+        _stmt.executeUpdateDelete();
+        __db.setTransactionSuccessful();
+      } finally {
+        __db.endTransaction();
+      }
+    } finally {
+      __preparedStmtOfLimparPedido.release(_stmt);
+    }
+  }
+
+  @Override
   public List<ItemPedido> buscarPedidoDoUsuario(final int idUsuario) {
     final String _sql = "SELECT * FROM item_pedido WHERE usuarioId = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);

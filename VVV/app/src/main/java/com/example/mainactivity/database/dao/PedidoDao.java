@@ -39,5 +39,8 @@ public interface PedidoDao {
             "INNER JOIN produtos p ON ip.produtoId = p.id " +
             "WHERE ip.usuarioId = :idUsuario")
     List<ItemPedidoDetalhado> buscarPedidoDetalhado(int idUsuario);
+    //Query para limpar o carrinho de um usuario apos a compra
+    @Query("DELETE FROM item_pedido WHERE usuarioId = :idUsuario")
+    void limparCarrinho(int idUsuario);
 
 }

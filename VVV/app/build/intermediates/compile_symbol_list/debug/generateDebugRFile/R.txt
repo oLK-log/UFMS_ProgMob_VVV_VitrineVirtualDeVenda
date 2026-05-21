@@ -11,6 +11,7 @@ int id btnBuscarProduto 0x0
 int id btnCadastrar 0x0
 int id btnEntrar 0x0
 int id btnExcluirProduto 0x0
+int id btnFiltroProduto 0x0
 int id btnFinalizarPedido 0x0
 int id btnRedefinir 0x0
 int id btnRemoverItemPedido 0x0
@@ -52,6 +53,7 @@ int id palco_fragmento 0x0
 int id palco_fragmento_cliente 0x0
 int id rbCliente 0x0
 int id rbLojista 0x0
+int id recyclerDestaques 0x0
 int id recyclerVitrine 0x0
 int id rgTipoUsuario 0x0
 int id rvItensPedido 0x0
@@ -88,6 +90,7 @@ int layout fragment_inicio 0x0
 int layout fragment_pedido 0x0
 int layout fragment_perfil 0x0
 int layout item_pedido_lista 0x0
+int layout item_produto_destaque 0x0
 int layout item_produto_gerenciar 0x0
 int layout item_produto_vitrine 0x0
 int menu menu_navegacao_cliente 0x0

@@ -3766,6 +3766,7 @@ int id btnBuscarProduto 0x7f08024b
 int id btnCadastrar 0x7f08006b
 int id btnEntrar 0x7f08006d
 int id btnExcluirProduto 0x7f08006e
+int id btnFiltroProduto 0x7f080254
 int id btnFinalizarPedido 0x7f08023d
 int id btnRedefinir 0x7f08024e
 int id btnRemoverItemPedido 0x7f08023e
@@ -4076,6 +4077,7 @@ int id ratio 0x7f080195
 int id rbCliente 0x7f080196
 int id rbLojista 0x7f080197
 int id rectangles 0x7f080198
+int id recyclerDestaques 0x7f080255
 int id recyclerVitrine 0x7f080199
 int id report_drawn 0x7f08019a
 int id retreat 0x7f08019b
@@ -4396,6 +4398,7 @@ int layout fragment_perfil 0x7f0b0035
 int layout ime_base_split_test_activity 0x7f0b0036
 int layout ime_secondary_split_test_activity 0x7f0b0037
 int layout item_pedido_lista 0x7f0b007d
+int layout item_produto_destaque 0x7f0b0080
 int layout item_produto_gerenciar 0x7f0b007a
 int layout item_produto_vitrine 0x7f0b007b
 int layout m3_alert_dialog 0x7f0b003a

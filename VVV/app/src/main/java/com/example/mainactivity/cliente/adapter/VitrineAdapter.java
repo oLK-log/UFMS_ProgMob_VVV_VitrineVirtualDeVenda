@@ -19,14 +19,16 @@ import com.example.mainactivity.cliente.DetalhesProdutoActivity;
 
 public class VitrineAdapter extends RecyclerView.Adapter<VitrineAdapter.VitrineViewHolder> {
     private List<Produto> listaProdutos;
-    public VitrineAdapter(List<Produto> listaProdutos){
+    private int layoutId;//guarda qual card vamos usar
+    public VitrineAdapter(List<Produto> listaProdutos, int layoutId){
         this.listaProdutos = listaProdutos;
+        this.layoutId = layoutId;
     }
 
     @NonNull
     @Override
     public VitrineViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_produto_vitrine, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
         return new VitrineViewHolder(view);
     }
     @Override

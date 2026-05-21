@@ -1,20 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:background="#F5F5F5"
+    android:fillViewport="true">
 
     <LinearLayout
-        android:id="@+id/layoutBarraBusca"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="15dp"
-        android:padding="20dp"
-        android:gravity="center_vertical"
-        android:background="#FFFFFF">
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Em Destaque"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="20dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerDestaques"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:layout_marginBottom="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Todos os Produtos"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:id="@+id/layoutBarraBusca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:padding="8dp"
+            android:elevation="2dp"
+            android:layout_marginBottom="24dp"
+            android:gravity="center_vertical"
+            android:background="#FFFFFF">
+
 
         <EditText
+
             android:id="@+id/editBuscarProduto"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -25,21 +63,32 @@
             android:maxLines="1"
             android:inputType="text" />
 
-        <ImageButton
-            android:id="@+id/btnBuscarProduto"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:src="@android:drawable/ic_menu_search"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Buscar" />
+
+            <ImageButton
+                android:id="@+id/btnFiltroProduto"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_menu_sort_by_size"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="Filtrar" />
+            <ImageButton
+                android:id="@+id/btnBuscarProduto"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:src="@android:drawable/ic_menu_search"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Buscar" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerVitrine"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false"
         android:padding="8dp"
-        android:clipToPadding="false"
-        android:layout_below="@+id/layoutBarraBusca" />
-</RelativeLayout>
+        android:clipToPadding="false" />
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

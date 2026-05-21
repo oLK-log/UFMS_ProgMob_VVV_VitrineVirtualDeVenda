@@ -13,6 +13,7 @@ id btnBuscarProduto
 id btnCadastrar
 id btnEntrar
 id btnExcluirProduto
+id btnFiltroProduto
 id btnFinalizarPedido
 id btnRedefinir
 id btnRemoverItemPedido
@@ -54,6 +55,7 @@ id palco_fragmento
 id palco_fragmento_cliente
 id rbCliente
 id rbLojista
+id recyclerDestaques
 id recyclerVitrine
 id rgTipoUsuario
 id rvItensPedido
@@ -90,6 +92,7 @@ layout fragment_inicio
 layout fragment_pedido
 layout fragment_perfil
 layout item_pedido_lista
+layout item_produto_destaque
 layout item_produto_gerenciar
 layout item_produto_vitrine
 menu menu_navegacao_cliente

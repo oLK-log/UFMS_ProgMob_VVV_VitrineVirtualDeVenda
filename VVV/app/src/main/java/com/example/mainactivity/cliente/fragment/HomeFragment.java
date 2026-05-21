@@ -30,7 +30,7 @@ public class HomeFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,@Nullable ViewGroup container,@Nullable Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home_cliente, container, false);
         recyclerVitrine = view.findViewById(R.id.recyclerVitrine);
         editBuscarProduto = view.findViewById(R.id.editBuscarProduto);
         btnBuscarProduto = view.findViewById(R.id.btnBuscarProduto);

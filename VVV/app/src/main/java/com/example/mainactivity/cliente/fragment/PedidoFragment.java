@@ -59,7 +59,7 @@ public class PedidoFragment extends Fragment{
             if(idUsuarioAtual == -1){
                 mostrarDialogoVisitante();
             }else{
-                finalizarPedido(idUsuarioAtual, "Cliente Registrado");
+                finalizarPedido(idUsuarioAtual, "Cliente Registrado", "email@cliente.com");
             }
         });
         return view;
@@ -92,7 +92,7 @@ public class PedidoFragment extends Fragment{
             if(nome.isEmpty() || email.isEmpty()){
                 Toast.makeText(getContext(), "Preencha todos os campos para finalizar!", Toast.LENGTH_SHORT).show();
             }else{
-                finalizarPedido(-1, nome);
+                finalizarPedido(-1, nome, email);
             }
         }));
         builder.setNegativeButton("Cancelar", ((dialog, which) -> dialog.dismiss()));
@@ -138,7 +138,6 @@ public class PedidoFragment extends Fragment{
     //meth para calcular o total do pedido - preco x qutd
     private void calcularTotal(){
         double total = 0.0;
-        AppDatabase db = AppDatabase.getInstance(getContext());
 
         for (ItemPedidoDetalhado item : listaItens){
             total += item.precoProduto * item.quantidade;
@@ -147,7 +146,39 @@ public class PedidoFragment extends Fragment{
     }
 
     //metodo para finalizar pedido
-    private void finalizarPedido(int idUsuario, String nomeCliente){
+    private void finalizarPedido(int idUsuario, String nomeCliente, String emailCliente){
+        PedidoDao pedidoDao = AppDatabase.getInstance(getContext()).pedidoDao();
+
+        //pegar estado do carrinho atual
+        List<ItemPedidoDetalhado> itensCarrinho = pedidoDao.buscarPedidoDetalhado(idUsuario);
+        if (itensCarrinho.isEmpty()) return;
+        //calcular total
+        double total = 0.0;
+        for(ItemPedidoDetalhado item : itensCarrinho){
+            total += item.precoProduto * item.quantidade;
+        }
+        //registrar Pedido
+        com.example.mainactivity.model.Pedido novoPedido = new com.example.mainactivity.model.Pedido();
+        novoPedido.usuarioId = idUsuario;
+        novoPedido.nomeCliente = nomeCliente;
+        novoPedido.emailCliente=emailCliente;
+        novoPedido.valorTotal=total;
+        novoPedido.dataTimestamp= System.currentTimeMillis();
+        long idPedidoGerado = pedidoDao.inserirPedido(novoPedido);
+
+        java.util.List<com.example.mainactivity.model.ItemPedidoFinalizado> itensParaSalvar = new java.util.ArrayList<>();
+
+        for(ItemPedidoDetalhado item : itensCarrinho){
+            com.example.mainactivity.model.ItemPedidoFinalizado finalizado = new com.example.mainactivity.model.ItemPedidoFinalizado();
+            finalizado.pedidoId = (int) idPedidoGerado;
+            finalizado.produtoId = item.produtoId;
+            finalizado.quantidade = item.quantidade;
+            finalizado.precoUnitarioHistorico = item.precoProduto;
+            itensParaSalvar.add(finalizado);
+        }
+        pedidoDao.inserirItensPedidoFinalizado(itensParaSalvar);
+
+
         //Tocando efeito sonoro
         MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.som_magic);
         if(mediaPlayer != null){
@@ -156,10 +187,7 @@ public class PedidoFragment extends Fragment{
         }
         Toast.makeText(getContext(), "Pedido realizado com Sucesso", Toast.LENGTH_SHORT).show();
 
-        //implementar copiar da listagem pedido
-
         //limpar carrinho
-        PedidoDao pedidoDao = AppDatabase.getInstance(getContext()).pedidoDao();
         pedidoDao.limparCarrinho(idUsuario);
         //recarregar tela
         carregarPedido();

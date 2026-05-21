@@ -7,23 +7,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.mainactivity.R;
 import com.example.mainactivity.database.AppDatabase;
+import com.example.mainactivity.database.dao.PedidoDao;
+import com.example.mainactivity.database.dao.ProdutoDao;
+import com.example.mainactivity.lojista.adapter.HistoricoPedidosAdapter;
+import com.example.mainactivity.model.Pedido;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 public class InicioFragment extends Fragment {
-    private TextView txtMetricaProdutos;
+    private TextView txtMetricaProdutos, txtMetricaFaturamento, txtMetricaVisitas;
+    private RecyclerView rvHistoricoPedidos;
+    private HistoricoPedidosAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_inicio, container, false);//infla o layout
+        View view = inflater.inflate(R.layout.fragment_inicio_lojista, container, false);//infla o layout
         txtMetricaProdutos = view.findViewById(R.id.txtMetricaProdutos);
+        txtMetricaFaturamento = view.findViewById(R.id.txtMetricaFaturamento);
+        txtMetricaVisitas = view.findViewById(R.id.txtMetricaVisitas);
+        rvHistoricoPedidos = view.findViewById(R.id.rvHistoricoPedidos);
+
+        //habilitando listagem modo vertical
+        rvHistoricoPedidos.setLayoutManager(new LinearLayoutManager(getContext()));
+        carregarDadosPainel();
         return view;
     }
 
@@ -31,7 +48,7 @@ public class InicioFragment extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
-        carregarMetricas();
+        carregarDadosPainel();
     }
 
     //metodo para carregar as metricas(por enquanto só tem umna)
@@ -45,5 +62,57 @@ public class InicioFragment extends Fragment {
         }else {
             txtMetricaProdutos.setText("Indefinido");
         }
+    }
+
+    private void carregarDadosPainel(){
+        AppDatabase db = AppDatabase.getInstance(getContext());
+        ProdutoDao produtoDao = db.produtoDao();
+        PedidoDao pedidoDao = db.pedidoDao();
+
+        //contador de produtos cadastrados
+        carregarMetricas();
+
+        //Buscar todos os pedidos finalizados
+        List<Pedido> listaPedidos = pedidoDao.buscarTodosOsPedidos();
+
+        //Faturamento
+        double faturamentoTotal = 0.0;
+        for (Pedido p: listaPedidos){
+            faturamentoTotal += p.valorTotal;
+        }
+        txtMetricaFaturamento.setText(String.format("R$ %.2f", faturamentoTotal));
+        txtMetricaVisitas.setText("1");
+
+
+        //adapter
+        adapter = new HistoricoPedidosAdapter(listaPedidos, pedido -> {
+            abrirDetalhesDoPedido(pedido);
+        });
+        rvHistoricoPedidos.setAdapter(adapter);
+    }
+
+    private void abrirDetalhesDoPedido(Pedido pedido){
+        //tentando usar efeito deslizante
+        com.google.android.material.bottomsheet.BottomSheetDialog bottomSheetDialog =
+                new com.google.android.material.bottomsheet.BottomSheetDialog(getContext());
+
+        View viewBottomSheet = LayoutInflater.from(getContext()).inflate(R.layout.layout_bottom_sheet_pedido, null);
+        bottomSheetDialog.setContentView(viewBottomSheet);
+        //conectando
+        TextView txtTitulo = viewBottomSheet.findViewById(R.id.txtTituloBottomSheet);
+        RecyclerView rvItens = viewBottomSheet.findViewById(R.id.rvItensBottomSheet);
+
+        txtTitulo.setText("Detalhes do Pedido #" + pedido.idPedido);
+        rvItens.setLayoutManager(new LinearLayoutManager(getContext()));//lista vertical
+
+        //fazr busca no dB
+        AppDatabase db = AppDatabase.getInstance(getContext());
+        List<com.example.mainactivity.model.ItemPedidoDetalhado> itensDoPedido =
+                db.pedidoDao().buscarItensDoPedidoFinalizado(pedido.idPedido);
+
+        com.example.mainactivity.lojista.adapter.DetalhesPedidoAdapter detalhesAdapter =
+                new com.example.mainactivity.lojista.adapter.DetalhesPedidoAdapter(itensDoPedido);
+        rvItens.setAdapter(detalhesAdapter);
+        bottomSheetDialog.show();
     }
 }

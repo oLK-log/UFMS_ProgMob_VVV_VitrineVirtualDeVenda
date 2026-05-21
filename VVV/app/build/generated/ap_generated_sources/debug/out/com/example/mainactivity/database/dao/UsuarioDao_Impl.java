@@ -313,6 +313,64 @@ public final class UsuarioDao_Impl implements UsuarioDao {
     }
   }
 
+  @Override
+  public Usuario buscarEmail(final String email) {
+    final String _sql = "SELECT * FROM usuarios WHERE email = ? LIMIT 1";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    if (email == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, email);
+    }
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfIdUsuario = CursorUtil.getColumnIndexOrThrow(_cursor, "idUsuario");
+      final int _cursorIndexOfNome = CursorUtil.getColumnIndexOrThrow(_cursor, "nome");
+      final int _cursorIndexOfEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "email");
+      final int _cursorIndexOfSenha = CursorUtil.getColumnIndexOrThrow(_cursor, "senha");
+      final int _cursorIndexOfFotoPath = CursorUtil.getColumnIndexOrThrow(_cursor, "fotoPath");
+      final int _cursorIndexOfTipoPerfil = CursorUtil.getColumnIndexOrThrow(_cursor, "tipoPerfil");
+      final Usuario _result;
+      if (_cursor.moveToFirst()) {
+        _result = new Usuario();
+        _result.idUsuario = _cursor.getInt(_cursorIndexOfIdUsuario);
+        if (_cursor.isNull(_cursorIndexOfNome)) {
+          _result.nome = null;
+        } else {
+          _result.nome = _cursor.getString(_cursorIndexOfNome);
+        }
+        if (_cursor.isNull(_cursorIndexOfEmail)) {
+          _result.email = null;
+        } else {
+          _result.email = _cursor.getString(_cursorIndexOfEmail);
+        }
+        if (_cursor.isNull(_cursorIndexOfSenha)) {
+          _result.senha = null;
+        } else {
+          _result.senha = _cursor.getString(_cursorIndexOfSenha);
+        }
+        if (_cursor.isNull(_cursorIndexOfFotoPath)) {
+          _result.fotoPath = null;
+        } else {
+          _result.fotoPath = _cursor.getString(_cursorIndexOfFotoPath);
+        }
+        if (_cursor.isNull(_cursorIndexOfTipoPerfil)) {
+          _result.tipoPerfil = null;
+        } else {
+          _result.tipoPerfil = _cursor.getString(_cursorIndexOfTipoPerfil);
+        }
+      } else {
+        _result = null;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
   @NonNull
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();

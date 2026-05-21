@@ -81,8 +81,11 @@ public class InicioFragment extends Fragment {
             faturamentoTotal += p.valorTotal;
         }
         txtMetricaFaturamento.setText(String.format("R$ %.2f", faturamentoTotal));
-        txtMetricaVisitas.setText("1");
 
+        //acessos na loja
+        android.content.SharedPreferences prefsEstatisticas = getContext().getSharedPreferences("estatisticas_loja", Context.MODE_PRIVATE);
+        int totalVisitas = prefsEstatisticas.getInt("total_visitas", 0);
+        txtMetricaVisitas.setText(String.valueOf(totalVisitas));
 
         //adapter
         adapter = new HistoricoPedidosAdapter(listaPedidos, pedido -> {

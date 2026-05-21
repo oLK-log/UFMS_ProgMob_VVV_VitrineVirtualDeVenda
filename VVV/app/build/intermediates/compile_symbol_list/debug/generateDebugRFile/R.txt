@@ -82,6 +82,10 @@ int id txtMetricaVisitas 0x0
 int id txtNomeAbaPerfil 0x0
 int id txtPedidoVazio 0x0
 int id txtRedefinirSenha 0x0
+int id txtRegraEspecial 0x0
+int id txtRegraMaiuscula 0x0
+int id txtRegraNumero 0x0
+int id txtRegraTamanho 0x0
 int id txtTipoPerfil 0x0
 int id txtTituloAbaPerfil 0x0
 int id txtTituloBottomSheet 0x0

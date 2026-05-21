@@ -25,4 +25,7 @@ public interface UsuarioDao {
     //Query para atualizar dados de um usuario
     @androidx.room.Update
     void atualizarUsuario(Usuario usuario);
+    //buscar usuario pelo email
+    @Query("SELECT * FROM usuarios WHERE email = :email LIMIT 1")
+    Usuario buscarEmail(String email);
 }

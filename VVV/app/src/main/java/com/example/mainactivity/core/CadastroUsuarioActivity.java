@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -30,6 +31,8 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
     //variavel para guardar foto antes de salvar
     private Bitmap fotoCapturada = null;
     private RadioGroup rgTipoUsuario;
+    private TextView txtRegraTamanho, txtRegraMaiuscula, txtRegraNumero, txtRegraEspecial;
+    private boolean isSenhaForte = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -43,6 +46,24 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
         btnTirarFoto = findViewById(R.id.btnTirarFoto);
         btnCadastrar = findViewById(R.id.btnCadastrar);
         rgTipoUsuario = findViewById(R.id.rgTipoUsuario);
+        txtRegraEspecial = findViewById(R.id.txtRegraEspecial);
+        txtRegraMaiuscula = findViewById(R.id.txtRegraMaiuscula);
+        txtRegraNumero = findViewById(R.id.txtRegraNumero);
+        txtRegraTamanho = findViewById(R.id.txtRegraTamanho);
+
+        //para validacao de senha
+        editSenha.addTextChangedListener(new android.text.TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                validarForcaDaSenha(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(android.text.Editable s) {}
+        });
 
         //configurar acao da camera
         btnTirarFoto.setOnClickListener(new View.OnClickListener(){
@@ -95,14 +116,23 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
     //Banco de DAdos - ROOM
     private void salvarUsuarioNoBanco() {
         String nome = editNome.getText().toString();
-        String email = editEmail.getText().toString();
+        String email = editEmail.getText().toString().trim();
         String senha = editSenha.getText().toString();
 
         if(nome.isEmpty() || email.isEmpty() || senha.isEmpty()) {//se vazio
             Toast.makeText(this, "Preencha todos os campo!", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        // Verifica se o formato do e-mail é válido
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(this, "Por favor, insira um e-mail válido!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        //verifica se a senha tá forte
+        if (!isSenhaForte) {
+            Toast.makeText(this, "A senha ainda não cumpre todos os requisitos de segurança!", Toast.LENGTH_LONG).show();
+            return; // Bloqueia o registo
+        }
         String caminhoFoto = salvarImagemLocal(fotoCapturada);
 
         //tipo de perfil
@@ -112,11 +142,13 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
             tipoSelecionado = "LOJISTA";
         }
 
+        //atributo de segurança, hash
+        String senhaComHash = com.example.mainactivity.security.SecurityUtils.hashPassword(senha);
         //molde usuario
         Usuario novoUsuario = new Usuario();
         novoUsuario.nome = nome;
         novoUsuario.email = email;
-        novoUsuario.senha = senha;
+        novoUsuario.senha = senhaComHash;//salvar a senha com hash
         novoUsuario.fotoPath = caminhoFoto;
         novoUsuario.tipoPerfil=tipoSelecionado;
 
@@ -130,7 +162,24 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
         editSenha.setText("");
         imgFotoPerfil.setImageBitmap(null);
 
+        //voltar tela de login
+        finish();
+    }
 
+    private void validarForcaDaSenha(String senha){
+        //aqui usei regex/expressoes regulares
+        boolean temTamanho = senha.length() >= 8;
+        boolean temMaiuscula = senha.matches(".*[A-Z].*");
+        boolean temNumero = senha.matches(".*[0-9].*");
+        boolean temEspecial = senha.matches(".*[@#$%^&+=!?_*~\\-].*");
+
+        //conf cores
+        txtRegraTamanho.setTextColor(android.graphics.Color.parseColor(temTamanho ? "#4CAF50" : "#FF0000"));
+        txtRegraMaiuscula.setTextColor(android.graphics.Color.parseColor(temMaiuscula ? "#4CAF50" : "#FF0000"));
+        txtRegraNumero.setTextColor(android.graphics.Color.parseColor(temNumero ? "#4CAF50" : "#FF0000"));
+        txtRegraEspecial.setTextColor(android.graphics.Color.parseColor(temEspecial ? "#4CAF50" : "#FF0000"));
+
+        isSenhaForte = temTamanho && temMaiuscula && temNumero && temEspecial;
     }
 
 }

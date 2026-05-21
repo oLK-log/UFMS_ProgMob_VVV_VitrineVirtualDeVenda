@@ -83,6 +83,10 @@ id txtMetricaVisitas
 id txtNomeAbaPerfil
 id txtPedidoVazio
 id txtRedefinirSenha
+id txtRegraEspecial
+id txtRegraMaiuscula
+id txtRegraNumero
+id txtRegraTamanho
 id txtTipoPerfil
 id txtTituloAbaPerfil
 id txtTituloBottomSheet

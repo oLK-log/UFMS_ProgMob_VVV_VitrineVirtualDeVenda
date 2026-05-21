@@ -4229,6 +4229,10 @@ int id txtMetricaVisitas 0x7f080238
 int id txtNomeAbaPerfil 0x7f080239
 int id txtPedidoVazio 0x7f08023a
 int id txtRedefinirSenha 0x7f08023b
+int id txtRegraEspecial 0x7f080262
+int id txtRegraMaiuscula 0x7f080263
+int id txtRegraNumero 0x7f080264
+int id txtRegraTamanho 0x7f080265
 int id txtTipoPerfil 0x7f08023c
 int id txtTituloAbaPerfil 0x7f08023d
 int id txtTituloBottomSheet 0x7f080261

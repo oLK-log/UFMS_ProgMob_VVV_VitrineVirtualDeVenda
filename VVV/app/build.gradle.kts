@@ -47,4 +47,7 @@ dependencies {
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
     implementation("androidx.camera:camera-core:1.3.1")
+    implementation("org.mindrot:jbcrypt:0.4")
+    implementation("org.mindrot:jbcrypt:0.4")
+    implementation("com.google.android.material:material:1.9.0")
 }

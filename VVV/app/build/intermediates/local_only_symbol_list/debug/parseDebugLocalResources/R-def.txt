@@ -42,6 +42,7 @@ id imgItemProduto
 id imgVitrineProduto
 id layoutBarraBusca
 id layoutDadosAbaPerfil
+id layoutLinhaCima
 id layoutRodapePedido
 id listaProdutos
 id menu_gerenciarProdutos

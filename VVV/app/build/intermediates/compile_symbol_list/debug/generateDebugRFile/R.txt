@@ -40,6 +40,7 @@ int id imgItemProduto 0x0
 int id imgVitrineProduto 0x0
 int id layoutBarraBusca 0x0
 int id layoutDadosAbaPerfil 0x0
+int id layoutLinhaCima 0x0
 int id layoutRodapePedido 0x0
 int id listaProdutos 0x0
 int id menu_gerenciarProdutos 0x0

@@ -27,7 +27,7 @@ public class HistoricoPedidoLojistaAdapter extends RecyclerView.Adapter<Historic
     @NonNull
     @Override
     public PedidoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pedido_lojista, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pedido_detalhado_historico_lojista, parent, false);
         return new PedidoViewHolder(view);
     }
 

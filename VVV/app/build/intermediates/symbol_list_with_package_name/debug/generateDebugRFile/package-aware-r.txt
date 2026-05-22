@@ -115,9 +115,9 @@ layout fragment_inicio_lojista
 layout fragment_pedido
 layout fragment_perfil
 layout item_detalhe_produto_pedido
-layout item_historico_pedido_cliente
+layout item_pedido_detalhado_historico_cliente
+layout item_pedido_detalhado_historico_lojista
 layout item_pedido_lista
-layout item_pedido_lojista
 layout item_produto_destaque
 layout item_produto_gerenciar
 layout item_produto_vitrine

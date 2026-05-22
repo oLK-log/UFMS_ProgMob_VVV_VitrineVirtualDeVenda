@@ -30,7 +30,7 @@ public class HistoricoPedidoClienteAdapter extends RecyclerView.Adapter<Historic
     @Override
     public HistoricoPedidoClienteAdapter.PedidoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_historico_pedido_cliente, parent, false);
+                .inflate(R.layout.item_pedido_detalhado_historico_cliente, parent, false);
         return new HistoricoPedidoClienteAdapter.PedidoViewHolder(view);
     }
 

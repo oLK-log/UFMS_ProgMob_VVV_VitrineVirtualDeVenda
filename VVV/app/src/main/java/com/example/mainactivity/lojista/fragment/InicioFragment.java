@@ -75,10 +75,19 @@ public class InicioFragment extends Fragment {
         //Buscar todos os pedidos finalizados
         List<Pedido> listaPedidos = pedidoDao.buscarTodosOsPedidos();
 
-        //Faturamento
+        //Faturamento e dados de cliente no pedido
         double faturamentoTotal = 0.0;
         for (Pedido p: listaPedidos){
             faturamentoTotal += p.valorTotal;
+
+            com.example.mainactivity.model.Usuario cliente = db.usuarioDao().buscarUsuarioPorId(p.usuarioId);
+            if(cliente != null){
+                p.nomeCliente = cliente.nome;
+                p.emailCliente = cliente.email;
+            }else {
+                p.nomeCliente = "Cliente desconhecido";
+                p.emailCliente = "e-mail desconhecido";
+            }
         }
         txtMetricaFaturamento.setText(String.format("R$ %.2f", faturamentoTotal));
 

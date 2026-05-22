@@ -4480,9 +4480,9 @@ int layout fragment_perfil 0x7f0b0039
 int layout ime_base_split_test_activity 0x7f0b003a
 int layout ime_secondary_split_test_activity 0x7f0b003b
 int layout item_detalhe_produto_pedido 0x7f0b0084
-int layout item_historico_pedido_cliente 0x7f0b0083
+int layout item_pedido_detalhado_historico_cliente 0x7f0b0085
+int layout item_pedido_detalhado_historico_lojista 0x7f0b0086
 int layout item_pedido_lista 0x7f0b003c
-int layout item_pedido_lojista 0x7f0b003d
 int layout item_produto_destaque 0x7f0b003e
 int layout item_produto_gerenciar 0x7f0b0040
 int layout item_produto_vitrine 0x7f0b0041

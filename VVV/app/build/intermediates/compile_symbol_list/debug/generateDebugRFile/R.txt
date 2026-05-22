@@ -114,9 +114,9 @@ int layout fragment_inicio_lojista 0x0
 int layout fragment_pedido 0x0
 int layout fragment_perfil 0x0
 int layout item_detalhe_produto_pedido 0x0
-int layout item_historico_pedido_cliente 0x0
+int layout item_pedido_detalhado_historico_cliente 0x0
+int layout item_pedido_detalhado_historico_lojista 0x0
 int layout item_pedido_lista 0x0
-int layout item_pedido_lojista 0x0
 int layout item_produto_destaque 0x0
 int layout item_produto_gerenciar 0x0
 int layout item_produto_vitrine 0x0

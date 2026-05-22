@@ -14,7 +14,7 @@ import com.example.mainactivity.lojista.fragment.InicioFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class LojistaMainActivity extends AppCompatActivity {
+public class PainelLojistaActivity extends AppCompatActivity {
 
     private BottomNavigationView barraNavegacao;
 
@@ -30,7 +30,8 @@ public class LojistaMainActivity extends AppCompatActivity {
         //tela padrao
         if(savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().
-                    replace(R.id.palco_fragmento, new InicioFragment()).commit();
+                    replace(R.id.palco_fragmento, new PerfilFragment()).commit();
+            barraNavegacao.setSelectedItemId(R.id.menu_perfil);
         }
         //Ouvintes para os cliques
         barraNavegacao.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

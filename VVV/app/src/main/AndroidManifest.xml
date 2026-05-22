@@ -15,7 +15,7 @@
             android:name=".lojista.CadastroProdutoActivity"
             android:exported="false" />
         <activity
-            android:name=".lojista.LojistaMainActivity"
+            android:name=".lojista.PainelLojistaActivity"
             android:exported="false" />
         <activity
             android:name=".core.CadastroUsuarioActivity"
@@ -31,7 +31,7 @@
         </activity>
         <activity android:name=".cliente.PainelClienteActivity"
             android:exported="false"/>
-        <activity android:name=".lojista.LojistaMainActivity"
+        <activity android:name=".lojista.PainelLojistaActivity"
             android:exported="false"/>
         <activity android:name=".cliente.DetalhesProdutoActivity"
             android:exported="false"/>

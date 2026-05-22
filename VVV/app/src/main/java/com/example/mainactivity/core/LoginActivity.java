@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.mainactivity.R;
 import com.example.mainactivity.cliente.PainelClienteActivity;
 import com.example.mainactivity.database.AppDatabase;
-import com.example.mainactivity.lojista.LojistaMainActivity;
+import com.example.mainactivity.lojista.PainelLojistaActivity;
 import com.example.mainactivity.model.Usuario;
 import com.example.mainactivity.security.SecurityUtils;
 
@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
             //informar que usuario está logado
             Toast.makeText(this,"Usuário "+ usuarioBuscado.nome + " logado.", Toast.LENGTH_LONG).show();
             if(usuarioBuscado.tipoPerfil != null && usuarioBuscado.tipoPerfil.equals("LOJISTA")){
-                Intent intent = new Intent(LoginActivity.this, LojistaMainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, PainelLojistaActivity.class);
                 startActivity(intent);
                 finish();
             }else{

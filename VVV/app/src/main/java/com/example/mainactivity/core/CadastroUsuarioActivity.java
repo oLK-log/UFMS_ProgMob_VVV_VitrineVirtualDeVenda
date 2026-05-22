@@ -33,11 +33,13 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
     private RadioGroup rgTipoUsuario;
     private TextView txtRegraTamanho, txtRegraMaiuscula, txtRegraNumero, txtRegraEspecial;
     private boolean isSenhaForte = false;
+    private com.google.firebase.auth.FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_usuario); //conexao xom xlm
+        auth = com.google.firebase.auth.FirebaseAuth.getInstance();
         //fazer a conexao java e xml
         imgFotoPerfil = findViewById(R.id.imgFotoPerfil);
         editNome = findViewById(R.id.editNome);
@@ -113,12 +115,13 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
         }
     }
 
-    //Banco de DAdos - ROOM
+    //Banco de DAdos - ROOM e Firebase
     private void salvarUsuarioNoBanco() {
         String nome = editNome.getText().toString();
         String email = editEmail.getText().toString().trim();
         String senha = editSenha.getText().toString();
 
+        //validacoes
         if(nome.isEmpty() || email.isEmpty() || senha.isEmpty()) {//se vazio
             Toast.makeText(this, "Preencha todos os campo!", Toast.LENGTH_SHORT).show();
             return;
@@ -133,37 +136,55 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
             Toast.makeText(this, "A senha ainda não cumpre todos os requisitos de segurança!", Toast.LENGTH_LONG).show();
             return; // Bloqueia o registo
         }
-        String caminhoFoto = salvarImagemLocal(fotoCapturada);
+        //desativar botao
+        btnCadastrar.setEnabled(false);
+        btnCadastrar.setText("Criando conta...");
 
-        //tipo de perfil
-        String tipoSelecionado = "CLIENTE";
-        int idRadioSelecionado = rgTipoUsuario.getCheckedRadioButtonId();
-        if(idRadioSelecionado == R.id.rbLojista){
-            tipoSelecionado = "LOJISTA";
-        }
+        //aqui houve a mudanca para adaptar ao firebase
+        auth.createUserWithEmailAndPassword(email, senha)
+                .addOnCompleteListener(this, task -> {
+                    if(task.isSuccessful()){
 
-        //atributo de segurança, hash
-        String senhaComHash = com.example.mainactivity.security.SecurityUtils.hashPassword(senha);
-        //molde usuario
-        Usuario novoUsuario = new Usuario();
-        novoUsuario.nome = nome;
-        novoUsuario.email = email;
-        novoUsuario.senha = senhaComHash;//salvar a senha com hash
-        novoUsuario.fotoPath = caminhoFoto;
-        novoUsuario.tipoPerfil=tipoSelecionado;
+                        String caminhoFoto = salvarImagemLocal(fotoCapturada);
+                        //tipo de perfil
+                        String tipoSelecionado = "CLIENTE";
+                        int idRadioSelecionado = rgTipoUsuario.getCheckedRadioButtonId();
+                        if(idRadioSelecionado == R.id.rbLojista){
+                            tipoSelecionado = "LOJISTA";
+                        }
+                        //mantendo seguranca com hash
+                        String senhaComHash = com.example.mainactivity.security.SecurityUtils.hashPassword(senha);
 
-        //salva o molde
-        AppDatabase.getInstance(this).usuarioDao().cadastrar(novoUsuario);
+                        //molde usuario
+                        Usuario novoUsuario = new Usuario();
+                        novoUsuario.nome = nome;
+                        novoUsuario.email = email;
+                        novoUsuario.senha = senhaComHash;//salvar a senha com hash
+                        novoUsuario.fotoPath = caminhoFoto;
+                        novoUsuario.tipoPerfil=tipoSelecionado;
+                        //salva o molde
+                        AppDatabase.getInstance(this).usuarioDao().cadastrar(novoUsuario);
 
-        //Limpar campis
-        Toast.makeText(this, "Usuário cadastrado com Suscesso!", Toast.LENGTH_LONG).show();
-        editNome.setText("");
-        editEmail.setText("");
-        editSenha.setText("");
-        imgFotoPerfil.setImageBitmap(null);
+                        //Limpar campis
+                        Toast.makeText(this, "Usuário cadastrado com Suscesso!", Toast.LENGTH_LONG).show();
+                        editNome.setText("");
+                        editEmail.setText("");
+                        editSenha.setText("");
+                        imgFotoPerfil.setImageBitmap(null);
 
-        //voltar tela de login
-        finish();
+                        //voltar tela de login
+                        finish();
+                    } else{
+                        btnCadastrar.setEnabled(true);
+                        btnCadastrar.setText("Cadastrar");
+
+                        String mensagemErro = "Erro ao cadastrar na nuvem.";
+                        if(task.getException() != null){
+                            mensagemErro = task.getException().getMessage();
+                        }
+                        Toast.makeText(CadastroUsuarioActivity.this, "Falha:" + mensagemErro, Toast.LENGTH_SHORT).show();
+                    }
+        });
     }
 
     private void validarForcaDaSenha(String senha){

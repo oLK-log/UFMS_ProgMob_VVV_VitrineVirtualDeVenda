@@ -7,9 +7,15 @@
     <string name="btn_finalizar">Finalizar Pedido</string>
     <string name="btn_redefinirSenha">Redefinir Senha</string>
     <string name="btn_sair">Sair da Conta</string>
+    <string name="gcm_defaultSenderId" translatable="false">60385631788</string>
+    <string name="google_api_key" translatable="false">AIzaSyDcve22MzLc4uOC4ZFCAVTp3v9tgEGncc0</string>
+    <string name="google_app_id" translatable="false">1:60385631788:android:ba07dac0447292f9c3bb89</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDcve22MzLc4uOC4ZFCAVTp3v9tgEGncc0</string>
+    <string name="google_storage_bucket" translatable="false">vitrinevirtual-7a064.firebasestorage.app</string>
     <string name="hint_buscar">Buscar produto...</string>
     <string name="msg_logout">Sessão encerrada com sucesso</string>
     <string name="pedido_vazio">Seu pedido está vazio.</string>
+    <string name="project_id" translatable="false">vitrinevirtual-7a064</string>
     <string name="texto_visitante">Visitante</string>
     <string name="titulo_pedido">Meu Pedido</string>
     <string name="titulo_perfil">Meu Perfil</string>

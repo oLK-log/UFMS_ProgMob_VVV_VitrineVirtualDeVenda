@@ -15,7 +15,7 @@ import com.example.mainactivity.model.Pedido;
 import com.example.mainactivity.model.Produto;
 import com.example.mainactivity.model.Usuario;
 
-@Database(entities = {Usuario.class, Produto.class, ItemPedido.class, Pedido.class, ItemPedidoFinalizado.class}, version =5 )
+@Database(entities = {Usuario.class, Produto.class, ItemPedido.class, Pedido.class, ItemPedidoFinalizado.class}, version =2 )
 public abstract class AppDatabase extends RoomDatabase {
 
     //aqui eh conectado os DAOs

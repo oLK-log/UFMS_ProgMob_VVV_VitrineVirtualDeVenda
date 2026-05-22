@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "60385631788",
+    "project_id": "vitrinevirtual-7a064",
+    "storage_bucket": "vitrinevirtual-7a064.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60385631788:android:ba07dac0447292f9c3bb89",
+        "android_client_info": {
+          "package_name": "com.example.mainactivity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcve22MzLc4uOC4ZFCAVTp3v9tgEGncc0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

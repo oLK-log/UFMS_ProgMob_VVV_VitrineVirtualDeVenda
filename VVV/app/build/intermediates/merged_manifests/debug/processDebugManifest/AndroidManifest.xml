@@ -60,6 +60,7 @@
         <activity
             android:name="com.example.mainactivity.core.RedefinirSenhaActivity"
             android:exported="false" />
+        <activity android:name="com.example.mainactivity.cliente.HistoricoPedidoClienteActivity" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"

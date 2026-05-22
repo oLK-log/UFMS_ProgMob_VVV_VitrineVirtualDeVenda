@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.mainactivity.R;
+import com.example.mainactivity.cliente.HistoricoPedidoClienteActivity;
 import com.example.mainactivity.core.LoginActivity;
 import com.example.mainactivity.database.AppDatabase;
 import com.example.mainactivity.model.Usuario;
@@ -24,6 +25,7 @@ import com.example.mainactivity.model.Usuario;
 public class PerfilFragment extends Fragment {
     private ImageView imgAbaPerfil;
     private TextView txtNomeAbaPerfil, txtTipoPerfil;
+    private Button btnHistoricoPedidos;
 
     @Nullable//indica que um parametro, retorno de metodo ou varioavel pode conter um valor null
     @Override
@@ -34,8 +36,18 @@ public class PerfilFragment extends Fragment {
         imgAbaPerfil = view.findViewById(R.id.imgAbaPerfil);
         txtNomeAbaPerfil = view.findViewById(R.id.txtNomeAbaPerfil);
         txtTipoPerfil = view.findViewById(R.id.txtTipoPerfil);
+        btnHistoricoPedidos = view.findViewById(R.id.btnHistoricoPedidos);
 
         carregarDadosDoUsuario();
+
+        //botao de histórico de pedidos
+        btnHistoricoPedidos.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getActivity(), HistoricoPedidoClienteActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnSairSessao.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -63,6 +75,7 @@ public class PerfilFragment extends Fragment {
             txtNomeAbaPerfil.setText("Visitante");
             imgAbaPerfil.setImageResource(android.R.drawable.ic_menu_gallery);
             txtTipoPerfil.setVisibility(View.INVISIBLE);
+            btnHistoricoPedidos.setVisibility(View.GONE);//n ver botao de historico de oedido
             return;
         }else{
             Usuario usuario = AppDatabase.getInstance(getContext()).usuarioDao().buscarUsuarioPorId(idUsuario);
@@ -79,8 +92,10 @@ public class PerfilFragment extends Fragment {
             //colocar o tipo de usuario
             if(usuario.tipoPerfil.equals("CLIENTE")){
                 txtTipoPerfil.setText("Cliente");
+                btnHistoricoPedidos.setVisibility(View.VISIBLE);
             }else {
                 txtTipoPerfil.setText("Lojista");
+                btnHistoricoPedidos.setVisibility(View.GONE);
             }
         }
     }

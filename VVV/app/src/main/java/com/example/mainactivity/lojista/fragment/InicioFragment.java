@@ -7,15 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.mainactivity.R;
+import com.example.mainactivity.core.adapter.DetalhesPedidoAdapter;
 import com.example.mainactivity.database.AppDatabase;
 import com.example.mainactivity.database.dao.PedidoDao;
 import com.example.mainactivity.database.dao.ProdutoDao;
-import com.example.mainactivity.lojista.adapter.HistoricoPedidosAdapter;
+import com.example.mainactivity.lojista.adapter.HistoricoPedidoLojistaAdapter;
 import com.example.mainactivity.model.Pedido;
 
 import androidx.annotation.NonNull;
@@ -27,7 +27,7 @@ import java.util.List;
 public class InicioFragment extends Fragment {
     private TextView txtMetricaProdutos, txtMetricaFaturamento, txtMetricaVisitas;
     private RecyclerView rvHistoricoPedidos;
-    private HistoricoPedidosAdapter adapter;
+    private HistoricoPedidoLojistaAdapter adapter;
 
     @Nullable
     @Override
@@ -88,7 +88,7 @@ public class InicioFragment extends Fragment {
         txtMetricaVisitas.setText(String.valueOf(totalVisitas));
 
         //adapter
-        adapter = new HistoricoPedidosAdapter(listaPedidos, pedido -> {
+        adapter = new HistoricoPedidoLojistaAdapter(listaPedidos, pedido -> {
             abrirDetalhesDoPedido(pedido);
         });
         rvHistoricoPedidos.setAdapter(adapter);
@@ -113,8 +113,8 @@ public class InicioFragment extends Fragment {
         List<com.example.mainactivity.model.ItemPedidoDetalhado> itensDoPedido =
                 db.pedidoDao().buscarItensDoPedidoFinalizado(pedido.idPedido);
 
-        com.example.mainactivity.lojista.adapter.DetalhesPedidoAdapter detalhesAdapter =
-                new com.example.mainactivity.lojista.adapter.DetalhesPedidoAdapter(itensDoPedido);
+        DetalhesPedidoAdapter detalhesAdapter =
+                new DetalhesPedidoAdapter(itensDoPedido);
         rvItens.setAdapter(detalhesAdapter);
         bottomSheetDialog.show();
     }

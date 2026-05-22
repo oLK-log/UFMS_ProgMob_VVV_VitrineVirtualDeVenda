@@ -1,154 +1,166 @@
 [
     {
-        "merged": "com.example.mainactivity.app-debug-44:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.mainactivity.app-main-46:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\raw_som_magic.mp3.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\raw\\som_magic.mp3"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/menu_menu_vitrine.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/menu/menu_vitrine.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.mainactivity.app-main-46:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_item_produto_detalhe.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/item_produto_detalhe.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_fragment_pedido.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\fragment_pedido.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_item_produto_vitrine.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/item_produto_vitrine.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_activity_cadastro_usuario.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/activity_cadastro_usuario.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\menu_menu_navegacao_cliente.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\menu\\menu_navegacao_cliente.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_fragment_home_cliente.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/fragment_home_cliente.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_activity_detalhes_produto.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\activity_detalhes_produto.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.mainactivity.app-main-46:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/raw_som_magic.mp3.flat",
-        "source": "com.example.mainactivity.app-main-46:/raw/som_magic.mp3"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_fragment_perfil.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/fragment_perfil.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_activity_painel_lojista.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\activity_painel_lojista.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_item_pedido_lojista.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\item_pedido_lojista.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/menu_menu_navegacao_cliente.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/menu/menu_navegacao_cliente.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_item_produto_vitrine.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\item_produto_vitrine.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_item_produto_destaque.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/item_produto_destaque.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\activity_login.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_activity_painel_lojista.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/activity_painel_lojista.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\menu_menu_vitrine.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\menu\\menu_vitrine.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_item_pedido_lista.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/item_pedido_lista.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.mainactivity.app-main-46:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_item_produto_gerenciar.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\item_produto_gerenciar.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/drawable/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_activity_painel_cliente.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\activity_painel_cliente.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.mainactivity.app-main-46:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_item_produto_detalhe.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\item_produto_detalhe.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_activity_redefinir_senha.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/activity_redefinir_senha.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_item_pedido_lista.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\item_pedido_lista.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_item_produto_gerenciar.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/item_produto_gerenciar.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_activity_login.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/activity_login.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_activity_redefinir_senha.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\activity_redefinir_senha.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_fragment_pedido.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/fragment_pedido.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_activity_historico_pedidos_cliente.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\activity_historico_pedidos_cliente.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/xml/data_extraction_rules.xml"
+        "merged": "com.example.mainactivity.app-debug-44:/layout_item_detalhe_produto_pedido.xml.flat",
+        "source": "com.example.mainactivity.app-main-46:/layout/item_detalhe_produto_pedido.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_activity_detalhes_produto.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/activity_detalhes_produto.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_layout_bottom_sheet_pedido.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\layout_bottom_sheet_pedido.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_fragment_inicio_lojista.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/fragment_inicio_lojista.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_activity_cadastro_usuario.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\activity_cadastro_usuario.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_layout_bottom_sheet_pedido.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/layout_bottom_sheet_pedido.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.mainactivity.app-main-46:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_item_produto_destaque.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\item_produto_destaque.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.mainactivity.app-main-46:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.mainactivity.app-main-46:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_fragment_home_cliente.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\fragment_home_cliente.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_activity_cadastro_produto.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/activity_cadastro_produto.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_fragment_inicio_lojista.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\fragment_inicio_lojista.xml"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_activity_painel_cliente.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/activity_painel_cliente.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_fragment_gerenciar.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/fragment_gerenciar.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/layout_item_pedido_lojista.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/layout/item_pedido_lojista.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.mainactivity.app-main-46:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.mainactivity.app-main-46:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.mainactivity.app-debug-44:/xml_backup_rules.xml.flat",
-        "source": "com.example.mainactivity.app-main-46:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_item_historico_pedido_cliente.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\item_historico_pedido_cliente.xml"
+    },
+    {
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_activity_cadastro_produto.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\activity_cadastro_produto.xml"
+    },
+    {
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_fragment_gerenciar.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\fragment_gerenciar.xml"
+    },
+    {
+        "merged": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-debug-44:\\layout_fragment_perfil.xml.flat",
+        "source": "C:\\Users\\lksf2\\.gradle\\daemon\\9.3.1\\com.example.mainactivity.app-main-46:\\layout\\fragment_perfil.xml"
     }
 ]

@@ -9,6 +9,7 @@ import androidx.room.Update;
 import com.example.mainactivity.model.ItemPedido;
 import com.example.mainactivity.model.ItemPedidoDetalhado;
 import com.example.mainactivity.model.ItemPedidoFinalizado;
+import com.example.mainactivity.model.Pedido;
 
 import java.util.List;
 
@@ -60,6 +61,10 @@ public interface PedidoDao {
             "INNER JOIN produtos p ON ipf.produtoId = p.id " +
             "WHERE ipf.pedidoId = :idPedido")
     List<ItemPedidoDetalhado> buscarItensDoPedidoFinalizado(int idPedido);
+    //buscar pedidos por usuario
+    @Query("SELECT * FROM pedidos WHERE usuarioId = :idUsuario ORDER BY idPedido DESC")
+    List<Pedido> buscarPedidosPorUsuario(int idUsuario);
+
 
 
 

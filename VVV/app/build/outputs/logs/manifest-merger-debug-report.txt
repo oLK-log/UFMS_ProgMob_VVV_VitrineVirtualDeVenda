@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:2:1-43:12
-INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:2:1-43:12
-INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:2:1-43:12
-INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:2:1-43:12
+ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:2:1-44:12
+INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:2:1-44:12
+INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:2:1-44:12
+INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:2:1-44:12
 MERGED from [com.google.android.material:material:1.13.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\c5c64892acfd7bcc7fe21a6d53cb1a44\workspace\transformed\material-1.13.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\31dfa89dcc1fdc624ef6a8af618cbddc\workspace\transformed\constraintlayout-2.2.1\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.1] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\8ca9a4c9e3c61d3afab78cac65c1a47d\workspace\transformed\appcompat-resources-1.7.1\AndroidManifest.xml:2:1-7:12
@@ -75,8 +75,8 @@ MERGED from [androidx.compose.runtime:runtime-annotation-android:1.9.0] C:\Users
 	xmlns:android
 		ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:5:5-41:19
-INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:5:5-41:19
+ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:5:5-42:19
+INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:5:5-42:19
 MERGED from [com.google.android.material:material:1.13.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\c5c64892acfd7bcc7fe21a6d53cb1a44\workspace\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.13.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\c5c64892acfd7bcc7fe21a6d53cb1a44\workspace\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\31dfa89dcc1fdc624ef6a8af618cbddc\workspace\transformed\constraintlayout-2.2.1\AndroidManifest.xml:7:5-20
@@ -187,6 +187,10 @@ ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app
 		ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:40:13-37
 	android:name
 		ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:39:13-56
+activity#com.example.mainactivity.cliente.HistoricoPedidoClienteActivity
+ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:41:9-76
+	android:name
+		ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:41:19-73
 uses-sdk
 INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml

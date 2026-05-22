@@ -425,6 +425,48 @@ public final class PedidoDao_Impl implements PedidoDao {
     }
   }
 
+  @Override
+  public List<Pedido> buscarPedidosPorUsuario(final int idUsuario) {
+    final String _sql = "SELECT * FROM pedidos WHERE usuarioId = ? ORDER BY idPedido DESC";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, idUsuario);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfIdPedido = CursorUtil.getColumnIndexOrThrow(_cursor, "idPedido");
+      final int _cursorIndexOfUsuarioId = CursorUtil.getColumnIndexOrThrow(_cursor, "usuarioId");
+      final int _cursorIndexOfNomeCliente = CursorUtil.getColumnIndexOrThrow(_cursor, "nomeCliente");
+      final int _cursorIndexOfEmailCliente = CursorUtil.getColumnIndexOrThrow(_cursor, "emailCliente");
+      final int _cursorIndexOfValorTotal = CursorUtil.getColumnIndexOrThrow(_cursor, "valorTotal");
+      final int _cursorIndexOfDataTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "dataTimestamp");
+      final List<Pedido> _result = new ArrayList<Pedido>(_cursor.getCount());
+      while (_cursor.moveToNext()) {
+        final Pedido _item;
+        _item = new Pedido();
+        _item.idPedido = _cursor.getInt(_cursorIndexOfIdPedido);
+        _item.usuarioId = _cursor.getInt(_cursorIndexOfUsuarioId);
+        if (_cursor.isNull(_cursorIndexOfNomeCliente)) {
+          _item.nomeCliente = null;
+        } else {
+          _item.nomeCliente = _cursor.getString(_cursorIndexOfNomeCliente);
+        }
+        if (_cursor.isNull(_cursorIndexOfEmailCliente)) {
+          _item.emailCliente = null;
+        } else {
+          _item.emailCliente = _cursor.getString(_cursorIndexOfEmailCliente);
+        }
+        _item.valorTotal = _cursor.getDouble(_cursorIndexOfValorTotal);
+        _item.dataTimestamp = _cursor.getLong(_cursorIndexOfDataTimestamp);
+        _result.add(_item);
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
   @NonNull
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();

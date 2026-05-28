@@ -73,8 +73,8 @@
 41-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:22:13-37
 42        <activity
 42-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:23:9-31:20
-43            android:name="com.example.mainactivity.core.LoginActivity"
-43-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:24:13-47
+43            android:name="com.example.mainactivity.core.SplashActivity"
+43-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:24:13-48
 44            android:exported="true" >
 44-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:25:13-36
 45            <intent-filter>
@@ -95,11 +95,11 @@
 53            android:exported="false" />
 53-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:33:13-37
 54        <activity
-54-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:17:9-19:40
-55            android:name="com.example.mainactivity.lojista.PainelLojistaActivity"
-55-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:18:13-58
+54-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:34:9-35:39
+55            android:name="com.example.mainactivity.core.LoginActivity"
+55-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:34:19-53
 56            android:exported="false" />
-56-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:19:13-37
+56-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:35:13-37
 57        <activity
 57-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:36:9-37:39
 58            android:name="com.example.mainactivity.cliente.DetalhesProdutoActivity"

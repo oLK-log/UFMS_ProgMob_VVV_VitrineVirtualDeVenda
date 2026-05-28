@@ -40,7 +40,7 @@
             android:name="com.example.mainactivity.core.CadastroUsuarioActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.mainactivity.core.LoginActivity"
+            android:name="com.example.mainactivity.core.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,7 +52,7 @@
             android:name="com.example.mainactivity.cliente.PainelClienteActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.mainactivity.lojista.PainelLojistaActivity"
+            android:name="com.example.mainactivity.core.LoginActivity"
             android:exported="false" />
         <activity
             android:name="com.example.mainactivity.cliente.DetalhesProdutoActivity"

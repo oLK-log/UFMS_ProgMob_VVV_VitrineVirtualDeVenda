@@ -21,15 +21,18 @@ import com.example.mainactivity.database.AppDatabase;
 import com.example.mainactivity.model.Produto;
 
 public class CadastroProdutoActivity extends AppCompatActivity {
-    private TextView txtTituloTelaCadastro;
+    private TextView txtTituloTelaCadastro, txtStatusVideo;
     private ImageView imgFotoProduto;
     private EditText editNomeProduto, editDescricaoProduto, editPrecoProduto;
-    private Button btnSalvarProduto, btnExcluirProduto;
+    private Button btnSalvarProduto, btnExcluirProduto, btnEscolherVideo;
     private String uriFotoSelecionada = "";
     //abrir galeria local
     private ActivityResultLauncher<String> abrirGaleria;
     private int idProdutoEdicao = -1;//-1 significa que é produto novo
     private boolean statusDestaqueAtual = false;
+    private String uriVideoSelecionado ="";
+    private ActivityResultLauncher<String> abrirGaleriaVideo;
+
 
 
     @Override
@@ -44,6 +47,8 @@ public class CadastroProdutoActivity extends AppCompatActivity {
         btnSalvarProduto = findViewById(R.id.btnSalvarProduto);
         btnExcluirProduto = findViewById(R.id.btnExcluirProduto);
         txtTituloTelaCadastro = findViewById(R.id.txtTituloTelaCadastro);
+        txtStatusVideo = findViewById(R.id.txtStatusVideo);
+        btnEscolherVideo = findViewById(R.id.btnEscolherVideo);
         //destino foto
         abrirGaleria = registerForActivityResult(
                 new ActivityResultContracts.GetContent(),
@@ -58,11 +63,32 @@ public class CadastroProdutoActivity extends AppCompatActivity {
                     }
                 }
         );
+        //destino vídeo
+        abrirGaleriaVideo = registerForActivityResult(
+                new ActivityResultContracts.GetContent(),
+                new ActivityResultCallback<Uri>() {
+                    @Override
+                    public void onActivityResult(Uri uri) {
+                        if(uri != null){
+                            uriVideoSelecionado = uri.toString();
+                            txtStatusVideo.setText("Vídeo selecionado com sucesso!");
+                            txtStatusVideo.setTextColor(android.graphics.Color.parseColor("#388E3C")); // Fica verde
+                        }
+                    }
+                }
+        );
         //procura imagem
         imgFotoProduto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
                 abrirGaleria.launch("image/*");
+            }
+        });
+        //procura vídeo
+        btnEscolherVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirGaleriaVideo.launch("video/*");
             }
         });
         //verificar se o ID do produto foi pego pelo adapter
@@ -99,12 +125,19 @@ public class CadastroProdutoActivity extends AppCompatActivity {
             editDescricaoProduto.setText(produtoAntigo.descricao);
             editPrecoProduto.setText(String.valueOf(produtoAntigo.preco));
             uriFotoSelecionada = produtoAntigo.imagemUri;
+            //carrega Imag
             if(uriFotoSelecionada !=null && !uriFotoSelecionada.isEmpty()){
                 try {
                     imgFotoProduto.setImageURI(Uri.parse(uriFotoSelecionada));
                 }catch (Exception e){
                     imgFotoProduto.setImageResource(android.R.drawable.ic_menu_camera);
                 }
+            }
+            // Carrega Vídeo
+            uriVideoSelecionado = produtoAntigo.videoUri;
+            if(uriVideoSelecionado != null && !uriVideoSelecionado.isEmpty()){
+                txtStatusVideo.setText("Vídeo já cadastrado");
+                txtStatusVideo.setTextColor(android.graphics.Color.parseColor("#0288D1")); // Fica azul
             }
             //guardar estado de Destaque do produto
             statusDestaqueAtual = produtoAntigo.isDestaque;
@@ -140,6 +173,11 @@ public class CadastroProdutoActivity extends AppCompatActivity {
         if(!uriFotoSelecionada.isEmpty() && uriFotoSelecionada.startsWith("content://")){
             caminhoDefinitivoDaFoto=salvarImagemNaMemoriaDoApp(Uri.parse(uriFotoSelecionada));
         }
+        // Salvando o vídeo fisicamente
+        String caminhoDefinitivoDoVideo = uriVideoSelecionado;
+        if(!uriVideoSelecionado.isEmpty() && uriVideoSelecionado.startsWith("content://")){
+            caminhoDefinitivoDoVideo = salvarVideoNaMemoriaDoApp(Uri.parse(uriVideoSelecionado));
+        }
 
 
         //Produto
@@ -151,6 +189,7 @@ public class CadastroProdutoActivity extends AppCompatActivity {
         novoProduto.usuarioId = idLojista;
         //salvar caminho
         novoProduto.imagemUri = caminhoDefinitivoDaFoto;
+        novoProduto.videoUri = caminhoDefinitivoDoVideo;
         novoProduto.isDestaque=statusDestaqueAtual;
 
         //logica de decisao-inserir ou atualizar
@@ -197,6 +236,29 @@ public class CadastroProdutoActivity extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
             return "";//retorna vazio para não bugar o banco
+        }
+    }
+
+    // esse Metodo eh idêntico ao da imagem, mas adaptado para salvar o video em formato MP4
+    private String salvarVideoNaMemoriaDoApp(Uri uriGaleria) {
+        try{
+            java.io.InputStream inputStream = getContentResolver().openInputStream(uriGaleria);
+            String nomeArquivo = "video" + System.currentTimeMillis() + ".mp4";
+            java.io.File arquivoInterno = new java.io.File(getFilesDir(), nomeArquivo);
+            java.io.FileOutputStream outputStream = new java.io.FileOutputStream(arquivoInterno);
+
+            byte[] buffer = new byte[1024];
+            int tamanho;
+            while ((tamanho = inputStream.read(buffer))>0) {
+                outputStream.write(buffer, 0, tamanho);
+            }
+            outputStream.close();
+            inputStream.close();
+
+            return Uri.fromFile(arquivoInterno).toString();
+        }catch (Exception e){
+            e.printStackTrace();
+            return "";
         }
     }
 

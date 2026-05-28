@@ -2,9 +2,13 @@ R_DEF: Internal format may change without notice
 local
 color Pink
 color black
+color ic_launcher_background
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable logo_vvv_limpo
+drawable logo_vvv_nome
+drawable logo_vvv_nomesl
 id areaBotaoFixo
 id barra_navegacao
 id barra_navegacao_cliente
@@ -13,6 +17,7 @@ id btnBuscarProduto
 id btnCadastrar
 id btnEntrar
 id btnEnviarLink
+id btnEscolherVideo
 id btnExcluirProduto
 id btnFiltroProduto
 id btnFinalizarPedido
@@ -21,6 +26,7 @@ id btnRemoverItemPedido
 id btnSairSessao
 id btnSalvarProduto
 id btnTirarFoto
+id cardVideoContainer
 id editBuscarProduto
 id editDescricaoProduto
 id editEmail
@@ -39,6 +45,7 @@ id imgFotoPerfil
 id imgFotoProduto
 id imgItemPedido
 id imgItemProduto
+id imgLogoSplash
 id imgVitrineProduto
 id layoutBarraBusca
 id layoutDadosAbaPerfil
@@ -92,6 +99,7 @@ id txtRegraMaiuscula
 id txtRegraNumero
 id txtRegraTamanho
 id txtSemPedidos
+id txtStatusVideo
 id txtTipoPerfil
 id txtTituloAbaPerfil
 id txtTituloBottomSheet
@@ -103,6 +111,7 @@ id txtVitrineNome
 id txtVitrinePreco
 id txtVoltarLogin
 id txtVoltarPerfil
+id videoDetalheProduto
 layout activity_cadastro_produto
 layout activity_cadastro_usuario
 layout activity_detalhes_produto
@@ -111,6 +120,7 @@ layout activity_login
 layout activity_painel_cliente
 layout activity_painel_lojista
 layout activity_redefinir_senha
+layout activity_splash
 layout fragment_gerenciar
 layout fragment_home_cliente
 layout fragment_inicio_lojista
@@ -127,6 +137,7 @@ layout layout_bottom_sheet_pedido
 menu menu_navegacao_cliente
 menu menu_vitrine
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 raw som_magic
 string app_name

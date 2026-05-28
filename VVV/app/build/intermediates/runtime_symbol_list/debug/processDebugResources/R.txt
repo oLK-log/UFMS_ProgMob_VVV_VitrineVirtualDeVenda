@@ -1600,6 +1600,7 @@ int color foreground_material_dark 0x7f05006c
 int color foreground_material_light 0x7f05006d
 int color highlighted_text_material_dark 0x7f05006e
 int color highlighted_text_material_light 0x7f05006f
+int color ic_launcher_background 0x7f0503c2
 int color m3_appbar_overlay_color 0x7f050070
 int color m3_assist_chip_icon_tint_color 0x7f050071
 int color m3_assist_chip_stroke_color 0x7f050072
@@ -3621,6 +3622,9 @@ int drawable ic_mtrl_chip_checked_black 0x7f0700af
 int drawable ic_mtrl_chip_checked_circle 0x7f0700b0
 int drawable ic_mtrl_chip_close_circle 0x7f0700b1
 int drawable ic_search_black_24 0x7f0700b2
+int drawable logo_vvv_limpo 0x7f0700ff
+int drawable logo_vvv_nome 0x7f070100
+int drawable logo_vvv_nomesl 0x7f070101
 int drawable m3_avd_hide_password 0x7f0700b3
 int drawable m3_avd_show_password 0x7f0700b4
 int drawable m3_bottom_sheet_drag_handle 0x7f0700b5
@@ -3817,6 +3821,7 @@ int id btnBuscarProduto 0x7f080074
 int id btnCadastrar 0x7f080075
 int id btnEntrar 0x7f080076
 int id btnEnviarLink 0x7f080077
+int id btnEscolherVideo 0x7f08027b
 int id btnExcluirProduto 0x7f080078
 int id btnFiltroProduto 0x7f080079
 int id btnFinalizarPedido 0x7f08007a
@@ -3829,6 +3834,7 @@ int id buttonPanel 0x7f08007f
 int id cache_measures 0x7f080080
 int id callMeasure 0x7f080081
 int id cancel_button 0x7f080082
+int id cardVideoContainer 0x7f080279
 int id carryVelocity 0x7f080083
 int id center 0x7f080084
 int id centerCrop 0x7f080085
@@ -3971,6 +3977,7 @@ int id imgFotoPerfil 0x7f08010d
 int id imgFotoProduto 0x7f08010e
 int id imgItemPedido 0x7f08010f
 int id imgItemProduto 0x7f080110
+int id imgLogoSplash 0x7f080278
 int id imgVitrineProduto 0x7f080111
 int id immediateStop 0x7f080112
 int id included 0x7f080113
@@ -4291,6 +4298,7 @@ int id txtRegraMaiuscula 0x7f080249
 int id txtRegraNumero 0x7f08024a
 int id txtRegraTamanho 0x7f08024b
 int id txtSemPedidos 0x7f080272
+int id txtStatusVideo 0x7f08027c
 int id txtTipoPerfil 0x7f08024c
 int id txtTituloAbaPerfil 0x7f08024d
 int id txtTituloBottomSheet 0x7f08024e
@@ -4309,6 +4317,7 @@ int id up 0x7f080258
 int id useLogo 0x7f080259
 int id vertical 0x7f08025a
 int id vertical_only 0x7f08025b
+int id videoDetalheProduto 0x7f08027a
 int id view_offset_helper 0x7f08025c
 int id view_transition 0x7f08025d
 int id view_tree_disjoint_parent 0x7f08025e
@@ -4455,6 +4464,7 @@ int layout activity_login 0x7f0b001f
 int layout activity_painel_cliente 0x7f0b0020
 int layout activity_painel_lojista 0x7f0b0021
 int layout activity_redefinir_senha 0x7f0b0022
+int layout activity_splash 0x7f0b0087
 int layout browser_actions_context_menu_page 0x7f0b0023
 int layout browser_actions_context_menu_row 0x7f0b0024
 int layout custom_dialog 0x7f0b0025
@@ -4554,6 +4564,7 @@ int layout support_simple_spinner_dropdown_item 0x7f0b0081
 int menu menu_navegacao_cliente 0x7f0d0000
 int menu menu_vitrine 0x7f0d0001
 int mipmap ic_launcher 0x7f0e0000
+int mipmap ic_launcher_foreground 0x7f0e0002
 int mipmap ic_launcher_round 0x7f0e0001
 int plurals mtrl_badge_content_description 0x7f0f0000
 int raw firebase_common_keep 0x7f100000

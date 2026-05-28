@@ -21,7 +21,7 @@
             android:name=".core.CadastroUsuarioActivity"
             android:exported="false" />
         <activity
-            android:name=".core.LoginActivity"
+            android:name=".core.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@
         </activity>
         <activity android:name=".cliente.PainelClienteActivity"
             android:exported="false"/>
-        <activity android:name=".lojista.PainelLojistaActivity"
+        <activity android:name=".core.LoginActivity"
             android:exported="false"/>
         <activity android:name=".cliente.DetalhesProdutoActivity"
             android:exported="false"/>

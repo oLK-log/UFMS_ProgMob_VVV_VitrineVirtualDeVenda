@@ -34,7 +34,7 @@ public final class UsuarioDao_Impl implements UsuarioDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR ABORT INTO `usuarios` (`idUsuario`,`nome`,`email`,`senha`,`fotoPath`,`tipoPerfil`,`endereco`) VALUES (nullif(?, 0),?,?,?,?,?,?)";
+        return "INSERT OR ABORT INTO `usuarios` (`idUsuario`,`nome`,`email`,`senha`,`fotoPath`,`tipoPerfil`,`endereco`,`corPrimariaLoja`,`corSecundariaLoja`,`corFundoLoja`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -69,6 +69,21 @@ public final class UsuarioDao_Impl implements UsuarioDao {
           statement.bindNull(7);
         } else {
           statement.bindString(7, entity.endereco);
+        }
+        if (entity.corPrimariaLoja == null) {
+          statement.bindNull(8);
+        } else {
+          statement.bindString(8, entity.corPrimariaLoja);
+        }
+        if (entity.corSecundariaLoja == null) {
+          statement.bindNull(9);
+        } else {
+          statement.bindString(9, entity.corSecundariaLoja);
+        }
+        if (entity.corFundoLoja == null) {
+          statement.bindNull(10);
+        } else {
+          statement.bindString(10, entity.corFundoLoja);
         }
       }
     };
@@ -76,7 +91,7 @@ public final class UsuarioDao_Impl implements UsuarioDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `usuarios` SET `idUsuario` = ?,`nome` = ?,`email` = ?,`senha` = ?,`fotoPath` = ?,`tipoPerfil` = ?,`endereco` = ? WHERE `idUsuario` = ?";
+        return "UPDATE OR ABORT `usuarios` SET `idUsuario` = ?,`nome` = ?,`email` = ?,`senha` = ?,`fotoPath` = ?,`tipoPerfil` = ?,`endereco` = ?,`corPrimariaLoja` = ?,`corSecundariaLoja` = ?,`corFundoLoja` = ? WHERE `idUsuario` = ?";
       }
 
       @Override
@@ -112,7 +127,22 @@ public final class UsuarioDao_Impl implements UsuarioDao {
         } else {
           statement.bindString(7, entity.endereco);
         }
-        statement.bindLong(8, entity.idUsuario);
+        if (entity.corPrimariaLoja == null) {
+          statement.bindNull(8);
+        } else {
+          statement.bindString(8, entity.corPrimariaLoja);
+        }
+        if (entity.corSecundariaLoja == null) {
+          statement.bindNull(9);
+        } else {
+          statement.bindString(9, entity.corSecundariaLoja);
+        }
+        if (entity.corFundoLoja == null) {
+          statement.bindNull(10);
+        } else {
+          statement.bindString(10, entity.corFundoLoja);
+        }
+        statement.bindLong(11, entity.idUsuario);
       }
     };
   }
@@ -180,6 +210,9 @@ public final class UsuarioDao_Impl implements UsuarioDao {
       final int _cursorIndexOfFotoPath = CursorUtil.getColumnIndexOrThrow(_cursor, "fotoPath");
       final int _cursorIndexOfTipoPerfil = CursorUtil.getColumnIndexOrThrow(_cursor, "tipoPerfil");
       final int _cursorIndexOfEndereco = CursorUtil.getColumnIndexOrThrow(_cursor, "endereco");
+      final int _cursorIndexOfCorPrimariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corPrimariaLoja");
+      final int _cursorIndexOfCorSecundariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corSecundariaLoja");
+      final int _cursorIndexOfCorFundoLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corFundoLoja");
       final Usuario _result;
       if (_cursor.moveToFirst()) {
         _result = new Usuario();
@@ -213,6 +246,21 @@ public final class UsuarioDao_Impl implements UsuarioDao {
           _result.endereco = null;
         } else {
           _result.endereco = _cursor.getString(_cursorIndexOfEndereco);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorPrimariaLoja)) {
+          _result.corPrimariaLoja = null;
+        } else {
+          _result.corPrimariaLoja = _cursor.getString(_cursorIndexOfCorPrimariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorSecundariaLoja)) {
+          _result.corSecundariaLoja = null;
+        } else {
+          _result.corSecundariaLoja = _cursor.getString(_cursorIndexOfCorSecundariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorFundoLoja)) {
+          _result.corFundoLoja = null;
+        } else {
+          _result.corFundoLoja = _cursor.getString(_cursorIndexOfCorFundoLoja);
         }
       } else {
         _result = null;
@@ -240,6 +288,9 @@ public final class UsuarioDao_Impl implements UsuarioDao {
       final int _cursorIndexOfFotoPath = CursorUtil.getColumnIndexOrThrow(_cursor, "fotoPath");
       final int _cursorIndexOfTipoPerfil = CursorUtil.getColumnIndexOrThrow(_cursor, "tipoPerfil");
       final int _cursorIndexOfEndereco = CursorUtil.getColumnIndexOrThrow(_cursor, "endereco");
+      final int _cursorIndexOfCorPrimariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corPrimariaLoja");
+      final int _cursorIndexOfCorSecundariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corSecundariaLoja");
+      final int _cursorIndexOfCorFundoLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corFundoLoja");
       final Usuario _result;
       if (_cursor.moveToFirst()) {
         _result = new Usuario();
@@ -273,6 +324,21 @@ public final class UsuarioDao_Impl implements UsuarioDao {
           _result.endereco = null;
         } else {
           _result.endereco = _cursor.getString(_cursorIndexOfEndereco);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorPrimariaLoja)) {
+          _result.corPrimariaLoja = null;
+        } else {
+          _result.corPrimariaLoja = _cursor.getString(_cursorIndexOfCorPrimariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorSecundariaLoja)) {
+          _result.corSecundariaLoja = null;
+        } else {
+          _result.corSecundariaLoja = _cursor.getString(_cursorIndexOfCorSecundariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorFundoLoja)) {
+          _result.corFundoLoja = null;
+        } else {
+          _result.corFundoLoja = _cursor.getString(_cursorIndexOfCorFundoLoja);
         }
       } else {
         _result = null;
@@ -310,6 +376,9 @@ public final class UsuarioDao_Impl implements UsuarioDao {
       final int _cursorIndexOfFotoPath = CursorUtil.getColumnIndexOrThrow(_cursor, "fotoPath");
       final int _cursorIndexOfTipoPerfil = CursorUtil.getColumnIndexOrThrow(_cursor, "tipoPerfil");
       final int _cursorIndexOfEndereco = CursorUtil.getColumnIndexOrThrow(_cursor, "endereco");
+      final int _cursorIndexOfCorPrimariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corPrimariaLoja");
+      final int _cursorIndexOfCorSecundariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corSecundariaLoja");
+      final int _cursorIndexOfCorFundoLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corFundoLoja");
       final Usuario _result;
       if (_cursor.moveToFirst()) {
         _result = new Usuario();
@@ -343,6 +412,21 @@ public final class UsuarioDao_Impl implements UsuarioDao {
           _result.endereco = null;
         } else {
           _result.endereco = _cursor.getString(_cursorIndexOfEndereco);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorPrimariaLoja)) {
+          _result.corPrimariaLoja = null;
+        } else {
+          _result.corPrimariaLoja = _cursor.getString(_cursorIndexOfCorPrimariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorSecundariaLoja)) {
+          _result.corSecundariaLoja = null;
+        } else {
+          _result.corSecundariaLoja = _cursor.getString(_cursorIndexOfCorSecundariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorFundoLoja)) {
+          _result.corFundoLoja = null;
+        } else {
+          _result.corFundoLoja = _cursor.getString(_cursorIndexOfCorFundoLoja);
         }
       } else {
         _result = null;
@@ -374,6 +458,9 @@ public final class UsuarioDao_Impl implements UsuarioDao {
       final int _cursorIndexOfFotoPath = CursorUtil.getColumnIndexOrThrow(_cursor, "fotoPath");
       final int _cursorIndexOfTipoPerfil = CursorUtil.getColumnIndexOrThrow(_cursor, "tipoPerfil");
       final int _cursorIndexOfEndereco = CursorUtil.getColumnIndexOrThrow(_cursor, "endereco");
+      final int _cursorIndexOfCorPrimariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corPrimariaLoja");
+      final int _cursorIndexOfCorSecundariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corSecundariaLoja");
+      final int _cursorIndexOfCorFundoLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corFundoLoja");
       final Usuario _result;
       if (_cursor.moveToFirst()) {
         _result = new Usuario();
@@ -408,6 +495,21 @@ public final class UsuarioDao_Impl implements UsuarioDao {
         } else {
           _result.endereco = _cursor.getString(_cursorIndexOfEndereco);
         }
+        if (_cursor.isNull(_cursorIndexOfCorPrimariaLoja)) {
+          _result.corPrimariaLoja = null;
+        } else {
+          _result.corPrimariaLoja = _cursor.getString(_cursorIndexOfCorPrimariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorSecundariaLoja)) {
+          _result.corSecundariaLoja = null;
+        } else {
+          _result.corSecundariaLoja = _cursor.getString(_cursorIndexOfCorSecundariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorFundoLoja)) {
+          _result.corFundoLoja = null;
+        } else {
+          _result.corFundoLoja = _cursor.getString(_cursorIndexOfCorFundoLoja);
+        }
       } else {
         _result = null;
       }
@@ -432,6 +534,9 @@ public final class UsuarioDao_Impl implements UsuarioDao {
       final int _cursorIndexOfFotoPath = CursorUtil.getColumnIndexOrThrow(_cursor, "fotoPath");
       final int _cursorIndexOfTipoPerfil = CursorUtil.getColumnIndexOrThrow(_cursor, "tipoPerfil");
       final int _cursorIndexOfEndereco = CursorUtil.getColumnIndexOrThrow(_cursor, "endereco");
+      final int _cursorIndexOfCorPrimariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corPrimariaLoja");
+      final int _cursorIndexOfCorSecundariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corSecundariaLoja");
+      final int _cursorIndexOfCorFundoLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corFundoLoja");
       final List<Usuario> _result = new ArrayList<Usuario>(_cursor.getCount());
       while (_cursor.moveToNext()) {
         final Usuario _item;
@@ -466,6 +571,21 @@ public final class UsuarioDao_Impl implements UsuarioDao {
           _item.endereco = null;
         } else {
           _item.endereco = _cursor.getString(_cursorIndexOfEndereco);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorPrimariaLoja)) {
+          _item.corPrimariaLoja = null;
+        } else {
+          _item.corPrimariaLoja = _cursor.getString(_cursorIndexOfCorPrimariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorSecundariaLoja)) {
+          _item.corSecundariaLoja = null;
+        } else {
+          _item.corSecundariaLoja = _cursor.getString(_cursorIndexOfCorSecundariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorFundoLoja)) {
+          _item.corFundoLoja = null;
+        } else {
+          _item.corFundoLoja = _cursor.getString(_cursorIndexOfCorFundoLoja);
         }
         _result.add(_item);
       }

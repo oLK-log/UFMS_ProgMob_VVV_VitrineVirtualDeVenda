@@ -1,4 +1,11 @@
 -- Merging decision tree log ---
+meta-data#com.google.android.geo.API_KEY
+INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:49:9-51:47
+	android:value
+		INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:51:13-44
+	android:name
+		ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:50:13-58
 manifest
 ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:2:1-54:12
 INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:2:1-54:12
@@ -6,6 +13,7 @@ INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\
 INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:2:1-54:12
 MERGED from [com.google.android.material:material:1.13.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\c5c64892acfd7bcc7fe21a6d53cb1a44\workspace\transformed\material-1.13.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\31dfa89dcc1fdc624ef6a8af618cbddc\workspace\transformed\constraintlayout-2.2.1\AndroidManifest.xml:2:1-9:12
+MERGED from [com.github.skydoves:colorpickerview:2.3.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\c563f281732ec5c571a78f43e72cd243\workspace\transformed\colorpickerview-2.3.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.1] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\8ca9a4c9e3c61d3afab78cac65c1a47d\workspace\transformed\appcompat-resources-1.7.1\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.appcompat:appcompat:1.7.1] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\86cb269bad4b7648131db92c4c89bf92\workspace\transformed\appcompat-1.7.1\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\7e3e5375c99316f1bf39627f7595d5cc\workspace\transformed\play-services-maps-18.2.0\AndroidManifest.xml:17:1-44:12
@@ -59,6 +67,7 @@ MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\lksf2\.gradle\caches\9.3
 MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\5743a4f5ddd7d3a1d1a8af61e127760a\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:17:1-55:12
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\f1f718c255384d0b75614050e75440a6\workspace\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.exifinterface:exifinterface:1.3.2] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\51343f2ee6206826c6321677bc8d65f1\workspace\transformed\exifinterface-1.3.2\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.databinding:viewbinding:8.1.2] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\3ff0f9cc744847e9e2896a51d702b39c\workspace\transformed\viewbinding-8.1.2\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\72b6ac2b2a3f3bc745532b92d307a939\workspace\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\9f63cf09fb9ab205817bda70942c2d76\workspace\transformed\startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\da177f8b0ebc8ee1d7d98b51683991be\workspace\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -220,12 +229,6 @@ ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app
 		ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:48:13-37
 	android:name
 		ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:47:13-58
-meta-data#com.google.android.geo.API_KEY
-ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:49:9-51:71
-	android:value
-		ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:51:13-68
-	android:name
-		ADDED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:50:13-58
 uses-sdk
 INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml
@@ -234,6 +237,8 @@ MERGED from [com.google.android.material:material:1.13.0] C:\Users\lksf2\.gradle
 MERGED from [com.google.android.material:material:1.13.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\c5c64892acfd7bcc7fe21a6d53cb1a44\workspace\transformed\material-1.13.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\31dfa89dcc1fdc624ef6a8af618cbddc\workspace\transformed\constraintlayout-2.2.1\AndroidManifest.xml:5:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\31dfa89dcc1fdc624ef6a8af618cbddc\workspace\transformed\constraintlayout-2.2.1\AndroidManifest.xml:5:5-44
+MERGED from [com.github.skydoves:colorpickerview:2.3.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\c563f281732ec5c571a78f43e72cd243\workspace\transformed\colorpickerview-2.3.0\AndroidManifest.xml:20:5-44
+MERGED from [com.github.skydoves:colorpickerview:2.3.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\c563f281732ec5c571a78f43e72cd243\workspace\transformed\colorpickerview-2.3.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat-resources:1.7.1] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\8ca9a4c9e3c61d3afab78cac65c1a47d\workspace\transformed\appcompat-resources-1.7.1\AndroidManifest.xml:5:5-44
 MERGED from [androidx.appcompat:appcompat-resources:1.7.1] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\8ca9a4c9e3c61d3afab78cac65c1a47d\workspace\transformed\appcompat-resources-1.7.1\AndroidManifest.xml:5:5-44
 MERGED from [androidx.appcompat:appcompat:1.7.1] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\86cb269bad4b7648131db92c4c89bf92\workspace\transformed\appcompat-1.7.1\AndroidManifest.xml:5:5-44
@@ -340,6 +345,8 @@ MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\lksf2\.gradle\cache
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\f1f718c255384d0b75614050e75440a6\workspace\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.exifinterface:exifinterface:1.3.2] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\51343f2ee6206826c6321677bc8d65f1\workspace\transformed\exifinterface-1.3.2\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.exifinterface:exifinterface:1.3.2] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\51343f2ee6206826c6321677bc8d65f1\workspace\transformed\exifinterface-1.3.2\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.databinding:viewbinding:8.1.2] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\3ff0f9cc744847e9e2896a51d702b39c\workspace\transformed\viewbinding-8.1.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:viewbinding:8.1.2] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\3ff0f9cc744847e9e2896a51d702b39c\workspace\transformed\viewbinding-8.1.2\AndroidManifest.xml:5:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\72b6ac2b2a3f3bc745532b92d307a939\workspace\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\72b6ac2b2a3f3bc745532b92d307a939\workspace\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\9f63cf09fb9ab205817bda70942c2d76\workspace\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41

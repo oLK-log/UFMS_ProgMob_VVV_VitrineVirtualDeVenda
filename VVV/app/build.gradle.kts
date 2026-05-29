@@ -60,7 +60,8 @@ dependencies {
     implementation("org.mindrot:jbcrypt:0.4")
     implementation("org.mindrot:jbcrypt:0.4")
     implementation("com.google.android.material:material:1.9.0")
-    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))//autenticacao uusuario
+    implementation("com.google.firebase:firebase-auth")//autenticacao usuario
+    implementation("com.google.android.gms:play-services-maps:18.2.0")//api maps google
+    implementation("com.github.skydoves:colorpickerview:2.3.0")//paleta cores
 }

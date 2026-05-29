@@ -1,7 +1,12 @@
 package com.example.mainactivity.cliente;
 
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +16,12 @@ import com.example.mainactivity.R;
 import com.example.mainactivity.cliente.fragment.HomeFragment;
 import com.example.mainactivity.cliente.fragment.PedidoFragment;
 import com.example.mainactivity.core.fragment.PerfilFragment;
+import com.example.mainactivity.database.AppDatabase;
+import com.example.mainactivity.model.Usuario;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.List;
 
 public class PainelClienteActivity extends AppCompatActivity{
     private BottomNavigationView barraNavegacaoCliente;

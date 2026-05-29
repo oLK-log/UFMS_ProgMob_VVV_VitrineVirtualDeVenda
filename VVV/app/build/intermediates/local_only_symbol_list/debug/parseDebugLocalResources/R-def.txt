@@ -1,9 +1,16 @@
 R_DEF: Internal format may change without notice
 local
-color Pink
-color black
+color colorAccent
+color colorBackground
+color colorError
+color colorPrimary
+color colorPrimaryDark
+color colorSuccess
+color colorSurface
 color ic_launcher_background
-color white
+color textColorPrimary
+color textColorSecondary
+color textColorWhite
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable logo_vvv_limpo
@@ -23,13 +30,19 @@ id btnFiltroProduto
 id btnFinalizarPedido
 id btnHistoricoPedidos
 id btnMapaLoja
+id btnPaletaFundo
+id btnPaletaPrimaria
+id btnPaletaSecundaria
 id btnRemoverItemPedido
 id btnSairSessao
-id btnSalvarEndereco
+id btnSalvarDadosLojista
 id btnSalvarProduto
 id btnTirarFoto
 id cardVideoContainer
 id editBuscarProduto
+id editCorFundo
+id editCorPrincipal
+id editCorSecundaria
 id editDescricaoProduto
 id editEmail
 id editEmailRecuperacao
@@ -52,7 +65,7 @@ id imgLogoSplash
 id imgVitrineProduto
 id layoutBarraBusca
 id layoutDadosAbaPerfil
-id layoutEnderecoLojista
+id layoutDadosLojista
 id layoutLinhaCima
 id layoutRodapePedido
 id listaProdutos

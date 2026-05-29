@@ -154,11 +154,11 @@
 84-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:48:13-37
 85
 86        <meta-data
-86-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:49:9-51:71
+86-->INJECTED
 87            android:name="com.google.android.geo.API_KEY"
 87-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:50:13-58
 88            android:value="AIzaSyAmr93rg_Fql1PR6OnT2DCAQeXeT8PX2sw" />
-88-->C:\Users\lksf2\Documents\git\UFMS_ProgMob_VitrineVirtualJoias\VVV\app\src\main\AndroidManifest.xml:51:13-68
+88-->INJECTED
 89        <!-- Needs to be explicitly declared on P+ -->
 90        <uses-library
 90-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lksf2\.gradle\caches\9.3.1\transforms\7e3e5375c99316f1bf39627f7595d5cc\workspace\transformed\play-services-maps-18.2.0\AndroidManifest.xml:39:9-41:40

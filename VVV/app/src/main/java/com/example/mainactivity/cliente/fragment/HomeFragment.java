@@ -1,12 +1,14 @@
 package com.example.mainactivity.cliente.fragment;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +22,7 @@ import com.example.mainactivity.cliente.adapter.VitrineAdapter;
 import com.example.mainactivity.database.AppDatabase;
 import com.example.mainactivity.database.dao.ProdutoDao;
 import com.example.mainactivity.model.Produto;
+import com.example.mainactivity.model.Usuario;
 
 import java.util.List;
 public class HomeFragment extends Fragment{
@@ -74,7 +77,7 @@ public class HomeFragment extends Fragment{
                 adapterVitrine.atualizarLista(resultados);
             }
         });
-
+        carregarConfigurarCoresDaLoja(view);
         return view;
     }
 
@@ -94,6 +97,60 @@ public class HomeFragment extends Fragment{
         List<Produto> todosProdutos = dao.buscarProdutos("");
         adapterVitrine = new VitrineAdapter(todosProdutos, R.layout.item_produto_vitrine);
         recyclerVitrine.setAdapter(adapterVitrine);
+    }
+    private void carregarConfigurarCoresDaLoja(View viewRoot) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<Usuario> usuarios = AppDatabase.getInstance(getContext()).usuarioDao().buscarTodos();
+                Usuario lojista = null;
+
+                for(Usuario u : usuarios){
+                    if("LOJISTA".equals(u.tipoPerfil)){
+                        lojista = u;
+                        break;
+                    }
+                }
+
+                if (lojista != null) {
+                    final String corPrimaria = lojista.corPrimariaLoja;
+                    final String corFundo = lojista.corFundoLoja;
+
+                    if (getActivity() != null) {
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                aplicarCoresNaInterface(viewRoot, corPrimaria, corFundo);
+                            }
+                        });
+                    }
+                }
+            }
+        }).start();
+    }
+
+    private void aplicarCoresNaInterface(View view, String corPrimaria, String corFundo) {
+        try {
+            if (corFundo != null && !corFundo.trim().isEmpty()) {
+                view.setBackgroundColor(Color.parseColor(corFundo));
+            }
+
+            if (corPrimaria != null && !corPrimaria.trim().isEmpty()) {
+                int corHexConvertida = Color.parseColor(corPrimaria);
+
+                LinearLayout layoutBarraBusca = view.findViewById(R.id.layoutBarraBusca);
+                if (layoutBarraBusca != null) {
+                    layoutBarraBusca.setBackgroundColor(corHexConvertida);
+                }
+
+                ImageButton btnBuscarProduto = view.findViewById(R.id.btnBuscarProduto);
+                if (btnBuscarProduto != null) {
+                    btnBuscarProduto.setColorFilter(corHexConvertida);
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
     }
 
 }

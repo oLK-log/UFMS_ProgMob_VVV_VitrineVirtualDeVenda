@@ -27,6 +27,7 @@ import com.example.mainactivity.database.dao.PedidoDao;
 import com.example.mainactivity.model.ItemPedido;
 import com.example.mainactivity.model.ItemPedidoDetalhado;
 import com.example.mainactivity.model.Produto;
+import com.example.mainactivity.model.Usuario;
 
 import java.util.List;
 public class PedidoFragment extends Fragment{
@@ -62,6 +63,8 @@ public class PedidoFragment extends Fragment{
                 finalizarPedido(idUsuarioAtual, "Cliente Registrado", "email@cliente.com");
             }
         });
+
+        carregarConfigurarCoresDaLoja(view);
         return view;
     }
     //Met para exibir caixa de preenchimento de dados add para não logados
@@ -191,6 +194,56 @@ public class PedidoFragment extends Fragment{
         pedidoDao.limparCarrinho(idUsuario);
         //recarregar tela
         carregarPedido();
+    }
+
+    // Importe a classe Color no topo do ficheiro, se necessário:
+    // import android.graphics.Color;
+
+    private void carregarConfigurarCoresDaLoja(View viewRoot) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<Usuario> usuarios = AppDatabase.getInstance(getContext()).usuarioDao().buscarTodos();
+                Usuario lojista = null;
+                for(Usuario u : usuarios){
+                    if("LOJISTA".equals(u.tipoPerfil)){
+                        lojista = u;
+                        break;
+                    }
+                }
+                if (lojista != null) {
+                    final String corPrimaria = lojista.corPrimariaLoja;
+                    final String corFundo = lojista.corFundoLoja;
+
+                    if (getActivity() != null) {
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                aplicarCoresNaInterface(viewRoot, corPrimaria, corFundo);
+                            }
+                        });
+                    }
+                }
+            }
+        }).start();
+    }
+
+    private void aplicarCoresNaInterface(View view, String corPrimaria, String corFundo) {
+        try {
+            // Pinta o Fundo
+            if (corFundo != null && !corFundo.trim().isEmpty()) {
+                view.setBackgroundColor(android.graphics.Color.parseColor(corFundo));
+            }
+            // Pinta o Botão de Finalizar
+            if (corPrimaria != null && !corPrimaria.trim().isEmpty()) {
+                int corHexConvertida = android.graphics.Color.parseColor(corPrimaria);
+                if (btnFinalizarPedido != null) {
+                    btnFinalizarPedido.setBackgroundColor(corHexConvertida);
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
     }
 
 }

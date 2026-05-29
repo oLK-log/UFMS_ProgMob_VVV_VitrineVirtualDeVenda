@@ -15,4 +15,7 @@ public class Usuario {
     public String fotoPath;
     public String tipoPerfil;
     public String endereco;
+    public String corPrimariaLoja;
+    public String corSecundariaLoja;
+    public String corFundoLoja;
 }

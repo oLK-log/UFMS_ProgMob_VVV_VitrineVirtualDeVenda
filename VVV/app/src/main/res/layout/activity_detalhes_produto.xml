@@ -126,7 +126,6 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="Adicionar ao Pedido"
-        android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="20sp"
         android:backgroundTint="#000000" />

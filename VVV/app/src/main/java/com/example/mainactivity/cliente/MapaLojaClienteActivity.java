@@ -55,7 +55,7 @@ public class MapaLojaClienteActivity extends AppCompatActivity implements OnMapR
                 }
                 final String finalEnderecoLoja = enderecoLoja;
 
-                runOnUiThread(new Runnable() {
+                runOnUiThread(new Runnable() {// ponte de comunicacao com entre theads
                     @Override
                     public void run() {
                         if(finalEnderecoLoja != null){

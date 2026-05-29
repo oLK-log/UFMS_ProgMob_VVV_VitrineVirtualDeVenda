@@ -20,8 +20,10 @@ int id btnExcluirProduto 0x0
 int id btnFiltroProduto 0x0
 int id btnFinalizarPedido 0x0
 int id btnHistoricoPedidos 0x0
+int id btnMapaLoja 0x0
 int id btnRemoverItemPedido 0x0
 int id btnSairSessao 0x0
+int id btnSalvarEndereco 0x0
 int id btnSalvarProduto 0x0
 int id btnTirarFoto 0x0
 int id cardVideoContainer 0x0
@@ -29,6 +31,7 @@ int id editBuscarProduto 0x0
 int id editDescricaoProduto 0x0
 int id editEmail 0x0
 int id editEmailRecuperacao 0x0
+int id editEnderecoLojista 0x0
 int id editLoginEmail 0x0
 int id editLoginSenha 0x0
 int id editNome 0x0
@@ -47,9 +50,11 @@ int id imgLogoSplash 0x0
 int id imgVitrineProduto 0x0
 int id layoutBarraBusca 0x0
 int id layoutDadosAbaPerfil 0x0
+int id layoutEnderecoLojista 0x0
 int id layoutLinhaCima 0x0
 int id layoutRodapePedido 0x0
 int id listaProdutos 0x0
+int id mapa_loja 0x0
 int id menu_gerenciarProdutos 0x0
 int id menu_home_cliente 0x0
 int id menu_inicio 0x0
@@ -115,6 +120,7 @@ int layout activity_cadastro_usuario 0x0
 int layout activity_detalhes_produto 0x0
 int layout activity_historico_pedidos_cliente 0x0
 int layout activity_login 0x0
+int layout activity_mapa_loja_cliente 0x0
 int layout activity_painel_cliente 0x0
 int layout activity_painel_lojista 0x0
 int layout activity_redefinir_senha 0x0

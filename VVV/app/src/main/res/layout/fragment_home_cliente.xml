@@ -12,15 +12,31 @@
         android:padding="16dp"
         >
 
-        <TextView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Em Destaque"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="#212121"
             android:layout_marginBottom="12dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Em Destaque"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#212121"
+                android:layout_centerVertical="true" />
+
+            <ImageButton
+                android:id="@+id/btnMapaLoja"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@android:drawable/ic_dialog_map"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Ver Mapa da Loja" />
+        </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerDestaques"

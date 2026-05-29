@@ -21,8 +21,10 @@ id btnExcluirProduto
 id btnFiltroProduto
 id btnFinalizarPedido
 id btnHistoricoPedidos
+id btnMapaLoja
 id btnRemoverItemPedido
 id btnSairSessao
+id btnSalvarEndereco
 id btnSalvarProduto
 id btnTirarFoto
 id cardVideoContainer
@@ -30,6 +32,7 @@ id editBuscarProduto
 id editDescricaoProduto
 id editEmail
 id editEmailRecuperacao
+id editEnderecoLojista
 id editLoginEmail
 id editLoginSenha
 id editNome
@@ -48,9 +51,11 @@ id imgLogoSplash
 id imgVitrineProduto
 id layoutBarraBusca
 id layoutDadosAbaPerfil
+id layoutEnderecoLojista
 id layoutLinhaCima
 id layoutRodapePedido
 id listaProdutos
+id mapa_loja
 id menu_gerenciarProdutos
 id menu_home_cliente
 id menu_inicio
@@ -116,6 +121,7 @@ layout activity_cadastro_usuario
 layout activity_detalhes_produto
 layout activity_historico_pedidos_cliente
 layout activity_login
+layout activity_mapa_loja_cliente
 layout activity_painel_cliente
 layout activity_painel_lojista
 layout activity_redefinir_senha

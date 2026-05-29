@@ -40,9 +40,15 @@
             android:name=".core.RedefinirSenhaActivity"
             android:exported="false" />
         <activity android:name=".cliente.HistoricoPedidoClienteActivity" />
+        <activity
+            android:name=".cliente.MapaLojaClienteActivity"
+            android:exported="false" />
         <receiver
             android:name=".lojista.AlarmePremiumReceiver"
             android:exported="false" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAmr93rg_Fql1PR6OnT2DCAQeXeT8PX2sw" />
     </application>
 
 </manifest>

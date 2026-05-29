@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +28,9 @@ public class PerfilFragment extends Fragment {
     private ImageView imgAbaPerfil;
     private TextView txtNomeAbaPerfil, txtTipoPerfil;
     private Button btnHistoricoPedidos;
+    private LinearLayout layoutEnderecoLojista;
+    private EditText editEnderecoLojista;
+    private Button btnSalvarEndereco;
 
     @Nullable//indica que um parametro, retorno de metodo ou varioavel pode conter um valor null
     @Override
@@ -37,8 +42,20 @@ public class PerfilFragment extends Fragment {
         txtNomeAbaPerfil = view.findViewById(R.id.txtNomeAbaPerfil);
         txtTipoPerfil = view.findViewById(R.id.txtTipoPerfil);
         btnHistoricoPedidos = view.findViewById(R.id.btnHistoricoPedidos);
+        layoutEnderecoLojista = view.findViewById(R.id.layoutEnderecoLojista);
+        editEnderecoLojista = view.findViewById(R.id.editEnderecoLojista);
+        btnSalvarEndereco = view.findViewById(R.id.btnSalvarEndereco);
+
 
         carregarDadosDoUsuario();
+
+        //salvando endereco do lojista
+        btnSalvarEndereco.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                btnSalvarEnderecoNoBanco();
+            }
+        });
 
         //botao de histórico de pedidos
         btnHistoricoPedidos.setOnClickListener(new View.OnClickListener(){
@@ -76,6 +93,7 @@ public class PerfilFragment extends Fragment {
             imgAbaPerfil.setImageResource(android.R.drawable.ic_menu_gallery);
             txtTipoPerfil.setVisibility(View.INVISIBLE);
             btnHistoricoPedidos.setVisibility(View.GONE);//n ver botao de historico de oedido
+            layoutEnderecoLojista.setVisibility(View.GONE);
             return;
         }else{
             Usuario usuario = AppDatabase.getInstance(getContext()).usuarioDao().buscarUsuarioPorId(idUsuario);
@@ -93,9 +111,30 @@ public class PerfilFragment extends Fragment {
             if(usuario.tipoPerfil.equals("CLIENTE")){
                 txtTipoPerfil.setText("Cliente");
                 btnHistoricoPedidos.setVisibility(View.VISIBLE);
+                layoutEnderecoLojista.setVisibility(View.GONE);
             }else {
                 txtTipoPerfil.setText("Lojista");
                 btnHistoricoPedidos.setVisibility(View.GONE);
+                layoutEnderecoLojista.setVisibility(View.VISIBLE);
+                if(usuario.endereco != null){
+                    editEnderecoLojista.setText(usuario.endereco);
+                }
+            }
+        }
+    }
+
+    //metodo para salvar o endereco no banco
+    private void btnSalvarEnderecoNoBanco(){
+        String novoEndereco = editEnderecoLojista.getText().toString().trim();
+        SharedPreferences preferenciais = getContext().getSharedPreferences("sessao_vvv", Context.MODE_PRIVATE);
+        int idUsuario = preferenciais.getInt("idUsuario", -1);
+
+        if(idUsuario != -1){
+            Usuario usuario = AppDatabase.getInstance(getContext()).usuarioDao().buscarUsuarioPorId(idUsuario);
+            if(usuario !=null){
+                usuario.endereco = novoEndereco;
+                AppDatabase.getInstance(getContext()).usuarioDao().atualizar(usuario);
+                Toast.makeText(getContext(), "Endereço atualizado com sucesso!", Toast.LENGTH_SHORT).show();
             }
         }
     }

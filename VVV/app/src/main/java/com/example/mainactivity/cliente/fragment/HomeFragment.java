@@ -1,5 +1,6 @@
 package com.example.mainactivity.cliente.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mainactivity.R;
+import com.example.mainactivity.cliente.MapaLojaClienteActivity;
 import com.example.mainactivity.cliente.adapter.VitrineAdapter;
 import com.example.mainactivity.database.AppDatabase;
 import com.example.mainactivity.database.dao.ProdutoDao;
@@ -22,7 +24,7 @@ import com.example.mainactivity.model.Produto;
 import java.util.List;
 public class HomeFragment extends Fragment{
     private RecyclerView recyclerVitrine, recyclerDestaques;
-    private ImageButton btnBuscarProduto, btnFiltroProduto;
+    private ImageButton btnBuscarProduto, btnFiltroProduto, btnMapaLoja;
     private EditText editBuscarProduto;
     private VitrineAdapter adapterVitrine;
     private VitrineAdapter adapterDestaques;
@@ -36,6 +38,16 @@ public class HomeFragment extends Fragment{
         btnBuscarProduto = view.findViewById(R.id.btnBuscarProduto);
         recyclerDestaques = view.findViewById(R.id.recyclerDestaques);
         btnFiltroProduto = view.findViewById(R.id.btnFiltroProduto);
+        btnMapaLoja = view.findViewById(R.id.btnMapaLoja);
+
+        //Configuracao do clique do btn do mapa
+        btnMapaLoja.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getActivity(), MapaLojaClienteActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //configurando as direções da rolagem(destaque horizontal e produtos geral vertical)
         recyclerDestaques.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));

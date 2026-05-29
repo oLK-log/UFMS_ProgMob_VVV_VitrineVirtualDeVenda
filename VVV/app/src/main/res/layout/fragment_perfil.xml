@@ -60,6 +60,41 @@
             android:layout_marginTop="4dp"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/layoutEnderecoLojista"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutDadosAbaPerfil"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Endereço da Loja para o Mapa"
+            android:textColor="#212121"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/editEnderecoLojista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ex: Av. Afonso Pena, Campo Grande"
+            android:textColor="#212121"
+            android:inputType="textPostalAddress"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnSalvarEndereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salvar Endereço"
+            style="@style/Widget.MaterialComponents.Button" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/btnHistoricoPedidos"
         android:layout_width="match_parent"

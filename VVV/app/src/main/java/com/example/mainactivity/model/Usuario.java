@@ -14,4 +14,5 @@ public class Usuario {
     public String senha;
     public String fotoPath;
     public String tipoPerfil;
+    public String endereco;
 }

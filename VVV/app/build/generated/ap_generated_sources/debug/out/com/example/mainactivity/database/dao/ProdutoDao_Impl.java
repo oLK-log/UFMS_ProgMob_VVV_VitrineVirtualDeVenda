@@ -39,7 +39,7 @@ public final class ProdutoDao_Impl implements ProdutoDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR ABORT INTO `produtos` (`id`,`nome`,`descricao`,`preco`,`imagemUri`,`usuarioId`,`isDestaque`) VALUES (nullif(?, 0),?,?,?,?,?,?)";
+        return "INSERT OR ABORT INTO `produtos` (`id`,`nome`,`descricao`,`preco`,`imagemUri`,`usuarioId`,`isDestaque`,`videoUri`) VALUES (nullif(?, 0),?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -64,6 +64,11 @@ public final class ProdutoDao_Impl implements ProdutoDao {
         statement.bindLong(6, entity.usuarioId);
         final int _tmp = entity.isDestaque ? 1 : 0;
         statement.bindLong(7, _tmp);
+        if (entity.videoUri == null) {
+          statement.bindNull(8);
+        } else {
+          statement.bindString(8, entity.videoUri);
+        }
       }
     };
     this.__deletionAdapterOfProduto = new EntityDeletionOrUpdateAdapter<Produto>(__db) {
@@ -82,7 +87,7 @@ public final class ProdutoDao_Impl implements ProdutoDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `produtos` SET `id` = ?,`nome` = ?,`descricao` = ?,`preco` = ?,`imagemUri` = ?,`usuarioId` = ?,`isDestaque` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `produtos` SET `id` = ?,`nome` = ?,`descricao` = ?,`preco` = ?,`imagemUri` = ?,`usuarioId` = ?,`isDestaque` = ?,`videoUri` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -107,7 +112,12 @@ public final class ProdutoDao_Impl implements ProdutoDao {
         statement.bindLong(6, entity.usuarioId);
         final int _tmp = entity.isDestaque ? 1 : 0;
         statement.bindLong(7, _tmp);
-        statement.bindLong(8, entity.id);
+        if (entity.videoUri == null) {
+          statement.bindNull(8);
+        } else {
+          statement.bindString(8, entity.videoUri);
+        }
+        statement.bindLong(9, entity.id);
       }
     };
     this.__preparedStmtOfAtualizarDestaque = new SharedSQLiteStatement(__db) {
@@ -198,6 +208,7 @@ public final class ProdutoDao_Impl implements ProdutoDao {
       final int _cursorIndexOfImagemUri = CursorUtil.getColumnIndexOrThrow(_cursor, "imagemUri");
       final int _cursorIndexOfUsuarioId = CursorUtil.getColumnIndexOrThrow(_cursor, "usuarioId");
       final int _cursorIndexOfIsDestaque = CursorUtil.getColumnIndexOrThrow(_cursor, "isDestaque");
+      final int _cursorIndexOfVideoUri = CursorUtil.getColumnIndexOrThrow(_cursor, "videoUri");
       final List<Produto> _result = new ArrayList<Produto>(_cursor.getCount());
       while (_cursor.moveToNext()) {
         final Produto _item;
@@ -223,6 +234,11 @@ public final class ProdutoDao_Impl implements ProdutoDao {
         final int _tmp;
         _tmp = _cursor.getInt(_cursorIndexOfIsDestaque);
         _item.isDestaque = _tmp != 0;
+        if (_cursor.isNull(_cursorIndexOfVideoUri)) {
+          _item.videoUri = null;
+        } else {
+          _item.videoUri = _cursor.getString(_cursorIndexOfVideoUri);
+        }
         _result.add(_item);
       }
       return _result;
@@ -248,6 +264,7 @@ public final class ProdutoDao_Impl implements ProdutoDao {
       final int _cursorIndexOfImagemUri = CursorUtil.getColumnIndexOrThrow(_cursor, "imagemUri");
       final int _cursorIndexOfUsuarioId = CursorUtil.getColumnIndexOrThrow(_cursor, "usuarioId");
       final int _cursorIndexOfIsDestaque = CursorUtil.getColumnIndexOrThrow(_cursor, "isDestaque");
+      final int _cursorIndexOfVideoUri = CursorUtil.getColumnIndexOrThrow(_cursor, "videoUri");
       final List<Produto> _result = new ArrayList<Produto>(_cursor.getCount());
       while (_cursor.moveToNext()) {
         final Produto _item;
@@ -273,6 +290,11 @@ public final class ProdutoDao_Impl implements ProdutoDao {
         final int _tmp;
         _tmp = _cursor.getInt(_cursorIndexOfIsDestaque);
         _item.isDestaque = _tmp != 0;
+        if (_cursor.isNull(_cursorIndexOfVideoUri)) {
+          _item.videoUri = null;
+        } else {
+          _item.videoUri = _cursor.getString(_cursorIndexOfVideoUri);
+        }
         _result.add(_item);
       }
       return _result;
@@ -298,6 +320,7 @@ public final class ProdutoDao_Impl implements ProdutoDao {
       final int _cursorIndexOfImagemUri = CursorUtil.getColumnIndexOrThrow(_cursor, "imagemUri");
       final int _cursorIndexOfUsuarioId = CursorUtil.getColumnIndexOrThrow(_cursor, "usuarioId");
       final int _cursorIndexOfIsDestaque = CursorUtil.getColumnIndexOrThrow(_cursor, "isDestaque");
+      final int _cursorIndexOfVideoUri = CursorUtil.getColumnIndexOrThrow(_cursor, "videoUri");
       final Produto _result;
       if (_cursor.moveToFirst()) {
         _result = new Produto();
@@ -322,6 +345,11 @@ public final class ProdutoDao_Impl implements ProdutoDao {
         final int _tmp;
         _tmp = _cursor.getInt(_cursorIndexOfIsDestaque);
         _result.isDestaque = _tmp != 0;
+        if (_cursor.isNull(_cursorIndexOfVideoUri)) {
+          _result.videoUri = null;
+        } else {
+          _result.videoUri = _cursor.getString(_cursorIndexOfVideoUri);
+        }
       } else {
         _result = null;
       }
@@ -346,6 +374,7 @@ public final class ProdutoDao_Impl implements ProdutoDao {
       final int _cursorIndexOfImagemUri = CursorUtil.getColumnIndexOrThrow(_cursor, "imagemUri");
       final int _cursorIndexOfUsuarioId = CursorUtil.getColumnIndexOrThrow(_cursor, "usuarioId");
       final int _cursorIndexOfIsDestaque = CursorUtil.getColumnIndexOrThrow(_cursor, "isDestaque");
+      final int _cursorIndexOfVideoUri = CursorUtil.getColumnIndexOrThrow(_cursor, "videoUri");
       final List<Produto> _result = new ArrayList<Produto>(_cursor.getCount());
       while (_cursor.moveToNext()) {
         final Produto _item;
@@ -371,6 +400,11 @@ public final class ProdutoDao_Impl implements ProdutoDao {
         final int _tmp;
         _tmp = _cursor.getInt(_cursorIndexOfIsDestaque);
         _item.isDestaque = _tmp != 0;
+        if (_cursor.isNull(_cursorIndexOfVideoUri)) {
+          _item.videoUri = null;
+        } else {
+          _item.videoUri = _cursor.getString(_cursorIndexOfVideoUri);
+        }
         _result.add(_item);
       }
       return _result;
@@ -400,6 +434,7 @@ public final class ProdutoDao_Impl implements ProdutoDao {
       final int _cursorIndexOfImagemUri = CursorUtil.getColumnIndexOrThrow(_cursor, "imagemUri");
       final int _cursorIndexOfUsuarioId = CursorUtil.getColumnIndexOrThrow(_cursor, "usuarioId");
       final int _cursorIndexOfIsDestaque = CursorUtil.getColumnIndexOrThrow(_cursor, "isDestaque");
+      final int _cursorIndexOfVideoUri = CursorUtil.getColumnIndexOrThrow(_cursor, "videoUri");
       final List<Produto> _result = new ArrayList<Produto>(_cursor.getCount());
       while (_cursor.moveToNext()) {
         final Produto _item;
@@ -425,7 +460,34 @@ public final class ProdutoDao_Impl implements ProdutoDao {
         final int _tmp;
         _tmp = _cursor.getInt(_cursorIndexOfIsDestaque);
         _item.isDestaque = _tmp != 0;
+        if (_cursor.isNull(_cursorIndexOfVideoUri)) {
+          _item.videoUri = null;
+        } else {
+          _item.videoUri = _cursor.getString(_cursorIndexOfVideoUri);
+        }
         _result.add(_item);
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public int contarProdutosDoLojista(final int idUsuario) {
+    final String _sql = "SELECT COUNT(*) FROM produtos WHERE usuarioId = ?";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, idUsuario);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _result;
+      if (_cursor.moveToFirst()) {
+        _result = _cursor.getInt(0);
+      } else {
+        _result = 0;
       }
       return _result;
     } finally {

@@ -11,6 +11,9 @@ import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.example.mainactivity.model.ItemPedido;
+import com.example.mainactivity.model.ItemPedidoDetalhado;
+import com.example.mainactivity.model.ItemPedidoFinalizado;
+import com.example.mainactivity.model.Pedido;
 import java.lang.Class;
 import java.lang.Override;
 import java.lang.String;
@@ -26,6 +29,10 @@ public final class PedidoDao_Impl implements PedidoDao {
   private final RoomDatabase __db;
 
   private final EntityInsertionAdapter<ItemPedido> __insertionAdapterOfItemPedido;
+
+  private final EntityInsertionAdapter<Pedido> __insertionAdapterOfPedido;
+
+  private final EntityInsertionAdapter<ItemPedidoFinalizado> __insertionAdapterOfItemPedidoFinalizado;
 
   private final EntityDeletionOrUpdateAdapter<ItemPedido> __deletionAdapterOfItemPedido;
 
@@ -49,6 +56,48 @@ public final class PedidoDao_Impl implements PedidoDao {
         statement.bindLong(2, entity.usuarioId);
         statement.bindLong(3, entity.produtoId);
         statement.bindLong(4, entity.quantidade);
+      }
+    };
+    this.__insertionAdapterOfPedido = new EntityInsertionAdapter<Pedido>(__db) {
+      @Override
+      @NonNull
+      protected String createQuery() {
+        return "INSERT OR ABORT INTO `pedidos` (`idPedido`,`usuarioId`,`nomeCliente`,`emailCliente`,`valorTotal`,`dataTimestamp`) VALUES (nullif(?, 0),?,?,?,?,?)";
+      }
+
+      @Override
+      protected void bind(@NonNull final SupportSQLiteStatement statement, final Pedido entity) {
+        statement.bindLong(1, entity.idPedido);
+        statement.bindLong(2, entity.usuarioId);
+        if (entity.nomeCliente == null) {
+          statement.bindNull(3);
+        } else {
+          statement.bindString(3, entity.nomeCliente);
+        }
+        if (entity.emailCliente == null) {
+          statement.bindNull(4);
+        } else {
+          statement.bindString(4, entity.emailCliente);
+        }
+        statement.bindDouble(5, entity.valorTotal);
+        statement.bindLong(6, entity.dataTimestamp);
+      }
+    };
+    this.__insertionAdapterOfItemPedidoFinalizado = new EntityInsertionAdapter<ItemPedidoFinalizado>(__db) {
+      @Override
+      @NonNull
+      protected String createQuery() {
+        return "INSERT OR ABORT INTO `itens_pedido_finalizado` (`id`,`pedidoId`,`produtoId`,`quantidade`,`precoUnitarioHistorico`) VALUES (nullif(?, 0),?,?,?,?)";
+      }
+
+      @Override
+      protected void bind(@NonNull final SupportSQLiteStatement statement,
+          final ItemPedidoFinalizado entity) {
+        statement.bindLong(1, entity.id);
+        statement.bindLong(2, entity.pedidoId);
+        statement.bindLong(3, entity.produtoId);
+        statement.bindLong(4, entity.quantidade);
+        statement.bindDouble(5, entity.precoUnitarioHistorico);
       }
     };
     this.__deletionAdapterOfItemPedido = new EntityDeletionOrUpdateAdapter<ItemPedido>(__db) {
@@ -104,6 +153,31 @@ public final class PedidoDao_Impl implements PedidoDao {
   }
 
   @Override
+  public long inserirPedido(final Pedido pedido) {
+    __db.assertNotSuspendingTransaction();
+    __db.beginTransaction();
+    try {
+      final long _result = __insertionAdapterOfPedido.insertAndReturnId(pedido);
+      __db.setTransactionSuccessful();
+      return _result;
+    } finally {
+      __db.endTransaction();
+    }
+  }
+
+  @Override
+  public void inserirItensPedidoFinalizado(final List<ItemPedidoFinalizado> itens) {
+    __db.assertNotSuspendingTransaction();
+    __db.beginTransaction();
+    try {
+      __insertionAdapterOfItemPedidoFinalizado.insert(itens);
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+    }
+  }
+
+  @Override
   public void removerItem(final ItemPedido item) {
     __db.assertNotSuspendingTransaction();
     __db.beginTransaction();
@@ -129,6 +203,25 @@ public final class PedidoDao_Impl implements PedidoDao {
 
   @Override
   public void limparPedido(final int idUsuario) {
+    __db.assertNotSuspendingTransaction();
+    final SupportSQLiteStatement _stmt = __preparedStmtOfLimparPedido.acquire();
+    int _argIndex = 1;
+    _stmt.bindLong(_argIndex, idUsuario);
+    try {
+      __db.beginTransaction();
+      try {
+        _stmt.executeUpdateDelete();
+        __db.setTransactionSuccessful();
+      } finally {
+        __db.endTransaction();
+      }
+    } finally {
+      __preparedStmtOfLimparPedido.release(_stmt);
+    }
+  }
+
+  @Override
+  public void limparCarrinho(final int idUsuario) {
     __db.assertNotSuspendingTransaction();
     final SupportSQLiteStatement _stmt = __preparedStmtOfLimparPedido.acquire();
     int _argIndex = 1;
@@ -200,6 +293,172 @@ public final class PedidoDao_Impl implements PedidoDao {
         _result.quantidade = _cursor.getInt(_cursorIndexOfQuantidade);
       } else {
         _result = null;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public List<ItemPedidoDetalhado> buscarPedidoDetalhado(final int idUsuario) {
+    final String _sql = "SELECT ip.id AS idItemPedido, ip.produtoId, ip.quantidade, p.nome AS nomeProduto, p.preco AS precoProduto, p.imagemUri FROM item_pedido ip INNER JOIN produtos p ON ip.produtoId = p.id WHERE ip.usuarioId = ?";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, idUsuario);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfIdItemPedido = 0;
+      final int _cursorIndexOfProdutoId = 1;
+      final int _cursorIndexOfQuantidade = 2;
+      final int _cursorIndexOfNomeProduto = 3;
+      final int _cursorIndexOfPrecoProduto = 4;
+      final int _cursorIndexOfImagemUri = 5;
+      final List<ItemPedidoDetalhado> _result = new ArrayList<ItemPedidoDetalhado>(_cursor.getCount());
+      while (_cursor.moveToNext()) {
+        final ItemPedidoDetalhado _item;
+        _item = new ItemPedidoDetalhado();
+        _item.idItemPedido = _cursor.getInt(_cursorIndexOfIdItemPedido);
+        _item.produtoId = _cursor.getInt(_cursorIndexOfProdutoId);
+        _item.quantidade = _cursor.getInt(_cursorIndexOfQuantidade);
+        if (_cursor.isNull(_cursorIndexOfNomeProduto)) {
+          _item.nomeProduto = null;
+        } else {
+          _item.nomeProduto = _cursor.getString(_cursorIndexOfNomeProduto);
+        }
+        _item.precoProduto = _cursor.getDouble(_cursorIndexOfPrecoProduto);
+        if (_cursor.isNull(_cursorIndexOfImagemUri)) {
+          _item.imagemUri = null;
+        } else {
+          _item.imagemUri = _cursor.getString(_cursorIndexOfImagemUri);
+        }
+        _result.add(_item);
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public List<Pedido> buscarTodosOsPedidos() {
+    final String _sql = "SELECT * FROM pedidos ORDER BY dataTimestamp DESC";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfIdPedido = CursorUtil.getColumnIndexOrThrow(_cursor, "idPedido");
+      final int _cursorIndexOfUsuarioId = CursorUtil.getColumnIndexOrThrow(_cursor, "usuarioId");
+      final int _cursorIndexOfNomeCliente = CursorUtil.getColumnIndexOrThrow(_cursor, "nomeCliente");
+      final int _cursorIndexOfEmailCliente = CursorUtil.getColumnIndexOrThrow(_cursor, "emailCliente");
+      final int _cursorIndexOfValorTotal = CursorUtil.getColumnIndexOrThrow(_cursor, "valorTotal");
+      final int _cursorIndexOfDataTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "dataTimestamp");
+      final List<Pedido> _result = new ArrayList<Pedido>(_cursor.getCount());
+      while (_cursor.moveToNext()) {
+        final Pedido _item;
+        _item = new Pedido();
+        _item.idPedido = _cursor.getInt(_cursorIndexOfIdPedido);
+        _item.usuarioId = _cursor.getInt(_cursorIndexOfUsuarioId);
+        if (_cursor.isNull(_cursorIndexOfNomeCliente)) {
+          _item.nomeCliente = null;
+        } else {
+          _item.nomeCliente = _cursor.getString(_cursorIndexOfNomeCliente);
+        }
+        if (_cursor.isNull(_cursorIndexOfEmailCliente)) {
+          _item.emailCliente = null;
+        } else {
+          _item.emailCliente = _cursor.getString(_cursorIndexOfEmailCliente);
+        }
+        _item.valorTotal = _cursor.getDouble(_cursorIndexOfValorTotal);
+        _item.dataTimestamp = _cursor.getLong(_cursorIndexOfDataTimestamp);
+        _result.add(_item);
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public List<ItemPedidoDetalhado> buscarItensDoPedidoFinalizado(final int idPedido) {
+    final String _sql = "SELECT ipf.id AS idItemPedido, ipf.pedidoId, ipf.produtoId, ipf.quantidade, ipf.precoUnitarioHistorico AS precoProduto, p.nome AS nomeProduto, p.imagemUri FROM itens_pedido_finalizado ipf INNER JOIN produtos p ON ipf.produtoId = p.id WHERE ipf.pedidoId = ?";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, idPedido);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfIdItemPedido = 0;
+      final int _cursorIndexOfProdutoId = 2;
+      final int _cursorIndexOfQuantidade = 3;
+      final int _cursorIndexOfPrecoProduto = 4;
+      final int _cursorIndexOfNomeProduto = 5;
+      final int _cursorIndexOfImagemUri = 6;
+      final List<ItemPedidoDetalhado> _result = new ArrayList<ItemPedidoDetalhado>(_cursor.getCount());
+      while (_cursor.moveToNext()) {
+        final ItemPedidoDetalhado _item;
+        _item = new ItemPedidoDetalhado();
+        _item.idItemPedido = _cursor.getInt(_cursorIndexOfIdItemPedido);
+        _item.produtoId = _cursor.getInt(_cursorIndexOfProdutoId);
+        _item.quantidade = _cursor.getInt(_cursorIndexOfQuantidade);
+        _item.precoProduto = _cursor.getDouble(_cursorIndexOfPrecoProduto);
+        if (_cursor.isNull(_cursorIndexOfNomeProduto)) {
+          _item.nomeProduto = null;
+        } else {
+          _item.nomeProduto = _cursor.getString(_cursorIndexOfNomeProduto);
+        }
+        if (_cursor.isNull(_cursorIndexOfImagemUri)) {
+          _item.imagemUri = null;
+        } else {
+          _item.imagemUri = _cursor.getString(_cursorIndexOfImagemUri);
+        }
+        _result.add(_item);
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public List<Pedido> buscarPedidosPorUsuario(final int idUsuario) {
+    final String _sql = "SELECT * FROM pedidos WHERE usuarioId = ? ORDER BY idPedido DESC";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, idUsuario);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfIdPedido = CursorUtil.getColumnIndexOrThrow(_cursor, "idPedido");
+      final int _cursorIndexOfUsuarioId = CursorUtil.getColumnIndexOrThrow(_cursor, "usuarioId");
+      final int _cursorIndexOfNomeCliente = CursorUtil.getColumnIndexOrThrow(_cursor, "nomeCliente");
+      final int _cursorIndexOfEmailCliente = CursorUtil.getColumnIndexOrThrow(_cursor, "emailCliente");
+      final int _cursorIndexOfValorTotal = CursorUtil.getColumnIndexOrThrow(_cursor, "valorTotal");
+      final int _cursorIndexOfDataTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "dataTimestamp");
+      final List<Pedido> _result = new ArrayList<Pedido>(_cursor.getCount());
+      while (_cursor.moveToNext()) {
+        final Pedido _item;
+        _item = new Pedido();
+        _item.idPedido = _cursor.getInt(_cursorIndexOfIdPedido);
+        _item.usuarioId = _cursor.getInt(_cursorIndexOfUsuarioId);
+        if (_cursor.isNull(_cursorIndexOfNomeCliente)) {
+          _item.nomeCliente = null;
+        } else {
+          _item.nomeCliente = _cursor.getString(_cursorIndexOfNomeCliente);
+        }
+        if (_cursor.isNull(_cursorIndexOfEmailCliente)) {
+          _item.emailCliente = null;
+        } else {
+          _item.emailCliente = _cursor.getString(_cursorIndexOfEmailCliente);
+        }
+        _item.valorTotal = _cursor.getDouble(_cursorIndexOfValorTotal);
+        _item.dataTimestamp = _cursor.getLong(_cursorIndexOfDataTimestamp);
+        _result.add(_item);
       }
       return _result;
     } finally {

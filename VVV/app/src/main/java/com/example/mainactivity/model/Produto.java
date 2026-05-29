@@ -14,4 +14,5 @@ public class Produto {
     public String imagemUri;
     public int usuarioId;
     public boolean isDestaque;
+    public String videoUri;//igual img
 }

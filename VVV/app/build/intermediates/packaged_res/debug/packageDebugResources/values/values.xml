@@ -1,21 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="Pink">#051541</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="colorAccent">#1D828F</color>
+    <color name="colorBackground">#F0F0F0</color>
+    <color name="colorError">#D32F2F</color>
+    <color name="colorPrimary">#135D66</color>
+    <color name="colorPrimaryDark">#0C3B42</color>
+    <color name="colorSuccess">#388E3C</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="ic_launcher_background">#D4D4D4</color>
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#757575</color>
+    <color name="textColorWhite">#FFFFFF</color>
     <string name="app_name">VVV - Vitrine Virtual de Vendas</string>
     <string name="btn_finalizar">Finalizar Pedido</string>
     <string name="btn_redefinirSenha">Redefinir Senha</string>
     <string name="btn_sair">Sair da Conta</string>
+    <string name="gcm_defaultSenderId" translatable="false">60385631788</string>
+    <string name="google_api_key" translatable="false">AIzaSyDcve22MzLc4uOC4ZFCAVTp3v9tgEGncc0</string>
+    <string name="google_app_id" translatable="false">1:60385631788:android:ba07dac0447292f9c3bb89</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDcve22MzLc4uOC4ZFCAVTp3v9tgEGncc0</string>
+    <string name="google_storage_bucket" translatable="false">vitrinevirtual-7a064.firebasestorage.app</string>
     <string name="hint_buscar">Buscar produto...</string>
     <string name="msg_logout">Sessão encerrada com sucesso</string>
     <string name="pedido_vazio">Seu pedido está vazio.</string>
+    <string name="project_id" translatable="false">vitrinevirtual-7a064</string>
     <string name="texto_visitante">Visitante</string>
     <string name="titulo_pedido">Meu Pedido</string>
     <string name="titulo_perfil">Meu Perfil</string>
     <style name="Base.Theme.MainActivity" parent="Theme.Material3.DayNight.NoActionBar">
         
         
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/textColorWhite</item>
+
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorSecondaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnSecondary">@color/textColorWhite</item>
+
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+
+        <item name="android:textColorHint">@color/textColorSecondary</item>
+
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        
+        <item name="shapeAppearanceSmallComponent">@style/FormatoGlobalBotoes</item>
+        
+        <item name="colorSecondaryContainer">?attr/colorSecondary</item>
+        <item name="colorOnSecondaryContainer">@android:color/white</item>
+    </style>
+    <style name="FormatoGlobalBotoes" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50dp</item>
     </style>
     <style name="Theme.MainActivity" parent="Base.Theme.MainActivity"/>
+    <style name="colorBtnSecondary" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">?attr/colorSecondary</item>
+
+        <item name="strokeColor">?attr/colorSecondary</item>
+        <item name="strokeWidth">1dp</item>
+
+        <item name="backgroundTint">@android:color/transparent</item>
+
+        <item name="cornerRadius">12dp</item>
+    </style>
 </resources>

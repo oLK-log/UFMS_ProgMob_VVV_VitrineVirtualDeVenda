@@ -41,4 +41,7 @@ public interface ProdutoDao {
     //Query para buscar um produto por nome
     @Query("SELECT * FROM produtos WHERE nome LIKE '%' || :termoBusca || '%'")
     List<Produto> buscarProdutosPorNome(String termoBusca);
+    //Query para retornar a contagem de produtos de um lojista
+    @Query("SELECT COUNT(*) FROM produtos WHERE usuarioId = :idUsuario")
+    int contarProdutosDoLojista(int idUsuario);
 }

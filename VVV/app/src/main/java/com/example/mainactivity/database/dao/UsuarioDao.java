@@ -4,13 +4,17 @@ package com.example.mainactivity.database.dao;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.mainactivity.model.Usuario;
+import java.util.List;
 
 @Dao
 public interface UsuarioDao {
     @Insert
     long cadastrar(Usuario usuario);
+    @Update
+    void atualizar(Usuario usuario);
 
     //query que buscar tudo do usuario que tiver determinado Login e Senha
     @Query("SELECT * FROM usuarios WHERE email = :email AND senha = :senha LIMIT 1")
@@ -25,4 +29,10 @@ public interface UsuarioDao {
     //Query para atualizar dados de um usuario
     @androidx.room.Update
     void atualizarUsuario(Usuario usuario);
+    //buscar usuario pelo email
+    @Query("SELECT * FROM usuarios WHERE email = :email LIMIT 1")
+    Usuario buscarEmail(String email);
+    //buscar todos os usuarios
+    @Query("SELECT * FROM usuarios")
+    List<Usuario> buscarTodos();
 }

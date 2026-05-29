@@ -1,5 +1,88 @@
 package com.example.mainactivity.core;
 
+import android.os.Bundle;
+import android.util.Patterns;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mainactivity.R;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+
+public class RedefinirSenhaActivity extends AppCompatActivity{
+    private TextInputEditText editEmailRecuperacao;
+    private Button btnEnviarLink;
+    private TextView txtVoltarLogin;
+    private FirebaseAuth auth;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_redefinir_senha);
+
+        //inicializar firebase
+        auth = FirebaseAuth.getInstance();
+
+        editEmailRecuperacao= findViewById(R.id.editEmailRecuperacao);
+        btnEnviarLink = findViewById(R.id.btnEnviarLink);
+        txtVoltarLogin = findViewById(R.id.txtVoltarLogin);
+
+        txtVoltarLogin.setOnClickListener(v -> finish());
+
+        btnEnviarLink.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                enviarEmailRecuperacao();
+            }
+        });
+    }
+
+    private void enviarEmailRecuperacao(){
+        String email = editEmailRecuperacao.getText().toString().trim();
+        //validacoes
+        if(email.isEmpty()){
+            Toast.makeText(this, "O campo não pode estar vazio!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            Toast.makeText(this, "Insira um e-mail válido!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        btnEnviarLink.setEnabled(false);
+        btnEnviarLink.setText("Enviando...");
+
+        //conectando/solicitando ao firebase
+        auth.sendPasswordResetEmail(email).addOnCompleteListener(
+                task -> {
+                    btnEnviarLink.setEnabled(true);
+                    btnEnviarLink.setText("Enviar Link");
+
+                    if(task.isSuccessful()){
+                        Toast.makeText(RedefinirSenhaActivity.this, "E-mail de recuperação enviado! Verifique sua caixa de entrada.", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }else{
+                        Toast.makeText(RedefinirSenhaActivity.this, "Erro ao enviar. Verifique se o e-mail está correto!", Toast.LENGTH_SHORT).show();
+                        String erroExato = "Erro desconhecido";
+                        if (task.getException() != null) {
+                            erroExato = task.getException().getMessage();
+                        }
+
+                        Toast.makeText(RedefinirSenhaActivity.this,
+                                "Falha: " + erroExato,
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+}
+
+
+
+/*
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +98,8 @@ import com.example.mainactivity.R;
 import com.example.mainactivity.database.AppDatabase;
 import com.example.mainactivity.database.dao.UsuarioDao;
 import com.example.mainactivity.model.Usuario;
+
+
 
 public class RedefinirSenhaActivity extends AppCompatActivity {
     private EditText editNomeRedefinir, editEmailRedefinir, editSenhaRedefinir;
@@ -63,3 +148,4 @@ public class RedefinirSenhaActivity extends AppCompatActivity {
         }
     }
 }
+*/

@@ -41,14 +41,16 @@ public final class AppDatabase_Impl extends AppDatabase {
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(5) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS `usuarios` (`idUsuario` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nome` TEXT, `email` TEXT, `senha` TEXT, `fotoPath` TEXT, `tipoPerfil` TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `produtos` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nome` TEXT, `descricao` TEXT, `preco` REAL NOT NULL, `imagemUri` TEXT, `usuarioId` INTEGER NOT NULL, `isDestaque` INTEGER NOT NULL)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `usuarios` (`idUsuario` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nome` TEXT, `email` TEXT, `senha` TEXT, `fotoPath` TEXT, `tipoPerfil` TEXT, `endereco` TEXT, `corPrimariaLoja` TEXT, `corSecundariaLoja` TEXT, `corFundoLoja` TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `produtos` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nome` TEXT, `descricao` TEXT, `preco` REAL NOT NULL, `imagemUri` TEXT, `usuarioId` INTEGER NOT NULL, `isDestaque` INTEGER NOT NULL, `videoUri` TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `item_pedido` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `usuarioId` INTEGER NOT NULL, `produtoId` INTEGER NOT NULL, `quantidade` INTEGER NOT NULL)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `pedidos` (`idPedido` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `usuarioId` INTEGER NOT NULL, `nomeCliente` TEXT, `emailCliente` TEXT, `valorTotal` REAL NOT NULL, `dataTimestamp` INTEGER NOT NULL)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `itens_pedido_finalizado` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `pedidoId` INTEGER NOT NULL, `produtoId` INTEGER NOT NULL, `quantidade` INTEGER NOT NULL, `precoUnitarioHistorico` REAL NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '69b1610b9e2f78f41a07e1955c52d2d3')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b0fd76dc8ae49f23a703f9cb6d4da7bb')");
       }
 
       @Override
@@ -56,6 +58,8 @@ public final class AppDatabase_Impl extends AppDatabase {
         db.execSQL("DROP TABLE IF EXISTS `usuarios`");
         db.execSQL("DROP TABLE IF EXISTS `produtos`");
         db.execSQL("DROP TABLE IF EXISTS `item_pedido`");
+        db.execSQL("DROP TABLE IF EXISTS `pedidos`");
+        db.execSQL("DROP TABLE IF EXISTS `itens_pedido_finalizado`");
         final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
         if (_callbacks != null) {
           for (RoomDatabase.Callback _callback : _callbacks) {
@@ -99,13 +103,17 @@ public final class AppDatabase_Impl extends AppDatabase {
       @NonNull
       public RoomOpenHelper.ValidationResult onValidateSchema(
           @NonNull final SupportSQLiteDatabase db) {
-        final HashMap<String, TableInfo.Column> _columnsUsuarios = new HashMap<String, TableInfo.Column>(6);
+        final HashMap<String, TableInfo.Column> _columnsUsuarios = new HashMap<String, TableInfo.Column>(10);
         _columnsUsuarios.put("idUsuario", new TableInfo.Column("idUsuario", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUsuarios.put("nome", new TableInfo.Column("nome", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUsuarios.put("email", new TableInfo.Column("email", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUsuarios.put("senha", new TableInfo.Column("senha", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUsuarios.put("fotoPath", new TableInfo.Column("fotoPath", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUsuarios.put("tipoPerfil", new TableInfo.Column("tipoPerfil", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsUsuarios.put("endereco", new TableInfo.Column("endereco", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsUsuarios.put("corPrimariaLoja", new TableInfo.Column("corPrimariaLoja", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsUsuarios.put("corSecundariaLoja", new TableInfo.Column("corSecundariaLoja", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsUsuarios.put("corFundoLoja", new TableInfo.Column("corFundoLoja", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysUsuarios = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesUsuarios = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoUsuarios = new TableInfo("usuarios", _columnsUsuarios, _foreignKeysUsuarios, _indicesUsuarios);
@@ -115,7 +123,7 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoUsuarios + "\n"
                   + " Found:\n" + _existingUsuarios);
         }
-        final HashMap<String, TableInfo.Column> _columnsProdutos = new HashMap<String, TableInfo.Column>(7);
+        final HashMap<String, TableInfo.Column> _columnsProdutos = new HashMap<String, TableInfo.Column>(8);
         _columnsProdutos.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsProdutos.put("nome", new TableInfo.Column("nome", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsProdutos.put("descricao", new TableInfo.Column("descricao", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -123,6 +131,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         _columnsProdutos.put("imagemUri", new TableInfo.Column("imagemUri", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsProdutos.put("usuarioId", new TableInfo.Column("usuarioId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsProdutos.put("isDestaque", new TableInfo.Column("isDestaque", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsProdutos.put("videoUri", new TableInfo.Column("videoUri", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysProdutos = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesProdutos = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoProdutos = new TableInfo("produtos", _columnsProdutos, _foreignKeysProdutos, _indicesProdutos);
@@ -146,9 +155,40 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoItemPedido + "\n"
                   + " Found:\n" + _existingItemPedido);
         }
+        final HashMap<String, TableInfo.Column> _columnsPedidos = new HashMap<String, TableInfo.Column>(6);
+        _columnsPedidos.put("idPedido", new TableInfo.Column("idPedido", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPedidos.put("usuarioId", new TableInfo.Column("usuarioId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPedidos.put("nomeCliente", new TableInfo.Column("nomeCliente", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPedidos.put("emailCliente", new TableInfo.Column("emailCliente", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPedidos.put("valorTotal", new TableInfo.Column("valorTotal", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsPedidos.put("dataTimestamp", new TableInfo.Column("dataTimestamp", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysPedidos = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesPedidos = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoPedidos = new TableInfo("pedidos", _columnsPedidos, _foreignKeysPedidos, _indicesPedidos);
+        final TableInfo _existingPedidos = TableInfo.read(db, "pedidos");
+        if (!_infoPedidos.equals(_existingPedidos)) {
+          return new RoomOpenHelper.ValidationResult(false, "pedidos(com.example.mainactivity.model.Pedido).\n"
+                  + " Expected:\n" + _infoPedidos + "\n"
+                  + " Found:\n" + _existingPedidos);
+        }
+        final HashMap<String, TableInfo.Column> _columnsItensPedidoFinalizado = new HashMap<String, TableInfo.Column>(5);
+        _columnsItensPedidoFinalizado.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsItensPedidoFinalizado.put("pedidoId", new TableInfo.Column("pedidoId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsItensPedidoFinalizado.put("produtoId", new TableInfo.Column("produtoId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsItensPedidoFinalizado.put("quantidade", new TableInfo.Column("quantidade", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsItensPedidoFinalizado.put("precoUnitarioHistorico", new TableInfo.Column("precoUnitarioHistorico", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysItensPedidoFinalizado = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesItensPedidoFinalizado = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoItensPedidoFinalizado = new TableInfo("itens_pedido_finalizado", _columnsItensPedidoFinalizado, _foreignKeysItensPedidoFinalizado, _indicesItensPedidoFinalizado);
+        final TableInfo _existingItensPedidoFinalizado = TableInfo.read(db, "itens_pedido_finalizado");
+        if (!_infoItensPedidoFinalizado.equals(_existingItensPedidoFinalizado)) {
+          return new RoomOpenHelper.ValidationResult(false, "itens_pedido_finalizado(com.example.mainactivity.model.ItemPedidoFinalizado).\n"
+                  + " Expected:\n" + _infoItensPedidoFinalizado + "\n"
+                  + " Found:\n" + _existingItensPedidoFinalizado);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "69b1610b9e2f78f41a07e1955c52d2d3", "073958652de9c8807f89a9260a594cfb");
+    }, "b0fd76dc8ae49f23a703f9cb6d4da7bb", "4a3e7961dd6edcf121a3deb339bfbb5f");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;
@@ -159,7 +199,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     final HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "usuarios","produtos","item_pedido");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "usuarios","produtos","item_pedido","pedidos","itens_pedido_finalizado");
   }
 
   @Override
@@ -171,6 +211,8 @@ public final class AppDatabase_Impl extends AppDatabase {
       _db.execSQL("DELETE FROM `usuarios`");
       _db.execSQL("DELETE FROM `produtos`");
       _db.execSQL("DELETE FROM `item_pedido`");
+      _db.execSQL("DELETE FROM `pedidos`");
+      _db.execSQL("DELETE FROM `itens_pedido_finalizado`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();

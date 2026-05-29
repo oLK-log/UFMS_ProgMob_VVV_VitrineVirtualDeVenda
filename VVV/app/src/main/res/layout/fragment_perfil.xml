@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFAFA">
+    android:background="?android:attr/colorBackground">
 
     <TextView
         android:id="@+id/txtTituloAbaPerfil"
@@ -13,8 +13,8 @@
         android:text="Meu Perfil"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#212121"
-        android:background="#FFFFFF"
+        android:textColor="?android:attr/textColorPrimary"
+        android:background="@android:color/transparent"
         android:elevation="4dp" />
 
     <LinearLayout
@@ -22,7 +22,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtTituloAbaPerfil"
-        android:layout_marginTop="50dp"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="20dp">
@@ -33,6 +32,7 @@
             app:cardCornerRadius="70dp"
             app:cardElevation="8dp"
             android:layout_marginBottom="16dp">
+
             <ImageView
                 android:id="@+id/imgAbaPerfil"
                 android:layout_width="match_parent"
@@ -48,7 +48,7 @@
             android:text="Nome do Usuário"
             android:textSize="26sp"
             android:textStyle="bold"
-            android:textColor="#212121" />
+            android:textColor="?android:attr/textColorPrimary" />
 
         <TextView
             android:id="@+id/txtTipoPerfil"
@@ -56,9 +56,154 @@
             android:layout_height="wrap_content"
             android:text="Tipo de Usuário"
             android:textSize="16sp"
-            android:textColor="#757575"
+            android:textColor="?android:attr/textColorSecondary"
             android:layout_marginTop="4dp"/>
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layoutDadosAbaPerfil"
+        android:layout_above="@+id/btnHistoricoPedidos"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/layoutDadosLojista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Endereço da Loja (Ex: Av. Afonso Pena)"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editEnderecoLojista"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPostalAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Cor Principal (Ex: #135D66)"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editCorPrincipal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:id="@+id/btnPaletaPrimaria"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="?attr/colorSecondary"
+                    android:contentDescription="Escolher Cor na Paleta" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Cor Secundária (Ex: #F0F0F0)"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editCorSecundaria"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:id="@+id/btnPaletaSecundaria"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="?attr/colorSecondary"
+                    android:contentDescription="Escolher Cor na Paleta" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="24dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Cor de Fundo (Ex: #FFFFFF)"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editCorFundo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:id="@+id/btnPaletaFundo"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="?attr/colorSecondary"
+                    android:contentDescription="Escolher Cor na Paleta" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSalvarDadosLojista"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Salvar Configurações" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnHistoricoPedidos"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_above="@id/btnSairSessao"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="8dp"
+        android:text="Histórico de Pedidos"
+        android:textSize="16sp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:textColor="?attr/colorPrimary"
+        app:strokeColor="?attr/colorPrimary"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/btnSairSessao"
@@ -69,6 +214,7 @@
         android:text="@string/btn_sair"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:backgroundTint="#D32F2F"
-        android:textColor="#FFFFFF" />
+        app:backgroundTint="?attr/colorError"
+        android:textColor="?attr/colorOnError" />
+
 </RelativeLayout>

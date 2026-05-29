@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -30,11 +31,15 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
     //variavel para guardar foto antes de salvar
     private Bitmap fotoCapturada = null;
     private RadioGroup rgTipoUsuario;
+    private TextView txtRegraTamanho, txtRegraMaiuscula, txtRegraNumero, txtRegraEspecial;
+    private boolean isSenhaForte = false;
+    private com.google.firebase.auth.FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_usuario); //conexao xom xlm
+        auth = com.google.firebase.auth.FirebaseAuth.getInstance();
         //fazer a conexao java e xml
         imgFotoPerfil = findViewById(R.id.imgFotoPerfil);
         editNome = findViewById(R.id.editNome);
@@ -43,6 +48,24 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
         btnTirarFoto = findViewById(R.id.btnTirarFoto);
         btnCadastrar = findViewById(R.id.btnCadastrar);
         rgTipoUsuario = findViewById(R.id.rgTipoUsuario);
+        txtRegraEspecial = findViewById(R.id.txtRegraEspecial);
+        txtRegraMaiuscula = findViewById(R.id.txtRegraMaiuscula);
+        txtRegraNumero = findViewById(R.id.txtRegraNumero);
+        txtRegraTamanho = findViewById(R.id.txtRegraTamanho);
+
+        //para validacao de senha
+        editSenha.addTextChangedListener(new android.text.TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                validarForcaDaSenha(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(android.text.Editable s) {}
+        });
 
         //configurar acao da camera
         btnTirarFoto.setOnClickListener(new View.OnClickListener(){
@@ -92,45 +115,92 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
         }
     }
 
-    //Banco de DAdos - ROOM
+    //Banco de DAdos - ROOM e Firebase
     private void salvarUsuarioNoBanco() {
         String nome = editNome.getText().toString();
-        String email = editEmail.getText().toString();
+        String email = editEmail.getText().toString().trim();
         String senha = editSenha.getText().toString();
 
+        //validacoes
         if(nome.isEmpty() || email.isEmpty() || senha.isEmpty()) {//se vazio
             Toast.makeText(this, "Preencha todos os campo!", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        String caminhoFoto = salvarImagemLocal(fotoCapturada);
-
-        //tipo de perfil
-        String tipoSelecionado = "CLIENTE";
-        int idRadioSelecionado = rgTipoUsuario.getCheckedRadioButtonId();
-        if(idRadioSelecionado == R.id.rbLojista){
-            tipoSelecionado = "LOJISTA";
+        // Verifica se o formato do e-mail é válido
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(this, "Por favor, insira um e-mail válido!", Toast.LENGTH_SHORT).show();
+            return;
         }
+        //verifica se a senha tá forte
+        if (!isSenhaForte) {
+            Toast.makeText(this, "A senha ainda não cumpre todos os requisitos de segurança!", Toast.LENGTH_LONG).show();
+            return; // Bloqueia o registo
+        }
+        //desativar botao
+        btnCadastrar.setEnabled(false);
+        btnCadastrar.setText("Criando conta...");
 
-        //molde usuario
-        Usuario novoUsuario = new Usuario();
-        novoUsuario.nome = nome;
-        novoUsuario.email = email;
-        novoUsuario.senha = senha;
-        novoUsuario.fotoPath = caminhoFoto;
-        novoUsuario.tipoPerfil=tipoSelecionado;
+        //aqui houve a mudanca para adaptar ao firebase
+        auth.createUserWithEmailAndPassword(email, senha)
+                .addOnCompleteListener(this, task -> {
+                    if(task.isSuccessful()){
 
-        //salva o molde
-        AppDatabase.getInstance(this).usuarioDao().cadastrar(novoUsuario);
+                        String caminhoFoto = salvarImagemLocal(fotoCapturada);
+                        //tipo de perfil
+                        String tipoSelecionado = "CLIENTE";
+                        int idRadioSelecionado = rgTipoUsuario.getCheckedRadioButtonId();
+                        if(idRadioSelecionado == R.id.rbLojista){
+                            tipoSelecionado = "LOJISTA";
+                        }
+                        //mantendo seguranca com hash
+                        String senhaComHash = com.example.mainactivity.security.SecurityUtils.hashPassword(senha);
 
-        //Limpar campis
-        Toast.makeText(this, "Usuário cadastrado com Suscesso!", Toast.LENGTH_LONG).show();
-        editNome.setText("");
-        editEmail.setText("");
-        editSenha.setText("");
-        imgFotoPerfil.setImageBitmap(null);
+                        //molde usuario
+                        Usuario novoUsuario = new Usuario();
+                        novoUsuario.nome = nome;
+                        novoUsuario.email = email;
+                        novoUsuario.senha = senhaComHash;//salvar a senha com hash
+                        novoUsuario.fotoPath = caminhoFoto;
+                        novoUsuario.tipoPerfil=tipoSelecionado;
+                        //salva o molde
+                        AppDatabase.getInstance(this).usuarioDao().cadastrar(novoUsuario);
 
+                        //Limpar campis
+                        Toast.makeText(this, "Usuário cadastrado com Suscesso!", Toast.LENGTH_LONG).show();
+                        editNome.setText("");
+                        editEmail.setText("");
+                        editSenha.setText("");
+                        imgFotoPerfil.setImageBitmap(null);
 
+                        //voltar tela de login
+                        finish();
+                    } else{
+                        btnCadastrar.setEnabled(true);
+                        btnCadastrar.setText("Cadastrar");
+
+                        String mensagemErro = "Erro ao cadastrar na nuvem.";
+                        if(task.getException() != null){
+                            mensagemErro = task.getException().getMessage();
+                        }
+                        Toast.makeText(CadastroUsuarioActivity.this, "Falha:" + mensagemErro, Toast.LENGTH_SHORT).show();
+                    }
+        });
+    }
+
+    private void validarForcaDaSenha(String senha){
+        //aqui usei regex/expressoes regulares
+        boolean temTamanho = senha.length() >= 8;
+        boolean temMaiuscula = senha.matches(".*[A-Z].*");
+        boolean temNumero = senha.matches(".*[0-9].*");
+        boolean temEspecial = senha.matches(".*[@#$%^&+=!?_*~\\-].*");
+
+        //conf cores
+        txtRegraTamanho.setTextColor(android.graphics.Color.parseColor(temTamanho ? "#4CAF50" : "#FF0000"));
+        txtRegraMaiuscula.setTextColor(android.graphics.Color.parseColor(temMaiuscula ? "#4CAF50" : "#FF0000"));
+        txtRegraNumero.setTextColor(android.graphics.Color.parseColor(temNumero ? "#4CAF50" : "#FF0000"));
+        txtRegraEspecial.setTextColor(android.graphics.Color.parseColor(temEspecial ? "#4CAF50" : "#FF0000"));
+
+        isSenhaForte = temTamanho && temMaiuscula && temNumero && temEspecial;
     }
 
 }

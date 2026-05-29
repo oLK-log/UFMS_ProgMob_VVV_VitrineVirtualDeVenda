@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,13 +16,13 @@
             android:name=".lojista.CadastroProdutoActivity"
             android:exported="false" />
         <activity
-            android:name=".lojista.LojistaMainActivity"
+            android:name=".lojista.PainelLojistaActivity"
             android:exported="false" />
         <activity
             android:name=".core.CadastroUsuarioActivity"
             android:exported="false" />
         <activity
-            android:name=".core.LoginActivity"
+            android:name=".core.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,13 +32,23 @@
         </activity>
         <activity android:name=".cliente.PainelClienteActivity"
             android:exported="false"/>
-        <activity android:name=".lojista.LojistaMainActivity"
+        <activity android:name=".core.LoginActivity"
             android:exported="false"/>
         <activity android:name=".cliente.DetalhesProdutoActivity"
             android:exported="false"/>
         <activity
             android:name=".core.RedefinirSenhaActivity"
             android:exported="false" />
+        <activity android:name=".cliente.HistoricoPedidoClienteActivity" />
+        <activity
+            android:name=".cliente.MapaLojaClienteActivity"
+            android:exported="false" />
+        <receiver
+            android:name=".lojista.AlarmePremiumReceiver"
+            android:exported="false" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
     </application>
 
 </manifest>

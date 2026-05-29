@@ -1,5 +1,6 @@
 package com.example.mainactivity.cliente;
 
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +21,7 @@ public class DetalhesProdutoActivity extends AppCompatActivity {
     private ImageView imgDetalheProduto;
     private TextView txtDetalhesNome, txtDetalhesPreco, txtDetalhesDescricao;
     private Button btnAdicionarAoPedido;
+    private VideoView videoDetalheProduto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -30,6 +33,7 @@ public class DetalhesProdutoActivity extends AppCompatActivity {
         txtDetalhesPreco = findViewById(R.id.txtDetalhesPreco);
         txtDetalhesDescricao = findViewById(R.id.txtDetalhesDescricao);
         btnAdicionarAoPedido = findViewById(R.id.btnAdicionarAoPedido);
+        videoDetalheProduto = findViewById(R.id.videoDetalheProduto);
 
         //pegar id do produto
         int idProduto = getIntent().getIntExtra("idProdutoDetalhe", -1);
@@ -52,6 +56,7 @@ public class DetalhesProdutoActivity extends AppCompatActivity {
     //esse metodo busca um produto específico por meio do Id
     private void carregarProduto(int id){
         Produto produto = AppDatabase.getInstance(this).produtoDao().buscarProdutoPorId(id);
+        View cardVideoContainer = findViewById(R.id.cardVideoContainer);
 
         if(produto != null){
             txtDetalhesNome.setText(produto.nome);
@@ -66,6 +71,26 @@ public class DetalhesProdutoActivity extends AppCompatActivity {
                 }
             } else{
                 imgDetalheProduto.setImageResource(android.R.drawable.ic_menu_camera);
+            }
+            //carrega video
+            if(produto.videoUri != null && !produto.videoUri.isEmpty()){
+                cardVideoContainer.setVisibility(View.VISIBLE);
+
+                try{
+                    videoDetalheProduto.setVideoURI(Uri.parse(produto.videoUri));
+                    videoDetalheProduto.setOnPreparedListener(new MediaPlayer.OnPreparedListener(){
+                        @Override
+                        public void onPrepared(MediaPlayer mp){
+                            mp.setLooping(true);
+                            mp.setVolume(0f, 0f);
+                            videoDetalheProduto.start();
+                        }
+                    });
+                } catch (Exception e) {
+                    cardVideoContainer.setVisibility(View.GONE);
+                }
+            } else {
+                cardVideoContainer.setVisibility(View.GONE);
             }
 
         }

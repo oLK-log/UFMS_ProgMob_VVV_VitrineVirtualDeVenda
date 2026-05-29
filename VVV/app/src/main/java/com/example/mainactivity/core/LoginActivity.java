@@ -14,8 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.mainactivity.R;
 import com.example.mainactivity.cliente.PainelClienteActivity;
 import com.example.mainactivity.database.AppDatabase;
-import com.example.mainactivity.lojista.LojistaMainActivity;
+import com.example.mainactivity.lojista.PainelLojistaActivity;
 import com.example.mainactivity.model.Usuario;
+import com.example.mainactivity.security.SecurityUtils;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText editLoginEmail, editLoginSenha;
@@ -78,35 +79,39 @@ public class LoginActivity extends AppCompatActivity {
     //banco de dados
     private void tentarLogin() {
         String email = editLoginEmail.getText().toString();
-        String senha = editLoginSenha.getText().toString();
+        String senhaDigitada = editLoginSenha.getText().toString();
 
-        if(email.isEmpty() || senha.isEmpty()) {
+        if(email.isEmpty() || senhaDigitada.isEmpty()) {
             Toast.makeText(this, "Preencha o e-mail e senha!", Toast.LENGTH_SHORT).show();
             return;
         }
+        // Verifica se o formato do e-mail é válido
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(this, "Por favor, insira um e-mail válido!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        Usuario usuarioLogado = AppDatabase.getInstance(this).usuarioDao().fazerLogin(email, senha);
-        if(usuarioLogado != null){
-            //guardar ID do lojista
+        //para aplicar validacao por hash precisamos busca somente o email
+        Usuario usuarioBuscado = AppDatabase.getInstance(this).usuarioDao().buscarEmail(email);
+
+        //posteriormente, verificamos se o usuario exite e se a senha bate com o hash
+        if(usuarioBuscado != null && SecurityUtils.verifyPassword(senhaDigitada, usuarioBuscado.senha)){
             android.content.SharedPreferences preferenciais = getSharedPreferences("sessao_vvv", MODE_PRIVATE);
-            preferenciais.edit().putInt("idUsuario", usuarioLogado.idUsuario).apply();
+            preferenciais.edit().putInt("idUsuario", usuarioBuscado.idUsuario).apply();
             //informar que usuario está logado
-            Toast.makeText(this,"Usuário "+ usuarioLogado.nome + " logado.", Toast.LENGTH_LONG).show();
-
-            //ponto de acesso para a tela principal
-            if(usuarioLogado.tipoPerfil != null && usuarioLogado.tipoPerfil.equals("LOJISTA")) {
-                //intent do Login para Vitrine quando lojista
-                Intent intent = new Intent(LoginActivity.this, LojistaMainActivity.class);
+            Toast.makeText(this,"Usuário "+ usuarioBuscado.nome + " logado.", Toast.LENGTH_LONG).show();
+            if(usuarioBuscado.tipoPerfil != null && usuarioBuscado.tipoPerfil.equals("LOJISTA")){
+                Intent intent = new Intent(LoginActivity.this, PainelLojistaActivity.class);
                 startActivity(intent);
-            } else {
-                //intent para Login como cliente/convidad
+                finish();
+            }else{
                 Intent intent = new Intent(LoginActivity.this, PainelClienteActivity.class);
                 startActivity(intent);
                 finish();
             }
+        } else{
 
-        } else {
-            Toast.makeText(this, "O E-mail ou senha está incorreto! Verifique e tente novamente.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "E-mail ou senha inválido!", Toast.LENGTH_SHORT).show();
         }
     }
 }

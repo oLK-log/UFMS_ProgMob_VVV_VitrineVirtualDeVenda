@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
     android:layout_marginTop="40dp"
-    app:cardCornerRadius="12dp">
+    app:cardCornerRadius="12dp"
+    app:cardBackgroundColor="@android:color/transparent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,6 +20,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:scaleType="centerCrop"
+            android:background="?android:attr/colorBackground"
             android:src="@android:drawable/ic_menu_camera" />
 
         <LinearLayout
@@ -33,6 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nome do Produto"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold"
                 android:textSize="16sp" />
 
@@ -41,8 +44,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 1 un. x R$ 0,00"
-                android:textSize="16dp"
-                android:textColor="#616161" />
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorSecondary" />
         </LinearLayout>
 
         <ImageButton
@@ -51,7 +54,8 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_menu_delete"
-            app:tint="#D32F2F" />
+            app:tint="?attr/colorError" />
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>
 

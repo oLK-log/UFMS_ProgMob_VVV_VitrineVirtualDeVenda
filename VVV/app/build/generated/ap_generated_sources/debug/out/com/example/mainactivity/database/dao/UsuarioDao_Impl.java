@@ -14,6 +14,7 @@ import java.lang.Class;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -33,7 +34,7 @@ public final class UsuarioDao_Impl implements UsuarioDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR ABORT INTO `usuarios` (`idUsuario`,`nome`,`email`,`senha`,`fotoPath`,`tipoPerfil`) VALUES (nullif(?, 0),?,?,?,?,?)";
+        return "INSERT OR ABORT INTO `usuarios` (`idUsuario`,`nome`,`email`,`senha`,`fotoPath`,`tipoPerfil`,`endereco`,`corPrimariaLoja`,`corSecundariaLoja`,`corFundoLoja`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -63,6 +64,26 @@ public final class UsuarioDao_Impl implements UsuarioDao {
           statement.bindNull(6);
         } else {
           statement.bindString(6, entity.tipoPerfil);
+        }
+        if (entity.endereco == null) {
+          statement.bindNull(7);
+        } else {
+          statement.bindString(7, entity.endereco);
+        }
+        if (entity.corPrimariaLoja == null) {
+          statement.bindNull(8);
+        } else {
+          statement.bindString(8, entity.corPrimariaLoja);
+        }
+        if (entity.corSecundariaLoja == null) {
+          statement.bindNull(9);
+        } else {
+          statement.bindString(9, entity.corSecundariaLoja);
+        }
+        if (entity.corFundoLoja == null) {
+          statement.bindNull(10);
+        } else {
+          statement.bindString(10, entity.corFundoLoja);
         }
       }
     };
@@ -70,7 +91,7 @@ public final class UsuarioDao_Impl implements UsuarioDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `usuarios` SET `idUsuario` = ?,`nome` = ?,`email` = ?,`senha` = ?,`fotoPath` = ?,`tipoPerfil` = ? WHERE `idUsuario` = ?";
+        return "UPDATE OR ABORT `usuarios` SET `idUsuario` = ?,`nome` = ?,`email` = ?,`senha` = ?,`fotoPath` = ?,`tipoPerfil` = ?,`endereco` = ?,`corPrimariaLoja` = ?,`corSecundariaLoja` = ?,`corFundoLoja` = ? WHERE `idUsuario` = ?";
       }
 
       @Override
@@ -101,7 +122,27 @@ public final class UsuarioDao_Impl implements UsuarioDao {
         } else {
           statement.bindString(6, entity.tipoPerfil);
         }
-        statement.bindLong(7, entity.idUsuario);
+        if (entity.endereco == null) {
+          statement.bindNull(7);
+        } else {
+          statement.bindString(7, entity.endereco);
+        }
+        if (entity.corPrimariaLoja == null) {
+          statement.bindNull(8);
+        } else {
+          statement.bindString(8, entity.corPrimariaLoja);
+        }
+        if (entity.corSecundariaLoja == null) {
+          statement.bindNull(9);
+        } else {
+          statement.bindString(9, entity.corSecundariaLoja);
+        }
+        if (entity.corFundoLoja == null) {
+          statement.bindNull(10);
+        } else {
+          statement.bindString(10, entity.corFundoLoja);
+        }
+        statement.bindLong(11, entity.idUsuario);
       }
     };
   }
@@ -114,6 +155,18 @@ public final class UsuarioDao_Impl implements UsuarioDao {
       final long _result = __insertionAdapterOfUsuario.insertAndReturnId(usuario);
       __db.setTransactionSuccessful();
       return _result;
+    } finally {
+      __db.endTransaction();
+    }
+  }
+
+  @Override
+  public void atualizar(final Usuario usuario) {
+    __db.assertNotSuspendingTransaction();
+    __db.beginTransaction();
+    try {
+      __updateAdapterOfUsuario.handle(usuario);
+      __db.setTransactionSuccessful();
     } finally {
       __db.endTransaction();
     }
@@ -156,6 +209,10 @@ public final class UsuarioDao_Impl implements UsuarioDao {
       final int _cursorIndexOfSenha = CursorUtil.getColumnIndexOrThrow(_cursor, "senha");
       final int _cursorIndexOfFotoPath = CursorUtil.getColumnIndexOrThrow(_cursor, "fotoPath");
       final int _cursorIndexOfTipoPerfil = CursorUtil.getColumnIndexOrThrow(_cursor, "tipoPerfil");
+      final int _cursorIndexOfEndereco = CursorUtil.getColumnIndexOrThrow(_cursor, "endereco");
+      final int _cursorIndexOfCorPrimariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corPrimariaLoja");
+      final int _cursorIndexOfCorSecundariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corSecundariaLoja");
+      final int _cursorIndexOfCorFundoLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corFundoLoja");
       final Usuario _result;
       if (_cursor.moveToFirst()) {
         _result = new Usuario();
@@ -184,6 +241,26 @@ public final class UsuarioDao_Impl implements UsuarioDao {
           _result.tipoPerfil = null;
         } else {
           _result.tipoPerfil = _cursor.getString(_cursorIndexOfTipoPerfil);
+        }
+        if (_cursor.isNull(_cursorIndexOfEndereco)) {
+          _result.endereco = null;
+        } else {
+          _result.endereco = _cursor.getString(_cursorIndexOfEndereco);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorPrimariaLoja)) {
+          _result.corPrimariaLoja = null;
+        } else {
+          _result.corPrimariaLoja = _cursor.getString(_cursorIndexOfCorPrimariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorSecundariaLoja)) {
+          _result.corSecundariaLoja = null;
+        } else {
+          _result.corSecundariaLoja = _cursor.getString(_cursorIndexOfCorSecundariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorFundoLoja)) {
+          _result.corFundoLoja = null;
+        } else {
+          _result.corFundoLoja = _cursor.getString(_cursorIndexOfCorFundoLoja);
         }
       } else {
         _result = null;
@@ -210,6 +287,10 @@ public final class UsuarioDao_Impl implements UsuarioDao {
       final int _cursorIndexOfSenha = CursorUtil.getColumnIndexOrThrow(_cursor, "senha");
       final int _cursorIndexOfFotoPath = CursorUtil.getColumnIndexOrThrow(_cursor, "fotoPath");
       final int _cursorIndexOfTipoPerfil = CursorUtil.getColumnIndexOrThrow(_cursor, "tipoPerfil");
+      final int _cursorIndexOfEndereco = CursorUtil.getColumnIndexOrThrow(_cursor, "endereco");
+      final int _cursorIndexOfCorPrimariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corPrimariaLoja");
+      final int _cursorIndexOfCorSecundariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corSecundariaLoja");
+      final int _cursorIndexOfCorFundoLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corFundoLoja");
       final Usuario _result;
       if (_cursor.moveToFirst()) {
         _result = new Usuario();
@@ -238,6 +319,26 @@ public final class UsuarioDao_Impl implements UsuarioDao {
           _result.tipoPerfil = null;
         } else {
           _result.tipoPerfil = _cursor.getString(_cursorIndexOfTipoPerfil);
+        }
+        if (_cursor.isNull(_cursorIndexOfEndereco)) {
+          _result.endereco = null;
+        } else {
+          _result.endereco = _cursor.getString(_cursorIndexOfEndereco);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorPrimariaLoja)) {
+          _result.corPrimariaLoja = null;
+        } else {
+          _result.corPrimariaLoja = _cursor.getString(_cursorIndexOfCorPrimariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorSecundariaLoja)) {
+          _result.corSecundariaLoja = null;
+        } else {
+          _result.corSecundariaLoja = _cursor.getString(_cursorIndexOfCorSecundariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorFundoLoja)) {
+          _result.corFundoLoja = null;
+        } else {
+          _result.corFundoLoja = _cursor.getString(_cursorIndexOfCorFundoLoja);
         }
       } else {
         _result = null;
@@ -274,6 +375,10 @@ public final class UsuarioDao_Impl implements UsuarioDao {
       final int _cursorIndexOfSenha = CursorUtil.getColumnIndexOrThrow(_cursor, "senha");
       final int _cursorIndexOfFotoPath = CursorUtil.getColumnIndexOrThrow(_cursor, "fotoPath");
       final int _cursorIndexOfTipoPerfil = CursorUtil.getColumnIndexOrThrow(_cursor, "tipoPerfil");
+      final int _cursorIndexOfEndereco = CursorUtil.getColumnIndexOrThrow(_cursor, "endereco");
+      final int _cursorIndexOfCorPrimariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corPrimariaLoja");
+      final int _cursorIndexOfCorSecundariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corSecundariaLoja");
+      final int _cursorIndexOfCorFundoLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corFundoLoja");
       final Usuario _result;
       if (_cursor.moveToFirst()) {
         _result = new Usuario();
@@ -303,8 +408,186 @@ public final class UsuarioDao_Impl implements UsuarioDao {
         } else {
           _result.tipoPerfil = _cursor.getString(_cursorIndexOfTipoPerfil);
         }
+        if (_cursor.isNull(_cursorIndexOfEndereco)) {
+          _result.endereco = null;
+        } else {
+          _result.endereco = _cursor.getString(_cursorIndexOfEndereco);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorPrimariaLoja)) {
+          _result.corPrimariaLoja = null;
+        } else {
+          _result.corPrimariaLoja = _cursor.getString(_cursorIndexOfCorPrimariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorSecundariaLoja)) {
+          _result.corSecundariaLoja = null;
+        } else {
+          _result.corSecundariaLoja = _cursor.getString(_cursorIndexOfCorSecundariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorFundoLoja)) {
+          _result.corFundoLoja = null;
+        } else {
+          _result.corFundoLoja = _cursor.getString(_cursorIndexOfCorFundoLoja);
+        }
       } else {
         _result = null;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public Usuario buscarEmail(final String email) {
+    final String _sql = "SELECT * FROM usuarios WHERE email = ? LIMIT 1";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    if (email == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, email);
+    }
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfIdUsuario = CursorUtil.getColumnIndexOrThrow(_cursor, "idUsuario");
+      final int _cursorIndexOfNome = CursorUtil.getColumnIndexOrThrow(_cursor, "nome");
+      final int _cursorIndexOfEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "email");
+      final int _cursorIndexOfSenha = CursorUtil.getColumnIndexOrThrow(_cursor, "senha");
+      final int _cursorIndexOfFotoPath = CursorUtil.getColumnIndexOrThrow(_cursor, "fotoPath");
+      final int _cursorIndexOfTipoPerfil = CursorUtil.getColumnIndexOrThrow(_cursor, "tipoPerfil");
+      final int _cursorIndexOfEndereco = CursorUtil.getColumnIndexOrThrow(_cursor, "endereco");
+      final int _cursorIndexOfCorPrimariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corPrimariaLoja");
+      final int _cursorIndexOfCorSecundariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corSecundariaLoja");
+      final int _cursorIndexOfCorFundoLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corFundoLoja");
+      final Usuario _result;
+      if (_cursor.moveToFirst()) {
+        _result = new Usuario();
+        _result.idUsuario = _cursor.getInt(_cursorIndexOfIdUsuario);
+        if (_cursor.isNull(_cursorIndexOfNome)) {
+          _result.nome = null;
+        } else {
+          _result.nome = _cursor.getString(_cursorIndexOfNome);
+        }
+        if (_cursor.isNull(_cursorIndexOfEmail)) {
+          _result.email = null;
+        } else {
+          _result.email = _cursor.getString(_cursorIndexOfEmail);
+        }
+        if (_cursor.isNull(_cursorIndexOfSenha)) {
+          _result.senha = null;
+        } else {
+          _result.senha = _cursor.getString(_cursorIndexOfSenha);
+        }
+        if (_cursor.isNull(_cursorIndexOfFotoPath)) {
+          _result.fotoPath = null;
+        } else {
+          _result.fotoPath = _cursor.getString(_cursorIndexOfFotoPath);
+        }
+        if (_cursor.isNull(_cursorIndexOfTipoPerfil)) {
+          _result.tipoPerfil = null;
+        } else {
+          _result.tipoPerfil = _cursor.getString(_cursorIndexOfTipoPerfil);
+        }
+        if (_cursor.isNull(_cursorIndexOfEndereco)) {
+          _result.endereco = null;
+        } else {
+          _result.endereco = _cursor.getString(_cursorIndexOfEndereco);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorPrimariaLoja)) {
+          _result.corPrimariaLoja = null;
+        } else {
+          _result.corPrimariaLoja = _cursor.getString(_cursorIndexOfCorPrimariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorSecundariaLoja)) {
+          _result.corSecundariaLoja = null;
+        } else {
+          _result.corSecundariaLoja = _cursor.getString(_cursorIndexOfCorSecundariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorFundoLoja)) {
+          _result.corFundoLoja = null;
+        } else {
+          _result.corFundoLoja = _cursor.getString(_cursorIndexOfCorFundoLoja);
+        }
+      } else {
+        _result = null;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public List<Usuario> buscarTodos() {
+    final String _sql = "SELECT * FROM usuarios";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _cursorIndexOfIdUsuario = CursorUtil.getColumnIndexOrThrow(_cursor, "idUsuario");
+      final int _cursorIndexOfNome = CursorUtil.getColumnIndexOrThrow(_cursor, "nome");
+      final int _cursorIndexOfEmail = CursorUtil.getColumnIndexOrThrow(_cursor, "email");
+      final int _cursorIndexOfSenha = CursorUtil.getColumnIndexOrThrow(_cursor, "senha");
+      final int _cursorIndexOfFotoPath = CursorUtil.getColumnIndexOrThrow(_cursor, "fotoPath");
+      final int _cursorIndexOfTipoPerfil = CursorUtil.getColumnIndexOrThrow(_cursor, "tipoPerfil");
+      final int _cursorIndexOfEndereco = CursorUtil.getColumnIndexOrThrow(_cursor, "endereco");
+      final int _cursorIndexOfCorPrimariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corPrimariaLoja");
+      final int _cursorIndexOfCorSecundariaLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corSecundariaLoja");
+      final int _cursorIndexOfCorFundoLoja = CursorUtil.getColumnIndexOrThrow(_cursor, "corFundoLoja");
+      final List<Usuario> _result = new ArrayList<Usuario>(_cursor.getCount());
+      while (_cursor.moveToNext()) {
+        final Usuario _item;
+        _item = new Usuario();
+        _item.idUsuario = _cursor.getInt(_cursorIndexOfIdUsuario);
+        if (_cursor.isNull(_cursorIndexOfNome)) {
+          _item.nome = null;
+        } else {
+          _item.nome = _cursor.getString(_cursorIndexOfNome);
+        }
+        if (_cursor.isNull(_cursorIndexOfEmail)) {
+          _item.email = null;
+        } else {
+          _item.email = _cursor.getString(_cursorIndexOfEmail);
+        }
+        if (_cursor.isNull(_cursorIndexOfSenha)) {
+          _item.senha = null;
+        } else {
+          _item.senha = _cursor.getString(_cursorIndexOfSenha);
+        }
+        if (_cursor.isNull(_cursorIndexOfFotoPath)) {
+          _item.fotoPath = null;
+        } else {
+          _item.fotoPath = _cursor.getString(_cursorIndexOfFotoPath);
+        }
+        if (_cursor.isNull(_cursorIndexOfTipoPerfil)) {
+          _item.tipoPerfil = null;
+        } else {
+          _item.tipoPerfil = _cursor.getString(_cursorIndexOfTipoPerfil);
+        }
+        if (_cursor.isNull(_cursorIndexOfEndereco)) {
+          _item.endereco = null;
+        } else {
+          _item.endereco = _cursor.getString(_cursorIndexOfEndereco);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorPrimariaLoja)) {
+          _item.corPrimariaLoja = null;
+        } else {
+          _item.corPrimariaLoja = _cursor.getString(_cursorIndexOfCorPrimariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorSecundariaLoja)) {
+          _item.corSecundariaLoja = null;
+        } else {
+          _item.corSecundariaLoja = _cursor.getString(_cursorIndexOfCorSecundariaLoja);
+        }
+        if (_cursor.isNull(_cursorIndexOfCorFundoLoja)) {
+          _item.corFundoLoja = null;
+        } else {
+          _item.corFundoLoja = _cursor.getString(_cursorIndexOfCorFundoLoja);
+        }
+        _result.add(_item);
       }
       return _result;
     } finally {

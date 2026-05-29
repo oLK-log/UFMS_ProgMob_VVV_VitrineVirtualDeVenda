@@ -1,5 +1,14 @@
+import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.gms.google-services")
+}
+
+
+val properties = Properties()
+val localPropertiesFile = project.rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    properties.load(localPropertiesFile.inputStream())
 }
 
 android {
@@ -18,6 +27,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders["MAPS_API_KEY"] = properties.getProperty("MAPS_API_KEY") ?: ""
     }
 
     buildTypes {
@@ -47,4 +57,11 @@ dependencies {
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
     implementation("androidx.camera:camera-core:1.3.1")
+    implementation("org.mindrot:jbcrypt:0.4")
+    implementation("org.mindrot:jbcrypt:0.4")
+    implementation("com.google.android.material:material:1.9.0")
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))//autenticacao uusuario
+    implementation("com.google.firebase:firebase-auth")//autenticacao usuario
+    implementation("com.google.android.gms:play-services-maps:18.2.0")//api maps google
+    implementation("com.github.skydoves:colorpickerview:2.3.0")//paleta cores
 }

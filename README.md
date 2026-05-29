@@ -45,6 +45,10 @@ O Cliente é quem tem interesse em ver os Produtos disponíveis em determinada L
 * **Gerenciar Pedido**: Enquanto aberto um Pedido, o Cliente pode fazer a inclusão e remoção dos Produtos em seu Pedido. Por fim, ele pode Finalizar o Pedido.
 * **Visualizar Perfil e Histórico de Pedido**: O Cliente em sua aba Perfil pode além de visualizar suas informações(Foto de Perfil, Nome e tipo de usuário), consultar seu Histórico de Pedidos e os detalhes de um Pedido específico.
 * **Visualizar Endereço**: É possível o Cliente vizualizar por meio de mapa(Google Maps- API) no aplicativo a localização da Loja.
+#### Organização do Projeto
+Decidi organizar os pacotes do projeto a partir dos conceitos do sistema. A organização é a seguinte:
+* **core**: Nesse pacote estão contidos os arquivos 
+* **cliente**: Nesse pacote estão contidos os arquivos que estão limitados conceitualmente ao Cliente
 
 ### Entrega 2: Persistência de Dados e Gestão de Catálogo
 
@@ -91,31 +95,31 @@ O Cliente é quem tem interesse em ver os Produtos disponíveis em determinada L
 <div align="center">
   <img src="img/VVV/entregaFinal/splash.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/login.jpeg" alt="" width="250"/>
-  <p>descrição do que foi implementado</p>
+  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
 <div align="center">
   <img src="img/VVV/entregaFinal/cadastroUsuario.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/recuperarSenha.jpeg" alt="" width="250"/>
-  <p>descrição do que foi implementado</p>
+  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
 
 #### Lojista
 <div align="center">
   <img src="img/VVV/entregaFinal/PerfilLojista.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/PerfilLojistap2.jpeg" alt="" width="250"/>
-  <p>descrição do que foi implementado</p>
+  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
 <div align="center">
   <img src="img/VVV/entregaFinal/gerenciarProdutosLojista.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/cadastrarProdutoLojista.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/atualizarProdutoLojista.jpeg" alt="" width="250"/>
-  <p>descrição do que foi implementado</p>
+  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
 <div align="center">
   <img src="img/VVV/entregaFinal/inicioLojista.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/historicoDetalhesPedidoLojista.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/notificacao.jpeg" alt="" width="250"/>
-  <p>descrição do que foi implementado</p>
+  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
 
 #### Cliente/Visitante
@@ -123,18 +127,18 @@ O Cliente é quem tem interesse em ver os Produtos disponíveis em determinada L
   <img src="img/VVV/entregaFinal/perfilCliente.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/meusPedidosCliente.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/detalhesPedidosJaRealizadosCliente.jpeg" alt="" width="250"/>
-  <p>descrição do que foi implementado</p>
+  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
 <div align="center">
   <img src="img/VVV/entregaFinal/vitrineCliente.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/imagemMaps.jpeg" alt="" width="250"/>
-  <p>descrição do que foi implementado</p>
+  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
 <div align="center">
   <img src="img/VVV/entregaFinal/detalhesProdutoCliente.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/detalhesProdutoVideoCliente.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/pedidoCliente.jpeg" alt="" width="250"/>
-  <p>descrição do que foi implementado</p>
+  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
 
 

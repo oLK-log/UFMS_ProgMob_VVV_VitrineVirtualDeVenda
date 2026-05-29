@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:background="?android:attr/colorBackground">
 
     <TextView
         android:id="@+id/txtTituloPedido"
@@ -12,9 +12,9 @@
         android:text="Meu Pedido"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#212121"
-        android:background="#FFFFFF"
-        />
+        android:textColor="?android:attr/textColorPrimary"
+        android:background="@android:color/transparent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvItensPedido"
         android:layout_width="match_parent"
@@ -22,22 +22,26 @@
         android:layout_below="@+id/txtTituloPedido"
         android:layout_above="@+id/layoutRodapePedido"
         android:padding="8dp" />
+
     <TextView
         android:id="@+id/txtPedidoVazio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="Seu pedido está vazio."
+        android:textColor="?android:attr/textColorSecondary"
         android:visibility="gone" />
+
     <LinearLayout
         android:id="@+id/layoutRodapePedido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#FFFFFF"
+        android:background="@android:color/transparent"
         android:orientation="vertical"
         android:padding="20dp"
         android:elevation="16dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,7 +53,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Total:"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/txtValorTotalPedido"
                 android:layout_width="wrap_content"
@@ -57,7 +63,7 @@
                 android:text="R$ 0,00"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:textColor="#388E3C" />
+                android:textColor="?attr/colorPrimary" />
 
         </LinearLayout>
 
@@ -66,13 +72,9 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="Finalizar Pedido"
-            android:backgroundTint="#000000"
-            android:textColor="#FFFFFF"
             android:textStyle="bold"
             android:textSize="20sp" />
+
     </LinearLayout>
 
-
 </RelativeLayout>
-
-

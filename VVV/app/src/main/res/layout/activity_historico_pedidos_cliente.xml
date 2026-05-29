@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FAFAFA"
+    android:background="?android:attr/colorBackground"
     android:padding="16dp">
 
     <LinearLayout
@@ -20,10 +20,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="← Voltar"
-            android:textColor="#1976D2"
+            android:textColor="?attr/colorPrimary"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackground" />
 
         <TextView
             android:layout_width="0dp"
@@ -32,9 +33,10 @@
             android:text="Meus Pedidos"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="#212121"
+            android:textColor="?android:attr/textColorPrimary"
             android:gravity="center"
-            android:layout_marginEnd="48dp"/> </LinearLayout>
+            android:layout_marginEnd="48dp"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/txtSemPedidos"
@@ -42,13 +44,15 @@
         android:layout_height="wrap_content"
         android:text="Você ainda não fez nenhum pedido."
         android:textSize="16sp"
-        android:textColor="#757575"
+        android:textColor="?android:attr/textColorSecondary"
         android:gravity="center"
         android:layout_marginTop="50dp"
-        android:visibility="gone" /> <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rvMeusPedidos"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="vertical" />
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMeusPedidos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
 
 </LinearLayout>

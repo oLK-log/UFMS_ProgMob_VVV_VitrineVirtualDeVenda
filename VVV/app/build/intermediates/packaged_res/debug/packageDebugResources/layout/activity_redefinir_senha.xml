@@ -1,71 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:background="#FAFAFA"
-    android:gravity="center_vertical">
+    android:fillViewport="true"
+    android:background="?android:attr/colorBackground">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Recuperar Senha"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="#212121"
-        android:gravity="center"
-        android:layout_marginBottom="16dp" />
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Insira seu E-mail de registro. será enviado um link seguro para criar uma nova senha."
-        android:textSize="16sp"
-        android:textColor="#757575"
-        android:gravity="center"
-        android:layout_marginBottom="32dp" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="O seu E-mail"
-        app:endIconMode="clear_text"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxStrokeWidth="2dp"
-        app:boxStrokeWidthFocused="3dp"
-        app:boxStrokeColor="#212121"
-        app:hintTextColor="#212121"
-        android:textColorHint="#757575">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editEmailRecuperacao"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:textColor="#212121" />
+            android:text="Recuperar Senha"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Insira seu E-mail de registro. Será enviado um link seguro para criar uma nova senha."
+            android:textSize="16sp"
+            android:textColor="?android:attr/textColorSecondary"
+            android:gravity="center"
+            android:layout_marginBottom="32dp" />
 
-    <Button
-        android:id="@+id/btnEnviarLink"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="Enviar Link"
-        android:textSize="20sp"
-        android:layout_marginTop="24dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="O seu E-mail"
+            app:endIconMode="clear_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-    <TextView
-        android:id="@+id/txtVoltarLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Voltar ao Login"
-        android:textColor="#1976D2"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:layout_marginTop="24dp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editEmailRecuperacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
 
-</LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnEnviarLink"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Enviar Link"
+            android:textSize="20sp"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:id="@+id/txtVoltarLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Voltar ao Login"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:layout_marginTop="24dp" />
+
+    </LinearLayout>
+</ScrollView>

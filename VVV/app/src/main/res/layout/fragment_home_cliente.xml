@@ -2,15 +2,15 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?android:attr/colorBackground"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
-        >
+        android:padding="16dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:text="Em Destaque"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:textColor="#212121"
+                android:textColor="?android:attr/textColorPrimary"
                 android:layout_centerVertical="true" />
 
             <ImageButton
@@ -35,7 +35,8 @@
                 android:layout_centerVertical="true"
                 android:src="@android:drawable/ic_dialog_map"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Ver Mapa da Loja" />
+                android:contentDescription="Ver Mapa da Loja"
+                app:tint="?attr/colorSecondary"/>
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -51,7 +52,7 @@
             android:text="Todos os Produtos"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="#212121"
+            android:textColor="?android:attr/textColorPrimary"
             android:layout_marginBottom="5dp"
             android:layout_gravity="center" />
 
@@ -65,21 +66,18 @@
             android:elevation="2dp"
             android:layout_marginBottom="0dp"
             android:gravity="center_vertical"
-            android:background="#FFFFFF">
+            android:background="@android:color/transparent">
 
-
-        <EditText
-
-            android:id="@+id/editBuscarProduto"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:hint="@string/hint_buscar"
-            android:paddingStart="12dp"
-            android:background="@android:drawable/editbox_background"
-            android:maxLines="1"
-            android:inputType="text" />
-
+            <EditText
+                android:id="@+id/editBuscarProduto"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:hint="@string/hint_buscar"
+                android:paddingStart="12dp"
+                android:background="@android:color/transparent"
+                android:maxLines="1"
+                android:inputType="text" />
 
             <ImageButton
                 android:id="@+id/btnFiltroProduto"
@@ -88,7 +86,9 @@
                 android:src="@android:drawable/ic_menu_sort_by_size"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_marginEnd="8dp"
-                android:contentDescription="Filtrar" />
+                android:contentDescription="Filtrar"
+                app:tint="?attr/colorSecondary"/>
+
             <ImageButton
                 android:id="@+id/btnBuscarProduto"
                 android:layout_width="50dp"
@@ -96,16 +96,17 @@
                 android:layout_marginStart="8dp"
                 android:src="@android:drawable/ic_menu_search"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Buscar" />
-    </LinearLayout>
+                android:contentDescription="Buscar"
+                app:tint="?attr/colorSecondary"/>
+        </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerVitrine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:nestedScrollingEnabled="false"
-        android:padding="8dp"
-        android:clipToPadding="false" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerVitrine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:padding="8dp"
+            android:clipToPadding="false" />
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

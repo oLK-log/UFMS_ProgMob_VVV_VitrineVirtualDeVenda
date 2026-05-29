@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    android:background="#FAFAFA">
+    android:background="?android:attr/colorBackground">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,10 +13,9 @@
         android:text="Visão Geral da Loja"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#212121"
+        android:textColor="?android:attr/textColorPrimary"
         android:layout_marginBottom="15dp"
-        android:layout_marginTop="20dp"
-        />
+        android:layout_marginTop="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +30,8 @@
             android:layout_weight="1"
             android:layout_marginEnd="4dp"
             app:cardCornerRadius="12dp"
-            app:cardElevation="4dp">
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@android:color/transparent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,8 +43,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Produtos"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="bold"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:layout_marginBottom="4dp"/>
 
                 <TextView
@@ -54,17 +55,19 @@
                     android:text="0"
                     android:textSize="30sp"
                     android:textStyle="bold"
-                    android:textColor="#388E3C"/>
+                    android:textColor="?attr/colorPrimary"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="60dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginHorizontal="2dp"
             app:cardCornerRadius="12dp"
-            app:cardElevation="3dp">
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@android:color/transparent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -75,17 +78,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Faturamento"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:layout_marginBottom="4dp"/>
                 <TextView
                     android:id="@+id/txtMetricaFaturamento"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="R$ 0,00"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="#388E3C"/>
+                    android:textColor="?attr/colorPrimary"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -95,7 +99,9 @@
             android:layout_weight="1"
             android:layout_marginStart="4dp"
             app:cardCornerRadius="12dp"
-            app:cardElevation="3dp">
+            app:cardElevation="3dp"
+            app:cardBackgroundColor="@android:color/transparent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -106,8 +112,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Visitas"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="bold"
+                    android:textColor="?android:attr/textColorSecondary"
                     android:layout_marginBottom="4dp"/>
                 <TextView
                     android:id="@+id/txtMetricaVisitas"
@@ -116,7 +123,7 @@
                     android:text="0"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="#F57C00"/>
+                    android:textColor="?attr/colorSecondary"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
@@ -127,7 +134,7 @@
         android:text="Últimos Pedidos"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#212121"
+        android:textColor="?android:attr/textColorPrimary"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp" />
 

@@ -176,6 +176,8 @@ string texto_visitante
 string titulo_pedido
 string titulo_perfil
 style Base.Theme.MainActivity
+style FormatoGlobalBotoes
 style Theme.MainActivity
+style colorBtnSecondary
 xml backup_rules
 xml data_extraction_rules

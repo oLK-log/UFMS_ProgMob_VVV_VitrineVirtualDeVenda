@@ -13,12 +13,13 @@
         android:layout_height="60dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="0dp">
+
         <ImageView
             android:id="@+id/imgDetalheProduto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:background="#EEEEEE"
+            android:background="?android:attr/colorBackground"
             android:src="@android:drawable/ic_menu_camera" />
     </androidx.cardview.widget.CardView>
 
@@ -34,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nome do Produto"
-            android:textColor="#212121"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -43,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2x R$ 50,00"
-            android:textColor="#757575"
+            android:textColor="?android:attr/textColorSecondary"
             android:textSize="14sp"
             android:layout_marginTop="2dp" />
     </LinearLayout>
@@ -53,7 +54,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="R$ 100,00"
-        android:textColor="#388E3C"
+        android:textColor="?attr/colorPrimary"
         android:textSize="16sp"
         android:textStyle="bold" />
+
 </LinearLayout>

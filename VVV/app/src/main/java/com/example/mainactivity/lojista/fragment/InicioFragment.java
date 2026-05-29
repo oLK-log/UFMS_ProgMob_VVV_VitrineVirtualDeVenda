@@ -84,10 +84,10 @@ public class InicioFragment extends Fragment {
             if(cliente != null){
                 p.nomeCliente = cliente.nome;
                 p.emailCliente = cliente.email;
-            }else {
+            }/*else {
                 p.nomeCliente = "Cliente desconhecido";
                 p.emailCliente = "e-mail desconhecido";
-            }
+            } */ //comentei pois estava setando como cliente desconhecido pois o visitante n eh um cliente propriamente dito   no db
         }
         txtMetricaFaturamento.setText(String.format("R$ %.2f", faturamentoTotal));
 

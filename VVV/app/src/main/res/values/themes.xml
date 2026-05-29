@@ -19,7 +19,31 @@
 
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
+        <!-- injeta regra de formato geral dos botoes-->
+        <item name="shapeAppearanceSmallComponent">@style/FormatoGlobalBotoes</item>
+        <!-- arruma o problema do roxo na pirula -->
+        <item name="colorSecondaryContainer">?attr/colorSecondary</item>
+        <item name="colorOnSecondaryContainer">@android:color/white</item>
     </style>
+
+
+    <!-- formato geral que os botoes devem ter-->
+    <style name="FormatoGlobalBotoes" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50dp</item>
+    </style>
+    <!--para botoes secundarios-->
+    <style name="colorBtnSecondary" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">?attr/colorSecondary</item>
+
+        <item name="strokeColor">?attr/colorSecondary</item>
+        <item name="strokeWidth">1dp</item>
+
+        <item name="backgroundTint">@android:color/transparent</item>
+
+        <item name="cornerRadius">12dp</item>
+    </style>
+
 
     <style name="Theme.MainActivity" parent="Base.Theme.MainActivity" />
 </resources>

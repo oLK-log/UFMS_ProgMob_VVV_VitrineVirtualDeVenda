@@ -83,7 +83,7 @@ Além disso, as pastas **core**, **cliente** e **lojista** possuem a seguinte su
 </div>
 
 ---
-### Entrega 3: Entrega Final do Projeto
+## Entrega 3: Entrega Final do Projeto
 #### Requisitos requeridos
 * a) Fazer testes de caixa preta e tratar erros:
 * b) Ter uma tela inicial de login com cadastro de usuários com foto:

@@ -47,8 +47,16 @@ O Cliente é quem tem interesse em ver os Produtos disponíveis em determinada L
 * **Visualizar Endereço**: É possível o Cliente vizualizar por meio de mapa(Google Maps- API) no aplicativo a localização da Loja.
 #### Organização do Projeto
 Decidi organizar os pacotes do projeto a partir dos conceitos do sistema. A organização é a seguinte:
-* **core**: Nesse pacote estão contidos os arquivos 
-* **cliente**: Nesse pacote estão contidos os arquivos que estão limitados conceitualmente ao Cliente
+* **core**: Nesse pacote estão contidos os arquivos que comtemplam o sistema como um todo(funções compartilhadas entre todos usuários)
+* **cliente**: Esse pacote contém os arquivos que estão limitados conceitualmente ao Cliente.
+* **database**: Aqui se encontra os arquivos relacionados ao DataBase.
+* **lojista**: Nesse pacote estão contidos os arquivos que estão limitados conceitualmente ao Cliente.
+* **model**: O model contém os modelos de entidades do sistema
+* **security**: Responsável pela segurança, criptografia, hash.
+  
+Além disso, as pastas **core**, **cliente** e **lojista** possuem a seguinte sub-divisão:
+* **adapter**:comunicaoção entre os objetos
+* **fragment**: referente aos fragments do projeto.
 
 ### Entrega 2: Persistência de Dados e Gestão de Catálogo
 
@@ -95,51 +103,72 @@ Decidi organizar os pacotes do projeto a partir dos conceitos do sistema. A orga
 <div align="center">
   <img src="img/VVV/entregaFinal/splash.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/login.jpeg" alt="" width="250"/>
-  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
+
+  > [!NOTE]
+  > <p align="justify"><b>Splash e Login:</b> Tela de inicialização com a identidade visual da aplicação e interface de acesso segura. <br>O sistema utiliza formulários com Material Design, ofuscação de senha nativa e autenticação validada para direcionar corretamente Clientes e Lojistas aos seus respectivos fluxos.</p>
+
 <div align="center">
   <img src="img/VVV/entregaFinal/cadastroUsuario.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/recuperarSenha.jpeg" alt="" width="250"/>
-  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
+
+> [!NOTE]
+> <p><b>Cadastro e Segurança:</b> Formulário de registro com validação visual de força de senha em tempo real. <br>As senhas são tratadas com criptografia Hash garantindo segurança. Inclui também o fluxo de recuperação de acesso via e-mail por meio do firebase.</p>
 
 #### Lojista
 <div align="center">
   <img src="img/VVV/entregaFinal/PerfilLojista.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/PerfilLojistap2.jpeg" alt="" width="250"/>
-  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
+
+> [!NOTE]
+> <p><b>Painel Administrativo:</b> Tela de perfil unificada que se adapta ao Lojista. <br>Permite a personalização completa da Vitrine através da definição de cores (Primária, Secundária e Fundo) que alteram dinamicamente todo o tema do aplicativo(funcionalidade ainda em melhoria), além da configuração do endereço físico.</p>
+
 <div align="center">
   <img src="img/VVV/entregaFinal/gerenciarProdutosLojista.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/cadastrarProdutoLojista.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/atualizarProdutoLojista.jpeg" alt="" width="250"/>
-  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
+
+> [!NOTE]
+> <p><b>Gestão de Catálogo (CRUD):</b> Interface dedicada para o Lojista adicionar, editar e remover produtos. <br>Suporta a captura de imagens via câmera, inserção de vídeos demonstrativos e a opção estratégica de marcar produtos específicos como "Em Destaque" para a tela inicial do Cliente.</p>
+
 <div align="center">
   <img src="img/VVV/entregaFinal/inicioLojista.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/historicoDetalhesPedidoLojista.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/notificacao.jpeg" alt="" width="250"/>
-  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
+
+> [!NOTE]
+> <p><b>Dashboard e Gestão de Vendas:</b> Tela inicial do Lojista com painel de métricas em tempo real (Faturamento, Visitas e Produtos). <br>Abaixo, um histórico contínuo de vendas onde o Lojista pode abrir um BottomSheet interativo para visualizar os detalhes exatos de cada pedido realizado, suportado por notificações nativas.</p>
 
 #### Cliente/Visitante
 <div align="center">
   <img src="img/VVV/entregaFinal/perfilCliente.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/meusPedidosCliente.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/detalhesPedidosJaRealizadosCliente.jpeg" alt="" width="250"/>
-  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
+
+> [!NOTE]
+> <p><b>Perfil do Cliente e Histórico:</b> Visão do consumidor focada na usabilidade. <br>Acesso rápido ao histórico de compras finalizadas. O sistema garante a integridade contábil exibindo os detalhes do pedido com os preços "congelados" no momento da compra (mesmo que o lojista altere o valor do produto no futuro).</p>
+
 <div align="center">
   <img src="img/VVV/entregaFinal/vitrineCliente.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/imagemMaps.jpeg" alt="" width="250"/>
-  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
+
+> [!NOTE]
+> <p><b>Vitrine Dinâmica e Localização:</b> Catálogo principal interativo com rolagem otimizada (RecyclerView) que exibe produtos em destaque e a lista geral. <br>Integração com a API do Google Maps, permitindo ao cliente visualizar a localização exata do endereço cadastrado pelo lojista.</p>
+
 <div align="center">
   <img src="img/VVV/entregaFinal/detalhesProdutoCliente.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/detalhesProdutoVideoCliente.jpeg" alt="" width="250"/>
   <img src="img/VVV/entregaFinal/pedidoCliente.jpeg" alt="" width="250"/>
-  <p><b>splash: </b>dsfsdfsd<br>dsfvd</p>
 </div>
+
+> [!NOTE]
+  > <p><b>Visualização Premium e Checkout:</b> Tela de detalhes rica em informações, suportando a exibição de mídias (fotos e vídeos curtos do produto). <br>O fluxo de compra flui para um carrinho (Meu Pedido) onde o cliente revisa quantidades e subtotais antes de confirmar e gerar o pedido na base de dados.</p>
 
 
 
@@ -147,8 +176,11 @@ Decidi organizar os pacotes do projeto a partir dos conceitos do sistema. A orga
 ⚠ **Atenção**: Material com fins de aprendizado, e assim sendo, pode conter **erros** e **insconsistências**.
 
 * ### **Links e material de apoio** 📖
+* - [Android Developer](https://developer.android.com/get-started/overview?hl=pt-br)
+* - [Guia Android](https://www.devmedia.com.br/guia/android/34580)
+* - Material Programação Mobile UFMS - Prof. Ana Karina Dourado
 <!--
- - [Modelo Conceitual](https://fernandommota.github.io/academy/disciplines/2015/analise_projeto_software/files/08_modelo_conceitual.pdf)
+ - [Android Developer](https://www.devmedia.com.br/guia/android/34580)
  - [Diagrama de Classes](https://deinf.ufma.br/~geraldo/dob/7.Classes.pdf)
  - [C4 Model](https://medium.com/cajudevs/entendendo-o-c4-model-uma-abordagem-para-arquitetura-de-software-3ed0f007ae66)
  <img src="img/VVV/entregaFinal/.jpeg" alt="" width="250"/>

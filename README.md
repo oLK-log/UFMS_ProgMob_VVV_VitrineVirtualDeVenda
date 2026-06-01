@@ -168,7 +168,7 @@ Além disso, as pastas **core**, **cliente** e **lojista** possuem a seguinte su
 </div>
 
 > [!NOTE]
-  > <p><b>Visualização Premium e Checkout:</b> Tela de detalhes rica em informações, suportando a exibição de mídias (fotos e vídeos curtos do produto). <br>O fluxo de compra flui para um carrinho (Meu Pedido) onde o cliente revisa quantidades e subtotais antes de confirmar e gerar o pedido na base de dados.</p>
+  > <p><b>Visualização e Checkout:</b> Tela de detalhes, suportando a exibição de mídias (fotos e vídeos curtos do produto). <br>O fluxo de compra flui para um carrinho (Meu Pedido) onde o cliente revisa quantidades e subtotais antes de confirmar e gerar o pedido na base de dados.</p>
 
 
 

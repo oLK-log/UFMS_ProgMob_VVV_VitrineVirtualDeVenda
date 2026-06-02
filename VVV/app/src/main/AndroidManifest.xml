@@ -14,13 +14,15 @@
         android:theme="@style/Theme.MainActivity">
         <activity
             android:name=".lojista.CadastroProdutoActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".lojista.PainelLojistaActivity"
             android:exported="false" />
         <activity
             android:name=".core.CadastroUsuarioActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".core.SplashActivity"
             android:exported="true">

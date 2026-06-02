@@ -73,7 +73,7 @@
                     android:id="@+id/txtDetalhesNome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nome Produto"
+                    android:text="@string/text_nomeProduto"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     android:textColor="?android:attr/textColorPrimary" />
@@ -82,7 +82,7 @@
                     android:id="@+id/txtDetalhesPreco"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="R$ 0,00"
+                    android:text="@string/text_preco"
                     android:textSize="22sp"
                     android:textColor="?attr/colorPrimary"
                     android:textStyle="bold"
@@ -97,7 +97,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Descrição"
+                    android:text="@string/text_descricao"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:textColor="?android:attr/textColorPrimary" />
@@ -106,7 +106,7 @@
                     android:id="@+id/txtDetalhesDescricao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Descrição do produto"
+                    android:text="@string/hint_descricao"
                     android:textSize="16sp"
                     android:textColor="?android:attr/textColorSecondary"
                     android:layout_marginTop="4dp"
@@ -129,7 +129,7 @@
             android:id="@+id/btnAdicionarAoPedido"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="Adicionar ao Pedido"
+            android:text="@string/btn_adicionarProduto"
             android:textStyle="bold"
             android:textSize="20sp" />
 

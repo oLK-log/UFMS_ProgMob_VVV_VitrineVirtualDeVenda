@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="25dp"
-        android:text="Meu Pedido"
+        android:text="@string/titulo_meuPedido"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="?android:attr/textColorPrimary"
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Seu pedido está vazio."
+        android:text="@string/dica_pedidoVazio"
         android:textColor="?android:attr/textColorSecondary"
         android:visibility="gone" />
 
@@ -52,7 +52,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Total:"
+                android:text="@string/text_total"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp" />
 
@@ -60,7 +60,7 @@
                 android:id="@+id/txtValorTotalPedido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="R$ 0,00"
+                android:text="@string/text_preco"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="?attr/colorPrimary" />
@@ -71,7 +71,7 @@
             android:id="@+id/btnFinalizarPedido"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="Finalizar Pedido"
+            android:text="@string/btn_finalizarPedido"
             android:textStyle="bold"
             android:textSize="20sp" />
 

@@ -30,16 +30,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".cliente.PainelClienteActivity"
             android:exported="false"/>
-        <activity android:name=".core.LoginActivity"
-            android:exported="false"/>
+
+        <activity
+            android:name=".core.LoginActivity"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+
         <activity android:name=".cliente.DetalhesProdutoActivity"
             android:exported="false"/>
+
         <activity
             android:name=".core.RedefinirSenhaActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+
         <activity android:name=".cliente.HistoricoPedidoClienteActivity" />
+
         <activity
             android:name=".cliente.MapaLojaClienteActivity"
             android:exported="false" />

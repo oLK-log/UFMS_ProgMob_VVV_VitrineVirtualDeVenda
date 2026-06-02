@@ -1,5 +1,5 @@
 <resources>
-    <string name ="titulo_cadastro">"Cadastrar Novo Produto"</string>
+    <string name ="titulo_cadastroNovoProduto">"Cadastrar Novo Produto"</string>
     <string name="titulo_perfil">Meu Perfil</string>
     <string name="titulo_pedido">Meu Pedido</string>
     <string name="titulo_cadastro">Cadastro</string>

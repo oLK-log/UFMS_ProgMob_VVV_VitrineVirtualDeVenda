@@ -4,19 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:fitsSystemWindows="true"
     android:background="?android:attr/colorBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp"
-        android:gravity="center_vertical">
+        android:padding="24dp">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login"
+            android:text="@string/titulo_Login"
             android:textSize="45sp"
             android:textColor="?android:attr/textColorPrimary"
             android:gravity="center"
@@ -27,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:hint="E-mail"
+            android:hint="@string/hint_email"
             app:endIconMode="clear_text"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -43,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:hint="Senha"
+            android:hint="@string/hint_senha"
             app:endIconMode="password_toggle"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -59,7 +64,7 @@
             android:id="@+id/btnEntrar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="Entrar"
+            android:text="@string/btn_entrar"
             android:textSize="20sp"
             android:layout_marginBottom="16dp" />
 
@@ -67,7 +72,7 @@
             android:id="@+id/txtIrParaCadastro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Não tem uma conta? Cadastre-se"
+            android:text="@string/pseuBtn_cadastrar"
             android:textColor="?attr/colorPrimary"
             android:textSize="16sp"
             android:gravity="center"
@@ -79,7 +84,7 @@
             android:id="@+id/txtEntrarConvidado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Entrar como convidado"
+            android:text="@string/pseuBtn_convidado"
             android:textColor="?attr/colorSecondary"
             android:textSize="16sp"
             android:gravity="center"
@@ -92,13 +97,18 @@
             android:id="@+id/txtRedefinirSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_redefinirSenha"
+            android:text="@string/pseuBtn_redefinirSenha"
             android:textColor="?android:attr/textColorSecondary"
             android:textSize="16sp"
             android:gravity="center"
             android:layout_marginTop="8dp"
             android:padding="8dp"
             android:background="?attr/selectableItemBackground" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
     </LinearLayout>
 </ScrollView>

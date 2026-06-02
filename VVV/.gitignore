@@ -1,0 +1,24 @@
+# Gradle
+.gradle/
+build/
+
+# Android Studio
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Configurações locais
+local.properties
+
+# Cache e logs
+*.log
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Arquivos de sistema
+.DS_Store
+
+# Segurança
+app/google-services.json

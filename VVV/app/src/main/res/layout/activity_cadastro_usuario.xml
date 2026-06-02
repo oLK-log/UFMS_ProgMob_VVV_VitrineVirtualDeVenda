@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cadastro"
+            android:text="@string/titulo_cadastro"
             android:textSize="45sp"
             android:textStyle="bold"
             android:textColor="?android:attr/textColorPrimary"
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Tirar Foto"
+            android:text="@string/btn_tirarFoto"
             style="@style/colorBtnSecondary"
             android:layout_marginBottom="16dp" />
 
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
-            android:hint="Nome completo"
+            android:hint="@string/hint_nomeUsuario"
             app:endIconMode="clear_text"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:hint="E-mail"
+            android:hint="@string/hint_email"
             app:endIconMode="clear_text"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:hint="Senha"
+            android:hint="@string/hint_senha"
             app:endIconMode="password_toggle"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -96,7 +96,7 @@
                 android:id="@+id/txtRegraTamanho"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="• Pelo menos 8 caracteres"
+                android:text="@string/senha_regraTamanho"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="12sp"/>
 
@@ -104,7 +104,7 @@
                 android:id="@+id/txtRegraMaiuscula"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="• Pelo menos 1 letra maiúscula"
+                android:text="@string/senha_regraMaiuscula"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="12sp"/>
 
@@ -112,7 +112,7 @@
                 android:id="@+id/txtRegraNumero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="• Pelo menos 1 número"
+                android:text="@string/senha_regraNumero"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="12sp"/>
 
@@ -120,7 +120,7 @@
                 android:id="@+id/txtRegraEspecial"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="• Pelo menos 1 caractere especial (@, #, $, etc.)"
+                android:text="@string/senha_regraEspecial"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="12sp"/>
         </LinearLayout>
@@ -128,7 +128,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Como você deseja usar esse App?"
+            android:text="@string/pergunta_tipoUsuario"
             android:textColor="?android:attr/textColorSecondary"
             android:textSize="14sp"
             android:layout_marginTop="12dp"/>
@@ -145,7 +145,7 @@
                 android:id="@+id/rbCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sou Cliente"
+                android:text="@string/radio_souCliente"
                 android:textStyle="bold"
                 android:checked="true"/>
 
@@ -154,7 +154,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Sou Lojista"
+                android:text="@string/radio_souLojista"
                 android:textStyle="bold"/>
         </RadioGroup>
 
@@ -162,7 +162,7 @@
             android:id="@+id/btnCadastrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Criar Conta"
+            android:text="@string/btn_criarConta"
             android:textSize="16sp" />
 
     </LinearLayout>

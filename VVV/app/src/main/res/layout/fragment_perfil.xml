@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="25dp"
-        android:text="Meu Perfil"
+        android:text="@string/titulo_perfil"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="?android:attr/textColorPrimary"
@@ -45,7 +45,7 @@
             android:id="@+id/txtNomeAbaPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome do Usuário"
+            android:text="@string/text_nomeUsuario"
             android:textSize="26sp"
             android:textStyle="bold"
             android:textColor="?android:attr/textColorPrimary" />
@@ -54,7 +54,7 @@
             android:id="@+id/txtTipoPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tipo de Usuário"
+            android:text="@string/dica_tipoUsuario"
             android:textSize="16sp"
             android:textColor="?android:attr/textColorSecondary"
             android:layout_marginTop="4dp"/>
@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:hint="Endereço da Loja (Ex: Av. Afonso Pena)"
+                android:hint="@string/hint_endereco"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editEnderecoLojista"
@@ -101,7 +101,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Cor Principal (Ex: #135D66)"
+                    android:hint="@string/hint_corPrincipal"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editCorPrincipal"
@@ -132,7 +132,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Cor Secundária (Ex: #F0F0F0)"
+                    android:hint="@string/hint_corSecundaria"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editCorSecundaria"
@@ -163,7 +163,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Cor de Fundo (Ex: #FFFFFF)"
+                    android:hint="@string/hint_corFundo"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editCorFundo"
@@ -187,7 +187,7 @@
                 android:id="@+id/btnSalvarDadosLojista"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Salvar Configurações" />
+                android:text="@string/btn_salvarConfiguracoes" />
         </LinearLayout>
     </ScrollView>
 
@@ -198,7 +198,7 @@
         android:layout_above="@id/btnSairSessao"
         android:layout_marginHorizontal="24dp"
         android:layout_marginBottom="8dp"
-        android:text="Histórico de Pedidos"
+        android:text="@string/btn_historicoPedido"
         android:textSize="16sp"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:textColor="?attr/colorPrimary"
@@ -211,7 +211,7 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_margin="24dp"
-        android:text="@string/btn_sair"
+        android:text="@string/btn_sairConta"
         android:textSize="20sp"
         android:textStyle="bold"
         app:backgroundTint="?attr/colorError"

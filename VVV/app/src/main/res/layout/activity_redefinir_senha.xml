@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Recuperar Senha"
+            android:text="@string/titulo_recuperarSenha"
             android:textSize="32sp"
             android:textStyle="bold"
             android:textColor="?android:attr/textColorPrimary"
@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Insira seu E-mail de registro. Será enviado um link seguro para criar uma nova senha."
+            android:text="@string/dica_recuperarSenha"
             android:textSize="16sp"
             android:textColor="?android:attr/textColorSecondary"
             android:gravity="center"
@@ -35,7 +35,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="O seu E-mail"
+            android:hint="@string/hint_email"
             app:endIconMode="clear_text"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -51,7 +51,7 @@
             android:id="@+id/btnEnviarLink"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="Enviar Link"
+            android:text="@string/btn_enviarLink"
             android:textSize="20sp"
             android:layout_marginTop="24dp" />
 
@@ -59,7 +59,7 @@
             android:id="@+id/txtVoltarLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Voltar ao Login"
+            android:text="@string/pseuBtn_voltarLogin"
             android:textColor="?attr/colorPrimary"
             android:textSize="16sp"
             android:gravity="center"

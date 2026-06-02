@@ -14,7 +14,7 @@
             android:id="@+id/txtTituloTelaCadastro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cadastrar Novo Produto"
+            android:text="@string/titulo_cadastro"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginBottom="30dp"
@@ -34,7 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Clique no ícone acima para escolher a foto"
+            android:text="@string/dica_escolherFoto"
             android:textSize="12sp"
             android:textColor="?android:attr/textColorSecondary"
             android:layout_gravity="center_horizontal"
@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:hint="Nome do Produto"
+            android:hint="@string/hint_nomeProduto"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:hint="Descrição"
+            android:hint="@string/hint_descricao"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -72,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:hint="Preço"
+            android:hint="@string/hint_preco"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -93,7 +93,7 @@
                 android:id="@+id/btnEscolherVideo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Escolher Vídeo"
+                android:text="@string/btn_escolherVideo"
                 style="@style/colorBtnSecondary" />
 
             <TextView
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:text="Nenhum vídeo selecionado"
+                android:text="@string/dica_videoSelecionado"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -110,14 +110,14 @@
             android:id="@+id/btnSalvarProduto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Salvar"
+            android:text="@string/btn_salvar"
             android:layout_marginTop="20dp" />
 
         <Button
             android:id="@+id/btnExcluirProduto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Excluir"
+            android:text="@string/btn_excluir"
             android:backgroundTint="?attr/colorError"
             android:textColor="?attr/colorOnError"
             android:visibility="gone"

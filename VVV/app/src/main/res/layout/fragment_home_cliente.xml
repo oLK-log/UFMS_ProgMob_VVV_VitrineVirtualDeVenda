@@ -21,7 +21,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Em Destaque"
+                android:text="@string/titulo_Destaque"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="?android:attr/textColorPrimary"
@@ -49,7 +49,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Todos os Produtos"
+            android:text="@string/titulo_todosProduto"
             android:textSize="22sp"
             android:textStyle="bold"
             android:textColor="?android:attr/textColorPrimary"

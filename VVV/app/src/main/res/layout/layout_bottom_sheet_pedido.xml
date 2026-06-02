@@ -20,7 +20,7 @@
         android:id="@+id/txtTituloBottomSheet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Detalhes do Pedido"
+        android:text="@string/titulo_DetalhesPedido"
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
